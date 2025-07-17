@@ -74,8 +74,43 @@ void MensaMax::executeGetBalance(const QString &token) {
         emit getBalanceAvailable(response);
     });
 
+}
+
+void MensaMax::executeGetUserData(const QString &token) {
+    qDebug() << "MensaMax::executeGetBalance " << token;
+
+    QString requestUrl = QString(BASE_URL);
+    QUrl url = QUrl(requestUrl);
+    QNetworkRequest request(url);
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+    request.setRawHeader("Accept", MIME_TYPE_JSON);
+    request.setRawHeader("Authorization", QString("Bearer ").append(token).toUtf8());
+    request.setRawHeader("Cookie", "mensamax_superglue=https://mensahaus.de;");
+
+    const QString postData = QString(POST_GET_USER_DATA);
+
+    qDebug() << "url: " << requestUrl;
+    qDebug() << "postData: " << postData;
+    qDebug() << "token: " << token;
+
+    QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
+
+    connect(reply,
+            SIGNAL(error(QNetworkReply::NetworkError)),
+            this,
+            SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        reply->deleteLater();
+        QString response = QString(reply->readAll());
+        qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+        qDebug() << "response : " << response;
+        emit getUserDataAvailable(response);
+    });
 
 }
+
 
 void MensaMax::handleRequestError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());

@@ -30,4 +30,12 @@ const char POST_GET_BALANCE[] = R"(
 }
 )";
 
+const char POST_GET_USER_DATA[] = R"(
+{
+  "operationName": "meineDaten",
+  "variables": {},
+  "query": "query meineDaten { meineDaten {   personId   angemeldetePerson { id vorname nachname loginName persNr kundenNr mandant { beschreibung ident __typename } klasse { bezeichnung __typename } strasse hausNr plz ort __typename   }   __typename } }"
+}
+)";
+
 #endif // CONSTANTS_H

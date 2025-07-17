@@ -30,6 +30,10 @@
         <source>GetBalance</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>GetUserData</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SecondPage</name>

@@ -12,12 +12,16 @@ Page {
     function connectSlots() {
         console.log("connect - slots");
         mensaMax.loginAvailable.connect(loginResultHandler);
+        mensaMax.getBalanceAvailable.connect(getBalanceResultHandler);
+        mensaMax.getUserDataAvailable.connect(getUserDataResultHandler);
         mensaMax.requestError.connect(errorResultHandler);
     }
 
     function disconnectSlots() {
         console.log("disconnect - slots");
         mensaMax.loginAvailable.disconnect(loginResultHandler);
+        mensaMax.getBalanceAvailable.disconnect(getBalanceResultHandler);
+        mensaMax.getUserDataAvailable.disconnect(getUserDataResultHandler);
         mensaMax.requestError.disconnect(errorResultHandler);
     }
 
@@ -25,6 +29,14 @@ Page {
         console.log("login result handler : " + result);
         var parsedResult = JSON.parse(result);
         token = parsedResult.text;
+    }
+
+    function getBalanceResultHandler(result) {
+        console.log("get balance result handler : " + result);
+    }
+
+    function getUserDataResultHandler(result) {
+        console.log("get user data result handler : " + result);
     }
 
     function errorResultHandler(result) {
@@ -72,6 +84,12 @@ Page {
                 width: parent.width
                 text: qsTr("GetBalance")
                 onClicked: mensaMax.executeGetBalance(token);
+            }
+
+            Button {
+                width: parent.width
+                text: qsTr("GetUserData")
+                onClicked: mensaMax.executeGetUserData(token);
             }
 
         }
