@@ -1,0 +1,856 @@
+{
+  "data": {
+    "meinSpeiseplan": [
+      {
+        "datum": "2025-07-14T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12129,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-14T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-14T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-14T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-14T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 1 Normalkost",
+              "id": 1,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": {
+              "anzahlAusgegeben": 1,
+              "anzahl": 1,
+              "ausgabeort": null,
+              "__typename": "Bestellung"
+            },
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 1385,
+                "bezeichnung": "Bio Kartoffelsuppe mit bunten Gem\u00FCse und Gefl\u00FCgelwiener",
+                "beschreibung": "Bio Kartoffelsuppe mit bunten Gem\u00FCse und Gefl\u00FCgelwiener",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 4955,
+                    "zusatzstoffAllergen": {
+                      "id": 108,
+                      "bezeichnung": "mit Konservierungsstoff",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4956,
+                    "zusatzstoffAllergen": {
+                      "id": 113,
+                      "bezeichnung": "unter Schutzatmosph\u00E4re verpackt",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 8033,
+                    "zusatzstoffAllergen": {
+                      "id": 104,
+                      "bezeichnung": "Sellerie und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12582,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-14T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 2,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-14T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-14T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-14T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 2 Vegetarisch",
+              "id": 2,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 1967,
+                "bezeichnung": "Bio Gem\u00FCse-Quinoa Taler mit Bio Salzkartoffeln und Bio Rahmso\u00DFe",
+                "beschreibung": "Bio Gem\u00FCse-Quinoa Taler mit Bio Salzkartoffeln und Bio Rahmso\u00DFe",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 7260,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 7261,
+                    "zusatzstoffAllergen": {
+                      "id": 105,
+                      "bezeichnung": "Senf und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 8408,
+                    "zusatzstoffAllergen": {
+                      "id": 113,
+                      "bezeichnung": "unter Schutzatmosph\u00E4re verpackt",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-07-15T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12130,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-15T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-15T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-15T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-15T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 1 Normalkost",
+              "id": 1,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": {
+              "anzahlAusgegeben": 1,
+              "anzahl": 1,
+              "ausgabeort": null,
+              "__typename": "Bestellung"
+            },
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 1370,
+                "bezeichnung": "Bio Allg\u00E4uer K\u00E4sesp\u00E4tzle mit R\u00F6stzwiebeln",
+                "beschreibung": "Bio Allg\u00E4uer K\u00E4sesp\u00E4tzle mit R\u00F6stzwiebeln",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 4914,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4915,
+                    "zusatzstoffAllergen": {
+                      "id": 99,
+                      "bezeichnung": "Eier von Gefl\u00FCgel und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4916,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 8113,
+                    "zusatzstoffAllergen": {
+                      "id": 113,
+                      "bezeichnung": "unter Schutzatmosph\u00E4re verpackt",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12583,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-15T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 2,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-15T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-15T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-15T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 2 Vegetarisch",
+              "id": 2,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 1132,
+                "bezeichnung": "Bio Apfelstrudel mit Vanillesauce",
+                "beschreibung": "Bio Apfelstrudel mit Vanillesauce",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 3995,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3996,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-07-16T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12131,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-16T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-16T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-16T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-16T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 1 Normalkost",
+              "id": 1,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": {
+              "anzahlAusgegeben": 1,
+              "anzahl": 1,
+              "ausgabeort": null,
+              "__typename": "Bestellung"
+            },
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 1086,
+                "bezeichnung": "Bio H\u00FChnerfrikassee mit Reis",
+                "beschreibung": "Bio H\u00FChnerfrikassee mit Reis",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 3787,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12584,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-16T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 2,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-16T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-16T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-16T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 2 Vegetarisch",
+              "id": 2,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 1387,
+                "bezeichnung": "Bio Ofenkartoffel mit Bio Kr\u00E4uterquark und Fr\u00FChlingszwiebeln",
+                "beschreibung": "Bio Ofenkartoffel mit Bio Kr\u00E4uterquark und Fr\u00FChlingszwiebeln",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 4960,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-07-17T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12132,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-17T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-17T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-17T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-17T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 1 Normalkost",
+              "id": 1,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": {
+              "anzahlAusgegeben": 1,
+              "anzahl": 1,
+              "ausgabeort": null,
+              "__typename": "Bestellung"
+            },
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 492,
+                "bezeichnung": "Bio Spaghetti mit Bio Tomatensauce und K\u00E4se",
+                "beschreibung": "Bio Spaghetti mit Bio Tomatensauce und K\u00E4se",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 1777,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1778,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1779,
+                    "zusatzstoffAllergen": {
+                      "id": 113,
+                      "bezeichnung": "unter Schutzatmosph\u00E4re verpackt",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12585,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-17T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 2,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-17T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-17T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-17T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 2 Vegetarisch",
+              "id": 2,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 1264,
+                "bezeichnung": "Bio Nudeln mit Bio Spinatsauce",
+                "beschreibung": "Bio Nudeln mit Bio Spinatsauce",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 4477,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4478,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-07-18T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12133,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-18T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-18T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-18T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-18T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 1 Normalkost",
+              "id": 1,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": {
+              "anzahlAusgegeben": 0,
+              "anzahl": 1,
+              "ausgabeort": null,
+              "__typename": "Bestellung"
+            },
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 1388,
+                "bezeichnung": "MSC Fischfilet unter der Kruste mit Kr\u00E4utersauce und Stampfkartoffeln",
+                "beschreibung": "MSC Fischfilet unter der Kruste mit Kr\u00E4utersauce und Stampfkartoffeln",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 4961,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4962,
+                    "zusatzstoffAllergen": {
+                      "id": 100,
+                      "bezeichnung": "Fisch und daraus gewonnene Erzeugnisse (au\u00DFer Fischgelatine)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4963,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4964,
+                    "zusatzstoffAllergen": {
+                      "id": 104,
+                      "bezeichnung": "Sellerie und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12586,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-07-18T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 2,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-07-18T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-07-18T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-07-18T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Men\u00FC 2 Vegetarisch",
+              "id": 2,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 732,
+                "bezeichnung": "Bio Gem\u00FCsefrikadelle mit Bratenso\u00DFe, Blumenkohl und Kartoffelp\u00FCree",
+                "beschreibung": "Bio Gem\u00FCsefrikadelle mit Bratenso\u00DFe, Blumenkohl und Kartoffelp\u00FCree",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 2509,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 2510,
+                    "zusatzstoffAllergen": {
+                      "id": 97,
+                      "bezeichnung": "Hafer",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 2511,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 1044,
+                "bezeichnung": "Bio Tagesdessert",
+                "beschreibung": "Bio Tagesdessert",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-07-19T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-07-20T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [],
+        "__typename": "SpeiseplanTag"
+      }
+    ]
+  }
+}

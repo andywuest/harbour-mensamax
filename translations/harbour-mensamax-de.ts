@@ -34,6 +34,10 @@
         <source>GetUserData</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>GetMenus</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SecondPage</name>

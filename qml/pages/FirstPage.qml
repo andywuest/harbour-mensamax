@@ -14,6 +14,7 @@ Page {
         mensaMax.loginAvailable.connect(loginResultHandler);
         mensaMax.getBalanceAvailable.connect(getBalanceResultHandler);
         mensaMax.getUserDataAvailable.connect(getUserDataResultHandler);
+        mensaMax.getMenusAvailable.connect(getMenusResultHandler);
         mensaMax.requestError.connect(errorResultHandler);
     }
 
@@ -22,6 +23,7 @@ Page {
         mensaMax.loginAvailable.disconnect(loginResultHandler);
         mensaMax.getBalanceAvailable.disconnect(getBalanceResultHandler);
         mensaMax.getUserDataAvailable.disconnect(getUserDataResultHandler);
+        mensaMax.getMenusAvailable.disconnect(getMenusResultHandler);
         mensaMax.requestError.disconnect(errorResultHandler);
     }
 
@@ -37,6 +39,10 @@ Page {
 
     function getUserDataResultHandler(result) {
         console.log("get user data result handler : " + result);
+    }
+
+    function getMenusResultHandler(result) {
+        console.log("get menus result handler : " + result);
     }
 
     function errorResultHandler(result) {
@@ -90,6 +96,12 @@ Page {
                 width: parent.width
                 text: qsTr("GetUserData")
                 onClicked: mensaMax.executeGetUserData(token);
+            }
+
+            Button {
+                width: parent.width
+                text: qsTr("GetMenus")
+                onClicked: mensaMax.executeGetMenus(token);
             }
 
         }

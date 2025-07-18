@@ -17,12 +17,14 @@ public:
     Q_INVOKABLE void executeLogin(const QString &project, const QString &location, const QString &userName, const QString &password);
     Q_INVOKABLE void executeGetBalance(const QString &token);
     Q_INVOKABLE void executeGetUserData(const QString &token);
+    Q_INVOKABLE void executeGetMenus(const QString &token); // TODO dates
 
 signals:
     // signals for the qml part
     Q_SIGNAL void loginAvailable(const QString &reply);
     Q_SIGNAL void getBalanceAvailable(const QString &reply);
     Q_SIGNAL void getUserDataAvailable(const QString &reply);
+    Q_SIGNAL void getMenusAvailable(const QString &reply);
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 private:

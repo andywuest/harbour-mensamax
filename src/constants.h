@@ -38,4 +38,17 @@ const char POST_GET_USER_DATA[] = R"(
 }
 )";
 
+// TODO date hardcoded
+const char POST_GET_MENUS_DATA[] = R"(
+{
+   "operationName":"speiseplanByTag",
+   "variables":{
+      "startTime":"14/07/2025",
+      "endTime":"20/07/2025"
+   },
+   "query":"query speiseplanByTag($startTime: DateTime!, $endTime: DateTime!) { meinSpeiseplan(von: $startTime, bis: $endTime) {   datum   ausgabeort { id bezeichnung __typename   }   essensschicht { bezeichnung __typename   }   message   menues { id meinPreis bewertungDurchschnitt datum meinSpeiseplanShow reihenfolge fristen { abbestellungBeiKrankmeldungBis abbestellungBis bestellungBis __typename } menuegruppe { bezeichnung id anzeigbar vorbestellbar meineEinstellungen {   anzeigbar   vorbestellbar   __typename } __typename }               meineBestellung { anzahlAusgegeben anzahl ausgabeort {   id   __typename } __typename }              meineMaxBestellbareMenge vorspeisen { id bezeichnung beschreibung zusatzstoffeAllergene {   id   zusatzstoffAllergen { id bezeichnung __typename   }   __typename }          bewertungAnzahl bewertungDurchschnitt __typename }            hauptspeisen { id bezeichnung beschreibung zusatzstoffeAllergene {   id   zusatzstoffAllergen { id bezeichnung __typename   }   __typename }          bewertungAnzahl bewertungDurchschnitt __typename }          nachspeisen { id bezeichnung beschreibung zusatzstoffeAllergene {   id   zusatzstoffAllergen { id bezeichnung __typename   }   __typename }  bewertungAnzahl bewertungDurchschnitt __typename } __typename   }   __typename }\n}"
+}
+)";
+
+
 #endif // CONSTANTS_H

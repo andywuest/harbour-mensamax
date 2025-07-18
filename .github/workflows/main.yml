@@ -3,7 +3,7 @@ name: MensaMax build
 on:
   push:
     branches:
-      - master
+      - main
     tags:
       - '*'
 
