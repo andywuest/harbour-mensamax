@@ -17,8 +17,10 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-mensamax.cpp
 
 DISTFILES += qml/harbour-mensamax.qml \
+    qml/components/FoodMenuItem.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
+    qml/pages/MenuOrderingPage.qml \
     qml/pages/SecondPage.qml \
     rpm/harbour-mensamax.changes.in \
     rpm/harbour-mensamax.changes.run.in \

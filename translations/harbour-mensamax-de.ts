@@ -27,27 +27,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>GetBalance</source>
+        <source>Get Balance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>GetUserData</source>
+        <source>Get UserData</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>GetMenus</source>
+        <source>Get Menus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Page 3</source>
+        <translation type="unfinished">Zur Seite 3</translation>
+    </message>
+</context>
+<context>
+    <name>FoodMenuItem</name>
+    <message>
+        <source>Vorspeise: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hauptspeise: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nachtisch: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>SecondPage</name>
+    <name>MenuOrderingPage</name>
     <message>
-        <source>Nested Page</source>
-        <translation>Unterseite</translation>
-    </message>
-    <message>
-        <source>Item</source>
-        <translation>Element</translation>
+        <source>Adrian</source>
+        <extracomment>OverviewPage page header</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

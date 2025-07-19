@@ -59,6 +59,10 @@ Page {
                 text: qsTr("Show Page 2")
                 onClicked: pageStack.animatorPush(Qt.resolvedUrl("SecondPage.qml"))
             }
+            MenuItem {
+                text: qsTr("Show Page 3")
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("MenuOrderingPage.qml"))
+            }
         }
 
         // Tell SilicaFlickable the height of its content.
@@ -88,19 +92,19 @@ Page {
 
             Button {
                 width: parent.width
-                text: qsTr("GetBalance")
+                text: qsTr("Get Balance")
                 onClicked: mensaMax.executeGetBalance(token);
             }
 
             Button {
                 width: parent.width
-                text: qsTr("GetUserData")
+                text: qsTr("Get UserData")
                 onClicked: mensaMax.executeGetUserData(token);
             }
 
             Button {
                 width: parent.width
-                text: qsTr("GetMenus")
+                text: qsTr("Get Menus")
                 onClicked: mensaMax.executeGetMenus(token);
             }
 
