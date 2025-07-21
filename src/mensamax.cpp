@@ -112,12 +112,15 @@ void MensaMax::executeGetUserData(const QString &token) {
 }
 
 
-void MensaMax::executeGetMenus(const QString &token) {
+void MensaMax::executeGetMenus(const QString &token, const int weekOffset) {
     qDebug() << "MensaMax::executeGetMenus " << token;
 
     QString requestUrl = QString(BASE_URL);
     QUrl url = QUrl(requestUrl);
     QNetworkRequest request(url);
+
+    QDate startDate = QDate().addDays(-(QDate().dayOfWeek() - 1));
+    qDebug() << " start day Mo : " << startDate;
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
     request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);

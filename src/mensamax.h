@@ -17,7 +17,7 @@ public:
     Q_INVOKABLE void executeLogin(const QString &project, const QString &location, const QString &userName, const QString &password);
     Q_INVOKABLE void executeGetBalance(const QString &token);
     Q_INVOKABLE void executeGetUserData(const QString &token);
-    Q_INVOKABLE void executeGetMenus(const QString &token); // TODO dates
+    Q_INVOKABLE void executeGetMenus(const QString &token, const int weekOffset); // TODO dates
 
 signals:
     // signals for the qml part

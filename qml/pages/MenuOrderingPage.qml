@@ -25,18 +25,26 @@ Page {
                 description: "Balance: 233.00 €";
             }
 
+            DateSelectionRow {
+                id: dateSelectionRow
+                width: parent.width
+                height: pageFlickable.height - incidentsHeader.height - noIncidentsColumn.height +
+                        2 * Theme.paddingMedium
+            }
+
             SilicaListView {
                 id: noIncidentsColumn
 
-                height: pageFlickable.height - incidentsHeader.height - Theme.paddingMedium
+                height: pageFlickable.height //- dateSelectionRow.height
+                        - incidentsHeader.height - Theme.paddingMedium
                                 width: parent.width
                                 anchors.left: parent.left
                                 anchors.right: parent.right
                              clip: true
 
-
                 Row {
-                    anchors.fill: parent
+                    anchors.fill : parent
+                    //anchors.top: dateSelectionRow.bottom
                     anchors.margins: Theme.paddingLarge
                     spacing: Theme.paddingLarge
 
@@ -45,25 +53,6 @@ Page {
                         id: leftColumn
                         width: parent.width - rightColumn.width - Theme.paddingLarge
                         spacing: Theme.paddingMedium
-
-        //                Button {
-        //                    text: "Option 1"
-        //                    backgroundColor: "gray"
-        //                    width: parent.width
-        //                    onClicked: console.log("Option 1 clicked")
-        //                }
-
-        //                Button {
-        //                    text: "Option 2"
-        //                    width: parent.width
-        //                    onClicked: console.log("Option 2 clicked")
-        //                }
-
-        //                Button {
-        //                    text: "Option 3"
-        //                    width: parent.width
-        //                    onClicked: console.log("Option 3 clicked")
-        //                }
 
                         FoodMenuItem {
                             id: lunch1

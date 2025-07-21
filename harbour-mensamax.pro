@@ -17,6 +17,7 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-mensamax.cpp
 
 DISTFILES += qml/harbour-mensamax.qml \
+    qml/components/DateSelectionRow.qml \
     qml/components/FoodMenuItem.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
