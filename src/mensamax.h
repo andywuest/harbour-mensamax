@@ -24,7 +24,7 @@ signals:
     Q_SIGNAL void loginAvailable(const QString &reply);
     Q_SIGNAL void getBalanceAvailable(const QString &reply);
     Q_SIGNAL void getUserDataAvailable(const QString &reply);
-    Q_SIGNAL void getMenusAvailable(const QString &reply);
+    Q_SIGNAL void getMenusAvailable(const QString &reply, const QString dateLabel);
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 private:
@@ -32,6 +32,12 @@ private:
     QNetworkConfigurationManager *const networkConfigurationManager;
 
     QSettings settings;
+    QDate startDate;
+    QDate endDate;
+
+protected:
+
+    QNetworkRequest  prepareRequest(const QString &endpoint, const QString &token);
 
 protected slots:
 

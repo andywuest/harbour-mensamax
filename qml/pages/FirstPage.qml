@@ -105,7 +105,7 @@ Page {
             Button {
                 width: parent.width
                 text: qsTr("Get Menus")
-                onClicked: mensaMax.executeGetMenus(token);
+                onClicked: mensaMax.executeGetMenus(token, 0);
             }
 
         }

@@ -10,20 +10,44 @@ MensaMax::MensaMax(QObject *parent) : QObject(parent), networkAccessManager(new 
 
 }
 
-void MensaMax::executeLogin(const QString &project, const QString &location, const QString &userName, const QString &password) {
-    qDebug() << "MensaMax::executeLogin " << userName;
-    QString requestUrl = QString(BASE_URL) + QString(ENDPOINT_LOGIN);
+QNetworkRequest  MensaMax::prepareRequest(const QString &endpoint, const QString &token) {
+    qDebug() << "MensaMax::prepareRequest " << endpoint;
+    QString requestUrl = QString(BASE_URL) + endpoint;
     QUrl url = QUrl(requestUrl);
     QNetworkRequest request(url);
+
+    qDebug() << "url: " << requestUrl;
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
     request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
     request.setRawHeader("Accept", MIME_TYPE_JSON);
     request.setRawHeader("Cookie", "mensamax_superglue=https://mensahaus.de;");
 
+    if (!token.isEmpty()) {
+        request.setRawHeader("Authorization", QString("Bearer ").append(token).toUtf8());
+    }
+
+    return request;
+}
+
+void MensaMax::executeLogin(const QString &project, const QString &location, const QString &userName, const QString &password) {
+    qDebug() << "MensaMax::executeLogin " << userName;
+
+
+//    QString requestUrl = QString(BASE_URL) + QString(ENDPOINT_LOGIN);
+//    QUrl url = QUrl(requestUrl);
+//    QNetworkRequest request(url);
+
+//    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+//    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+//    request.setRawHeader("Accept", MIME_TYPE_JSON);
+//    request.setRawHeader("Cookie", "mensamax_superglue=https://mensahaus.de;");
+
+    QNetworkRequest request = prepareRequest(QString(ENDPOINT_LOGIN), QString());
+
     const QString postData = QString(POST_BODY_LOGIN).arg(project, userName, password, location);
 
-    qDebug() << "url: " << requestUrl;
+//    qDebug() << "url: " << requestUrl;
     qDebug() << "postData: " << postData;
 
     QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
@@ -119,8 +143,13 @@ void MensaMax::executeGetMenus(const QString &token, const int weekOffset) {
     QUrl url = QUrl(requestUrl);
     QNetworkRequest request(url);
 
-    QDate startDate = QDate().addDays(-(QDate().dayOfWeek() - 1));
-    qDebug() << " start day Mo : " << startDate;
+
+
+    startDate = QDate::currentDate().addDays(weekOffset * 7).addDays(-(QDate().dayOfWeek() - 1));
+    endDate = startDate.addDays(7);
+
+    qDebug() << " offset weeks : " << weekOffset;
+    qDebug() << " start day Mo : " << startDate.toString("dd.MM.yyyy");
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
     request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
@@ -145,7 +174,7 @@ void MensaMax::executeGetMenus(const QString &token, const int weekOffset) {
         QString response = QString(reply->readAll());
         qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
         qDebug() << "response : " << response;
-        emit getMenusAvailable(response);
+        emit getMenusAvailable(response, startDate.toString("dd.MM") + " - " + endDate.toString("dd.MM"));
     });
 
 }

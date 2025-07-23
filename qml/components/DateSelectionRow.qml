@@ -2,6 +2,11 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 Item {
 
+    property string dateLabel: ""
+
+    signal previousWeekClicked(int offsetChange);
+    signal nextWeekClicked(int offsetChange);
+
     Row {
         anchors.fill: parent
         anchors.margins: Theme.paddingLarge
@@ -24,6 +29,7 @@ Item {
                     width: 100
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: parent.left
+                    onClicked: previousWeekClicked(-1);
                 }
 
                 // Rechter Button
@@ -33,12 +39,13 @@ Item {
                     width: 100
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
+                    onClicked: nextWeekClicked(+1);
                 }
 
                 // Mittlerer Button (zentriert)
                 Label {
                     id: middleLabel
-                    text: "21.07 - 27.07" // getCurrentWeekRange()
+                    text: dateLabel
 
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter

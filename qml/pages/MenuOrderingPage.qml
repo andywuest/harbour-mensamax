@@ -6,6 +6,60 @@ import "../components"
 Page {
     id: twoColumnPage
 
+    property int weekOffset: 0
+    property string token: ""
+
+    function connectSlots() {
+        console.log("connect - slots");
+        mensaMax.loginAvailable.connect(loginResultHandler);
+        mensaMax.getBalanceAvailable.connect(getBalanceResultHandler);
+        mensaMax.getUserDataAvailable.connect(getUserDataResultHandler);
+        mensaMax.getMenusAvailable.connect(getMenusResultHandler);
+        mensaMax.requestError.connect(errorResultHandler);
+        dateSelectionRow.nextWeekClicked.connect(getMenuWithOffset)
+        dateSelectionRow.previousWeekClicked.connect(getMenuWithOffset)
+    }
+
+    function disconnectSlots() {
+        console.log("disconnect - slots");
+        mensaMax.loginAvailable.disconnect(loginResultHandler);
+        mensaMax.getBalanceAvailable.disconnect(getBalanceResultHandler);
+        mensaMax.getUserDataAvailable.disconnect(getUserDataResultHandler);
+        mensaMax.getMenusAvailable.disconnect(getMenusResultHandler);
+        mensaMax.requestError.disconnect(errorResultHandler);
+        dateSelectionRow.nextWeekClicked.disconnect(getMenuWithOffset)
+        dateSelectionRow.previousWeekClicked.disconnect(getMenuWithOffset)
+    }
+
+    function loginResultHandler(result) {
+        console.log("login result handler : " + result);
+        var parsedResult = JSON.parse(result);
+        token = parsedResult.text;
+    }
+
+    function getBalanceResultHandler(result) {
+        console.log("get balance result handler : " + result);
+    }
+
+    function getUserDataResultHandler(result) {
+        console.log("get user data result handler : " + result);
+    }
+
+    function getMenusResultHandler(result, dateLabel) {
+        console.log("get menus result handler : " + result);
+        dateSelectionRow.dateLabel = dateLabel;
+    }
+
+    function errorResultHandler(result) {
+        console.log("error result handler");
+    }
+
+    function getMenuWithOffset(offsetChange) {
+        weekOffset += offsetChange;
+        mensaMax.executeGetMenus(token, weekOffset);
+    }
+
+
     SilicaFlickable {
         id: pageFlickable
         width: parent.width
@@ -30,6 +84,7 @@ Page {
                 width: parent.width
                 height: pageFlickable.height - incidentsHeader.height - noIncidentsColumn.height +
                         2 * Theme.paddingMedium
+                dateLabel: ""
             }
 
             SilicaListView {
@@ -134,7 +189,17 @@ Page {
 
     }
 
+    Component.onCompleted: {
+        connectSlots();
+        mensaMax.executeGetMenus(token, weekOffset);
 
+//        reloadAllDividends();
+//        loaded = true;
+    }
+
+//    Component.onDestroyed: {
+//        disconnectSlots();
+//    }
 
 
 

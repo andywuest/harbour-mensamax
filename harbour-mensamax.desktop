@@ -3,13 +3,13 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-mensamax
 Exec=harbour-mensamax
-Name=harbour-mensamax
+Name=MensaMax
 # translation example:
 # your app name in German locale (de)
 #
 # Remember to comment out the following line, if you do not want to use
 # a different app name in German locale (de).
-Name[de]=harbour-mensamax
+Name[de]=MensaMax
 
 [X-Sailjail]
 # Replace with your organization as a reverse domain name
