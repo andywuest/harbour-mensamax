@@ -45,9 +45,66 @@ Page {
         console.log("get user data result handler : " + result);
     }
 
+    function getDaysWithMenu(menuResponse) {
+        var result = [];
+        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var menues = JSON.parse(menuResponse);
+        var days = menues.data.meinSpeiseplan.length;
+        for (var i = 0; i < days; i++) {
+            var menuDayItem = menues.data.meinSpeiseplan[i];
+            if (menuDayItem.menues && menuDayItem.menues.length > 0) {
+                var dayWithMenu = {};
+                dayWithMenu.index = i;
+                dayWithMenu.weekdayIndex = new Date(menuDayItem.datum).getDay();
+                dayWithMenu.weekdayName = weekday[dayWithMenu.weekdayIndex];
+                result.push(dayWithMenu);
+            }
+        }
+        return result;
+    }
+
+
     function getMenusResultHandler(result, dateLabel) {
         console.log("get menus result handler : " + result);
         dateSelectionRow.dateLabel = dateLabel;
+
+        var menues = JSON.parse(result);
+
+        console.log("[MenuOrderingPage] days with menu : " + JSON.stringify(getDaysWithMenu(result)));
+
+
+        var days = menues.data.meinSpeiseplan.length;
+        console.log("[MenuOrderingPage] : " + days + " days");
+
+        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+        for (var i = 0; i < days; i++) {
+            var menuDayItem = menues.data.meinSpeiseplan[i];
+            if (menuDayItem.menues) {
+                var numberOfMenus = (menuDayItem.menues.length);
+                console.log("[MenuOrderingPage] date : " + menuDayItem.datum + ", menus : " + numberOfMenus);
+
+                console.log(weekday[new Date(menuDayItem.datum).getDay()]);
+
+                for (var j = 0; j < numberOfMenus; j++) {
+                    var menuOfDay = menuDayItem.menues[j];
+                    var menuItem = {};
+                    menuItem.id = menuOfDay.id;
+                    menuItem.price = menuOfDay.meinPreis;
+                    menuItem.mainCourse = menuOfDay.hauptspeisen[0].bezeichnung;
+                    menuItem.desert = menuOfDay.nachspeisen[0].bezeichnung;
+
+                    console.log("[MenuOrderingPage] - menu " + JSON.stringify(menuItem));
+                }
+            }
+
+
+        }
+
+
+
+
+
     }
 
     function errorResultHandler(result) {
@@ -96,6 +153,13 @@ Page {
                                 anchors.left: parent.left
                                 anchors.right: parent.right
                              clip: true
+
+//                model: ListModel {
+//                   id: menuModel
+//                }
+
+
+
 
                 Row {
                     anchors.fill : parent
@@ -147,6 +211,7 @@ Page {
                                 ListElement { name: "Do"; selected: false }
                                 ListElement { name: "Fr"; selected: false }
                                 ListElement { name: "Sa"; selected: false }
+                                ListElement { name: "So"; selected: false }
                             }
 
                                 // ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
