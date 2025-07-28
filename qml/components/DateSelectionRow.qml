@@ -1,59 +1,48 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
-Item {
+
+Row {
+    id: dateSelectionRow
 
     property string dateLabel: ""
 
-    signal previousWeekClicked(int offsetChange);
-    signal nextWeekClicked(int offsetChange);
+    signal previousWeekClicked(int offsetChange)
+    signal nextWeekClicked(int offsetChange)
 
-    Row {
-        anchors.fill: parent
-        anchors.margins: Theme.paddingLarge
-        spacing: Theme.paddingLarge
+    width: parent.width - (2 * Theme.paddingMedium)
+    x: Theme.paddingMedium
 
-        Column {
-            id: headlineColumn
-            width: parent.width
-            spacing: Theme.paddingLarge
+    Column {
+        width: parent.width / 3
 
-            // Zeile mit den drei Buttons
-            Item {
-                width: parent.width
-                height: Theme.buttonHeight
-
-                // Linker Button
-                Button {
-                    id: leftButton
-                    text: "<<"
-                    width: 100
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.left: parent.left
-                    onClicked: previousWeekClicked(-1);
-                }
-
-                // Rechter Button
-                Button {
-                    id: rightButton
-                    text: ">>"
-                    width: 100
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.right: parent.right
-                    onClicked: nextWeekClicked(+1);
-                }
-
-                // Mittlerer Button (zentriert)
-                Label {
-                    id: middleLabel
-                    text: dateLabel
-
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-            }
+        Button {
+            id: leftButton
+            text: "<<"
+            preferredWidth: Theme.buttonWidthTiny
+            onClicked: previousWeekClicked(-1)
         }
-
     }
 
+    Column {
+        width: parent.width / 3
 
+        Label {
+            text: dateLabel
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            height: dateSelectionRow.height
+        }
+    }
+
+    Column {
+        width: parent.width / 3
+
+        Button {
+            id: rightButton
+            text: ">>"
+            preferredWidth: Theme.buttonWidthTiny
+
+            onClicked: nextWeekClicked(+1)
+        }
+    }
 }

@@ -2,44 +2,88 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>CoverPage</name>
+    <name>AccountCreationDialog</name>
     <message>
-        <source>My Cover</source>
+        <source>Create Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your Credentials</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Client Secret</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>e.g. mensahaus.de</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Test Login</source>
+        <extracomment>AccountCreationDialog test login button</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validation Result</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Login: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name (of your child, free text)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>FirstPage</name>
+    <name>AccountsOverviewPage</name>
     <message>
-        <source>Show Page 2</source>
+        <source>Create account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UI Template</source>
+        <source>Accounts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hello Sailors</source>
+        <source>No accounts yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Login</source>
+        <source>Pull down to add accounts</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>CoverPage</name>
     <message>
-        <source>Get Balance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Get UserData</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Get Menus</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show Page 3</source>
+        <source>My Cover</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -59,10 +103,21 @@
     </message>
 </context>
 <context>
+    <name>LoadingIndicator</name>
+    <message>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MenuOrderingPage</name>
     <message>
         <source>Adrian</source>
         <extracomment>OverviewPage page header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

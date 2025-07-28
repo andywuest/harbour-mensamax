@@ -1,10 +1,31 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
+import Nemo.Configuration 1.0
+
 import "pages"
 
 ApplicationWindow {
-     initialPage: Component { FirstPage { } }
-//    initialPage: Component { MenuOrderingPage { } }
+    id: app
+
+    // Global Settings Storage
+    ConfigurationGroup {
+        id: mensamaxSettings
+        path: "/apps/harbour-mensamax/settings"
+
+        property variant accounts: [];
+
+//        ConfigurationValue {
+//            id: accounts
+//            key: "accounts"
+//            defaultValue: []
+//        }
+    }
+
+     initialPage: Component { AccountsOverviewPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
+
+    Component.onCompleted: {
+    }
+
 }

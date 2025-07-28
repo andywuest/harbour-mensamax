@@ -14,7 +14,7 @@ public:
     explicit MensaMax(QObject *parent = nullptr);
     ~MensaMax() = default;
 
-    Q_INVOKABLE void executeLogin(const QString &project, const QString &location, const QString &userName, const QString &password);
+    Q_INVOKABLE void executeLogin(const QString &project, const QString &location, const QString &userName, const QString &password, const QString &hostname);
     Q_INVOKABLE void executeGetBalance(const QString &token);
     Q_INVOKABLE void executeGetUserData(const QString &token);
     Q_INVOKABLE void executeGetMenus(const QString &token, const int weekOffset); // TODO dates
@@ -31,7 +31,10 @@ private:
     QNetworkAccessManager *const networkAccessManager;
     QNetworkConfigurationManager *const networkConfigurationManager;
 
+    void onExecuteLogin(QNetworkReply *reply);
+
     QSettings settings;
+    QString hostname;
     QDate startDate;
     QDate endDate;
 

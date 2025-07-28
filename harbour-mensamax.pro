@@ -17,10 +17,15 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-mensamax.cpp
 
 DISTFILES += qml/harbour-mensamax.qml \
+    qml/components/AccountListItem.qml \
     qml/components/DateSelectionRow.qml \
     qml/components/FoodMenuItem.qml \
+    qml/components/thirdparty/AppNotification.qml \
+    qml/components/thirdparty/AppNotificationItem.qml \
+    qml/components/thirdparty/LoadingIndicator.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
+    qml/pages/AccountCreationDialog.qml \
+    qml/pages/AccountsOverviewPage.qml \
     qml/pages/MenuOrderingPage.qml \
     qml/pages/SecondPage.qml \
     rpm/harbour-mensamax.changes.in \
