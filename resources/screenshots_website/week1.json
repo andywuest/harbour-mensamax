@@ -1,0 +1,765 @@
+{
+  "data": {
+    "meinSpeiseplan": [
+      {
+        "datum": "2025-08-25T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12159,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-25T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 3,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-25T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-25T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-25T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung",
+              "id": 3,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 106,
+                "bezeichnung": "Pizza Margherita",
+                "beschreibung": "Pizza Margherita",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 84,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 85,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 86,
+                    "zusatzstoffAllergen": {
+                      "id": 104,
+                      "bezeichnung": "Sellerie und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 87,
+                    "zusatzstoffAllergen": {
+                      "id": 113,
+                      "bezeichnung": "unter Schutzatmosph\u00E4re verpackt",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12612,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-25T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 4,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-25T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-25T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-25T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung vegetarisch",
+              "id": 4,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 106,
+                "bezeichnung": "Pizza Margherita",
+                "beschreibung": "Pizza Margherita",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 84,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 85,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 86,
+                    "zusatzstoffAllergen": {
+                      "id": 104,
+                      "bezeichnung": "Sellerie und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 87,
+                    "zusatzstoffAllergen": {
+                      "id": 113,
+                      "bezeichnung": "unter Schutzatmosph\u00E4re verpackt",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-08-26T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12160,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-26T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 3,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-26T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-26T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-26T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung",
+              "id": 3,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 287,
+                "bezeichnung": "Lunchpaket",
+                "beschreibung": "Lunchpaket",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 576,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 577,
+                    "zusatzstoffAllergen": {
+                      "id": 100,
+                      "bezeichnung": "Fisch und daraus gewonnene Erzeugnisse (au\u00DFer Fischgelatine)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 578,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12613,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-26T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 4,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-26T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-26T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-26T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung vegetarisch",
+              "id": 4,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 288,
+                "bezeichnung": "Lunchpaket vegetarisch",
+                "beschreibung": "Lunchpaket vegetarisch",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 579,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 580,
+                    "zusatzstoffAllergen": {
+                      "id": 104,
+                      "bezeichnung": "Sellerie und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 581,
+                    "zusatzstoffAllergen": {
+                      "id": 105,
+                      "bezeichnung": "Senf und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 582,
+                    "zusatzstoffAllergen": {
+                      "id": 106,
+                      "bezeichnung": "Sesamsamen und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-08-27T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12161,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-27T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 3,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-27T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-27T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-27T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung",
+              "id": 3,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 964,
+                "bezeichnung": "Spaghetti mit Tomatensauce",
+                "beschreibung": "Spaghetti mit Tomatensauce",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 3319,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3320,
+                    "zusatzstoffAllergen": {
+                      "id": 104,
+                      "bezeichnung": "Sellerie und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3321,
+                    "zusatzstoffAllergen": {
+                      "id": 105,
+                      "bezeichnung": "Senf und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3322,
+                    "zusatzstoffAllergen": {
+                      "id": 106,
+                      "bezeichnung": "Sesamsamen und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12614,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-27T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 4,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-27T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-27T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-27T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung vegetarisch",
+              "id": 4,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 964,
+                "bezeichnung": "Spaghetti mit Tomatensauce",
+                "beschreibung": "Spaghetti mit Tomatensauce",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 3319,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3320,
+                    "zusatzstoffAllergen": {
+                      "id": 104,
+                      "bezeichnung": "Sellerie und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3321,
+                    "zusatzstoffAllergen": {
+                      "id": 105,
+                      "bezeichnung": "Senf und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3322,
+                    "zusatzstoffAllergen": {
+                      "id": 106,
+                      "bezeichnung": "Sesamsamen und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-08-28T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12162,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-28T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 3,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-28T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-28T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-28T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung",
+              "id": 3,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 287,
+                "bezeichnung": "Lunchpaket",
+                "beschreibung": "Lunchpaket",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 576,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 577,
+                    "zusatzstoffAllergen": {
+                      "id": 100,
+                      "bezeichnung": "Fisch und daraus gewonnene Erzeugnisse (au\u00DFer Fischgelatine)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 578,
+                    "zusatzstoffAllergen": {
+                      "id": 102,
+                      "bezeichnung": "Milch von S\u00E4ugetieren und Milcherzeugnisse (inkl. Laktose)",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12615,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-28T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 4,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-28T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-28T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-28T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung vegetarisch",
+              "id": 4,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 288,
+                "bezeichnung": "Lunchpaket vegetarisch",
+                "beschreibung": "Lunchpaket vegetarisch",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 579,
+                    "zusatzstoffAllergen": {
+                      "id": 94,
+                      "bezeichnung": "Weizen",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 580,
+                    "zusatzstoffAllergen": {
+                      "id": 104,
+                      "bezeichnung": "Sellerie und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 581,
+                    "zusatzstoffAllergen": {
+                      "id": 105,
+                      "bezeichnung": "Senf und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 582,
+                    "zusatzstoffAllergen": {
+                      "id": 106,
+                      "bezeichnung": "Sesamsamen und daraus gewonnene Erzeugnisse",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-08-29T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 12163,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-29T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 3,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-29T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-29T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-29T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung",
+              "id": 3,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 2343,
+                "bezeichnung": "Putenschnitzel mit delikate Rahmso\u00DFe und Langkornreis",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 12616,
+            "meinPreis": 3.5000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-08-29T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 4,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-08-29T09:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-08-29T09:00:00.000\u002B02:00",
+              "bestellungBis": "2025-08-29T09:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Ferienversorgung vegetarisch",
+              "id": 4,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 1,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 2344,
+                "bezeichnung": "Schnitzel Valess mit Langkornreis und Bratenso\u00DFe",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-08-30T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-08-31T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [],
+        "__typename": "SpeiseplanTag"
+      }
+    ]
+  }
+}

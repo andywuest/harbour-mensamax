@@ -320,7 +320,7 @@ Page {
             if (menuSelectionPage.status !== PageStatus.Active) {
                 return;
             }
-            console.log("[MenuOrderingPage] - previous week");
+            console.log("[MenuOrderingPage] - getMenusAvailable " + reply);
             menues = JSON.parse(reply);
             populateWithMenus(menues, dateLabel);
         }
