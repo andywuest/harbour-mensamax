@@ -10,7 +10,8 @@ const char MIME_TYPE_JSON[] = "application/json";
 const char USER_AGENT[] = "Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0";
 
 // mensamax
-const char BASE_URL[] = "https://mensahaus.de/graphql/";
+const char BASE_URL[] = "https://%1/graphql/";
+const char COOKIE_VALUE[] = "mensamax_superglue=https://%1;";
 
 const char ENDPOINT_LOGIN [] = "auth/login/";
 

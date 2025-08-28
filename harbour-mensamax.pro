@@ -14,6 +14,8 @@ TARGET = harbour-mensamax
 
 CONFIG += sailfishapp
 
+DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
+
 SOURCES += src/harbour-mensamax.cpp
 
 DISTFILES += qml/harbour-mensamax.qml \
@@ -45,10 +47,6 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/harbour-mensamax-de.ts
-
-# HEADERS += \
-#    src/constants.h \
-#    src/mensamax.h
 
 include(harbour-mensamax.pri)
 

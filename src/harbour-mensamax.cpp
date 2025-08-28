@@ -26,6 +26,8 @@ int main(int argc, char *argv[])
     MensaMax mensaMax;
     context->setContextProperty("mensaMax", &mensaMax);
 
+    context->setContextProperty("applicationVersion", QString(VERSION_NUMBER));
+
     view->setSource(SailfishApp::pathTo("qml/harbour-mensamax.qml"));
     view->show();
     return app->exec();

@@ -1,7 +1,7 @@
 Name:       harbour-mensamax
 
 Summary:    My Sailfish OS Application
-Version:    0.1
+Version:    0.1.1
 Release:    1
 License:    LICENSE
 URL:        http://example.org/
@@ -14,13 +14,16 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my Sailfish OS Application
+MensaMax is a client for ordering school lunch
 
 
 %prep
 %setup -q -n %{name}-%{version}
 
 %build
+# >> build pre
+export VERSION_NUMBER=%{version}
+# << build pre
 
 %qmake5 
 

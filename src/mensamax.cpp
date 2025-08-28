@@ -8,23 +8,24 @@
 MensaMax::MensaMax(QObject *parent) : QObject(parent), networkAccessManager(new QNetworkAccessManager(this))
   , networkConfigurationManager(new QNetworkConfigurationManager(this))
   , settings("harbour-mensamax", "settings") {
-
 }
 
 QNetworkRequest  MensaMax::prepareRequest(const QString &endpoint, const QString &token) {
     qDebug() << "MensaMax::prepareRequest " << endpoint;
 
-    QString requestUrl = QString(BASE_URL) + endpoint;
+    QString requestUrl = QString(BASE_URL).arg(this->hostname) + endpoint;
+    QString cookieValue = QString(COOKIE_VALUE).arg(this->hostname);
     QUrl url = QUrl(requestUrl);
     QNetworkRequest request(url);
 
     qDebug() << "token: " << token;
     qDebug() << "url: " << requestUrl;
+    qDebug() << "cookie value: " << cookieValue;
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
     request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
     request.setRawHeader("Accept", MIME_TYPE_JSON);
-    request.setRawHeader("Cookie", QString("mensamax_superglue=https://%1;").arg(this->hostname).toUtf8());
+    request.setRawHeader("Cookie", cookieValue.toUtf8());
 
     if (!token.isEmpty()) {
         request.setRawHeader("Authorization", QString("Bearer ").append(token).toUtf8());
@@ -228,5 +229,4 @@ void MensaMax::handleExecuteLoginFinished() {
     }
 
     qDebug() << "finsihed";
-
 }

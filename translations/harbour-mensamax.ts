@@ -41,22 +41,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Validation Result</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Login: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>success</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name (of your child, free text)</source>
         <translation type="unfinished"></translation>
     </message>
