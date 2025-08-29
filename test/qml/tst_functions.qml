@@ -22,6 +22,10 @@ TestCase {
 
             console.log("result : " + result);
 
+            for (var i = 0; i < result.length; i++) {
+            console.log("result : " + JSON.stringify(result[i]));
+            }
+
             compare(result[0].listIndex, 0);
             compare(result[0].selected, false);
             compare(result[0].weekdayIndex, 1);
