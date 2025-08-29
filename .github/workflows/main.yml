@@ -28,7 +28,8 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          qtdiag | head -n 1
+          qtdiag
+          # | head -n 1
           cd test/qml 
           ./runTests.sh
           ./fixJunit.sh
