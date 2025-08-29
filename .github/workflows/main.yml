@@ -32,6 +32,7 @@ jobs:
           # type -p qtdiag
           # qtdiag | head -n 1
           cd test/qml 
+          qmltestrunner -platform offscreen
           ./runTests.sh
           ./fixJunit.sh
           # cd ..                                                   
