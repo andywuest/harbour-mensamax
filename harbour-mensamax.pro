@@ -30,6 +30,8 @@ DISTFILES += qml/harbour-mensamax.qml \
     qml/pages/AccountsOverviewPage.qml \
     qml/pages/MenuOrderingPage.qml \
     qml/pages/SecondPage.qml \
+    qml/js/constants.qml \
+    qml/js/functions.qml \
     rpm/harbour-mensamax.changes.in \
     rpm/harbour-mensamax.changes.run.in \
     rpm/harbour-mensamax.spec \

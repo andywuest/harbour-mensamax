@@ -29,22 +29,22 @@ jobs:
         run: |
           set -x
           qtdiag | head -n 1
-          # cd test/qml 
-          # ./runTests.sh
-          # ./fixJunit.sh
+          cd test/qml 
+          ./runTests.sh
+          ./fixJunit.sh
           # cd ..                                                   
           # cd cpp
           # sudo timedatectl set-timezone Europe/Berlin
           # ./runTests.sh
           # ./fixJunit.sh
 
-#      - name: Test Report
-#        uses: dorny/test-reporter@v1.9.1
-#        if: success() || failure()                                # run this step even if previous step failed
-#        with:
-#          name: QML/C++ Tests                                     # Name of the check run which will be created
-#          path: test/qml/*.xml,test/cpp/*.xml                     # Path to test results
-#          reporter: jest-junit                                    # Format of test results - because junit cannot be generated
+      - name: Test Report
+        uses: dorny/test-reporter@v1.9.1
+        if: success() || failure()                                # run this step even if previous step failed
+        with:
+          name: QML/C++ Tests                                     # Name of the check run which will be created
+          path: test/qml/*.xml,test/cpp/*.xml                     # Path to test results
+          reporter: jest-junit                                    # Format of test results - because junit cannot be generated
 
   build:
     name: Build & Package
