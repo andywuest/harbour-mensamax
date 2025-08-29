@@ -20,6 +20,8 @@ TestCase {
             // then
             compare(result.length, 5)
 
+            console.log("result : " + result);
+
             compare(result[0].listIndex, 0);
             compare(result[0].selected, false);
             compare(result[0].weekdayIndex, 1);
