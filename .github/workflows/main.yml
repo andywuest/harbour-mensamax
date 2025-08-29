@@ -23,6 +23,7 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y qt6-tools-dev qmake6 qml6-module-qttest qt6-declarative-dev-tools
           qtchooser -install qt6 $(which qmake6)
+          sudo dpkg -l | grep qt
 
       - name: Run QML / C++ Tests
         run: |
