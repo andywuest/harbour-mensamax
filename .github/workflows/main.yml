@@ -24,14 +24,12 @@ jobs:
           sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
           sudo apt-get install -y qml-module-qtquick-controls qml-module-qttest qt5-qmake
           sudo apt-get install -y libqt5test5 qtbase5-dev qtdeclarative5-dev
-          sudo qtchooser -install qt6 $(which qmake6)
 
       - name: Run QML / C++ Tests
         run: |
           set -x
-          export QT_SELECT=qt6
-          # qtdiag
-          # | head -n 1
+          type -p qtdiag
+          qtdiag | head -n 1
           cd test/qml 
           ./runTests.sh
           ./fixJunit.sh
