@@ -2,7 +2,7 @@
 
 set -x
 
-export QT_SELECT=qt6
+export QT_SELECT=qt5
 rm -rf *.xml
 
 
