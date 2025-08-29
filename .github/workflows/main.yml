@@ -21,13 +21,13 @@ jobs:
       - name: Install qmltestrunner                               # install required qmltestrunner packages
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y qt6-tools-dev
+          sudo apt-get install -y qt6-tools-dev qmake6
 
       - name: Run QML / C++ Tests
         run: |
           set -x
           type -p qtdiag
-          qtdiag | head -n 1
+          # qtdiag | head -n 1
           cd test/qml 
           ./runTests.sh
           ./fixJunit.sh
