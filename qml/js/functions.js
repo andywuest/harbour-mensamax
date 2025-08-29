@@ -15,7 +15,7 @@ function getDaysWithMenu(menues) {
             dayWithMenu.weekdayIndex = new Date(menuDayItem.datum).getDay()
             dayWithMenu.weekdayName = weekday[dayWithMenu.weekdayIndex]
             result.push(dayWithMenu)
-            // console.log("===> menuDayItem.datum " + menuDayItem.datum)
+            console.log("===> menuDayItem.datum " + menuDayItem.datum)
         }
     }
     return result

@@ -12,6 +12,8 @@ TestCase {
             // given
             var jsonTestData = JSON.parse(testData);
 
+            console.log("data : " + jsonTestData);
+
             // when
             var result = Functions.getDaysWithMenu(jsonTestData);
 
