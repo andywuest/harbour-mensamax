@@ -21,13 +21,14 @@ jobs:
       - name: Install qmltestrunner                               # install required qmltestrunner packages
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y qt6-tools-dev qmake6 qml6-module-qttest qt6-declarative-dev-tools
-          sudo dpkg -l | grep qt
+          sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
+          sudo apt-get install -y qml-module-qtquick-controls qml-module-qttest qt5-qmake
+          sudo apt-get install -y libqt5test5 qtbase5-dev qtdeclarative5-dev
 
       - name: Run QML / C++ Tests
         run: |
           set -x
-                    # qtchooser -install qt6 $(which qmake6)
+          # qtchooser -install qt6 $(which qmake6)
           # type -p qtdiag
           # qtdiag | head -n 1
           cd test/qml 
