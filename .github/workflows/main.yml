@@ -26,7 +26,7 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          type -p qtdiag
+          # type -p qtdiag
           # qtdiag | head -n 1
           cd test/qml 
           ./runTests.sh
