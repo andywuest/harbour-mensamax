@@ -142,9 +142,10 @@ Page {
         if (status === PageStatus.Active) {
             accountModel.clear();
             console.log("[AccountsOverview] - loading accounts");
-            console.log("[AccountsOverview] - " + mensamaxSettings.accounts);
-            for (var i = 0; i < mensamaxSettings.accounts.length; i++) {
-                accountModel.append(JSON.parse(mensamaxSettings.accounts[i]));
+            console.log("[AccountsOverview] - " + mensamaxSettings.accountsString);
+            var accounts = JSON.parse(mensamaxSettings.accountsString);
+            for (var i = 0; i < accounts.length; i++) {
+                accountModel.append(accounts[i]);
             }
         }
     }

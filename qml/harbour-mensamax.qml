@@ -12,20 +12,12 @@ ApplicationWindow {
         id: mensamaxSettings
         path: "/apps/harbour-mensamax/settings"
 
-        property variant accounts: [];
-
-//        ConfigurationValue {
-//            id: accounts
-//            key: "accounts"
-//            defaultValue: []
-//        }
+        property string accountsString: "[]"
     }
 
-     initialPage: Component { AccountsOverviewPage { } }
+    initialPage: Component {
+        AccountsOverviewPage {}
+    }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
-
-    Component.onCompleted: {
-    }
-
 }

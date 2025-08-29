@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import Nemo.Configuration 1.0
 
 import "../components/thirdparty"
 
@@ -154,8 +155,12 @@ Dialog {
         data.hostname = hostnameTextField.text
         data.name = nameTextField.text
         // store in configuration
-        mensamaxSettings.accounts.push(JSON.stringify(data))
+        var accounts = JSON.parse(mensamaxSettings.accountsString)
+        accounts.push(data)
+        console.log("[AccountCreationDialog] number accounts : " + accounts.length)
+        mensamaxSettings.accountsString = JSON.stringify(accounts);
         mensamaxSettings.sync()
-        console.log("[AccountCreationDialog] number accounts : " + mensamaxSettings.accounts.length)
+        console.log("[AccountCreationDialog] account data : " + mensamaxSettings.accountsString)
     }
+
 }
