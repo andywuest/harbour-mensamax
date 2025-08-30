@@ -4,7 +4,7 @@ Qt.include('constants.js')
 
 function getDaysWithMenu(menues) {
     var result = []
-    const weekday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+    var weekday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
     var days = menues.data.meinSpeiseplan.length
     for (var i = 0; i < days; i++) {
         var menuDayItem = menues.data.meinSpeiseplan[i]

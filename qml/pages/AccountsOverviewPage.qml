@@ -77,7 +77,6 @@ Page {
     }
 
     LoadingIndicator {
-        id: pollenLoadingIndicator
         visible: showLoadingIndicator
         Behavior on opacity {
             NumberAnimation {}

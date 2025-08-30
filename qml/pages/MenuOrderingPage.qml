@@ -2,6 +2,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 import "../components"
+import "../components/thirdparty"
+import "../js/functions.js" as Functions
 
 Page {
     id: menuSelectionPage
@@ -12,6 +14,7 @@ Page {
     property string token
     property var menues
     property string dateLabel
+    property bool showLoadingIndicator: false
 
 //    function connectSlots() {
 //        console.log("connect - slots")
@@ -35,11 +38,11 @@ Page {
 //        dateSelectionRow.previousWeekClicked.disconnect(getMenuWithOffset)
 //    }
 
-    function loginResultHandler(result) {
-        console.log("login result handler : " + result)
-        var parsedResult = JSON.parse(result)
-        token = parsedResult.text
-    }
+//    function loginResultHandler(result) {
+//        console.log("login result handler : " + result)
+//        var parsedResult = JSON.parse(result)
+//        token = parsedResult.text
+//    }
 
     function getBalanceResultHandler(result) {
         console.log("get balance result handler : " + result)
@@ -49,25 +52,25 @@ Page {
         console.log("get user data result handler : " + result)
     }
 
-    function getDaysWithMenu(menues) {
-        //var menues = JSON.parse(menuResponse)
-        var result = []
-        const weekday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
-        var days = menues.data.meinSpeiseplan.length
-        for (var i = 0; i < days; i++) {
-            var menuDayItem = menues.data.meinSpeiseplan[i]
-            if (menuDayItem.menues && menuDayItem.menues.length > 0) {
-                var dayWithMenu = {}
-                dayWithMenu.selected = false
-                dayWithMenu.listIndex = i
-                dayWithMenu.weekdayIndex = new Date(menuDayItem.datum).getDay()
-                dayWithMenu.weekdayName = weekday[dayWithMenu.weekdayIndex]
-                result.push(dayWithMenu)
-                console.log("===> menuDayItem.datum " + menuDayItem.datum)
-            }
-        }
-        return result
-    }
+//    function getDaysWithMenu(menues) {
+//        //var menues = JSON.parse(menuResponse)
+//        var result = []
+//        const weekday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+//        var days = menues.data.meinSpeiseplan.length
+//        for (var i = 0; i < days; i++) {
+//            var menuDayItem = menues.data.meinSpeiseplan[i]
+//            if (menuDayItem.menues && menuDayItem.menues.length > 0) {
+//                var dayWithMenu = {}
+//                dayWithMenu.selected = false
+//                dayWithMenu.listIndex = i
+//                dayWithMenu.weekdayIndex = new Date(menuDayItem.datum).getDay()
+//                dayWithMenu.weekdayName = weekday[dayWithMenu.weekdayIndex]
+//                result.push(dayWithMenu)
+//                console.log("===> menuDayItem.datum " + menuDayItem.datum)
+//            }
+//        }
+//        return result
+//    }
 
     function populateDaysModel(daysWithMenu) {
         daysModel.clear()
@@ -127,7 +130,7 @@ Page {
 
         //menues = JSON.parse(result)
 
-        var daysWithMenu = getDaysWithMenu(menues)
+        var daysWithMenu = Functions.getDaysWithMenu(menues)
         console.log("[MenuOrderingPage] days with menu : " + JSON.stringify(
                         daysWithMenu))
 
@@ -186,6 +189,10 @@ Page {
     function getMenuWithOffset(offsetChange) {
         weekOffset += offsetChange
         mensaMax.executeGetMenus(token, weekOffset)
+    }
+
+    AppNotification {
+        id: menuProblemNotification
     }
 
     SilicaFlickable {
@@ -313,6 +320,16 @@ Page {
         }
     }
 
+    LoadingIndicator {
+        visible: showLoadingIndicator
+        Behavior on opacity {
+            NumberAnimation {}
+        }
+        opacity: showLoadingIndicator ? 1 : 0
+        height: parent.height
+        width: parent.width
+    }
+
     Connections {
         target: mensaMax
 
@@ -323,6 +340,13 @@ Page {
             console.log("[MenuOrderingPage] - getMenusAvailable " + reply);
             menues = JSON.parse(reply);
             populateWithMenus(menues, dateLabel);
+            showLoadingIndicator = false
+        }
+
+        onRequestError: {
+            console.log("[MenuOrderingPage] - requestError " + errorMessage)
+            showLoadingIndicator = false
+            menuProblemNotification.show(errorMessage)
         }
     }
 
@@ -331,27 +355,20 @@ Page {
 
         onNextWeekClicked: {
             console.log("[MenuOrderingPage] - next week");
+            showLoadingIndicator = true
             getMenuWithOffset(offsetChange);
         }
 
         onPreviousWeekClicked: {
             console.log("[MenuOrderingPage] - previous week");
+            showLoadingIndicator = true
             getMenuWithOffset(offsetChange);
         }
     }
 
     Component.onCompleted: {
-      //  connectSlots()
-    //    mensaMax.executeGetMenus(token, weekOffset)
-
         console.log("[MenuOrderingPage] init");
         populateWithMenus(menues, dateLabel);
-
-        //        reloadAllDividends();
-        //        loaded = true;
     }
 
-    //    Component.onDestroyed: {
-    //        disconnectSlots();
-    //    }
 }

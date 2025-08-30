@@ -31,6 +31,7 @@ jobs:
           # qtchooser -install qt6 $(which qmake6)
           # type -p qtdiag
           # qtdiag | head -n 1
+          sudo timedatectl set-timezone Europe/Berlin
           cd test/qml 
           # env TZ=Europe/Berlin LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 QML_XHR_ALLOW_FILE_READ=1 qmltestrunner -platform offscreen
           ./runTests.sh
@@ -46,7 +47,7 @@ jobs:
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
-          path: test/qml/*.xml,test/cpp/*.xml                     # Path to test results
+          path: test/qml/*.xml                                    # Path to test results
           reporter: jest-junit                                    # Format of test results - because junit cannot be generated
 
   build:
