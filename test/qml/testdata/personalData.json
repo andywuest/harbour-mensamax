@@ -1,0 +1,27 @@
+{
+  "data": {
+    "meineDaten": {
+      "personId": "5441",
+      "angemeldetePerson": {
+        "id": 5441,
+        "vorname": "Max",
+        "nachname": "Mustermann",
+        "loginName": "muad1234",
+        "persNr": "00043222",
+        "kundenNr": "43232",
+        "mandant": {
+          "beschreibung": "Sillenbuch",
+          "ident": "Sillenbuch",
+          "__typename": "TblMandant"
+        },
+        "klasse": null,
+        "strasse": "Kirchheimer-Straße 10",
+        "hausNr": null,
+        "plz": "73760",
+        "ort": "Ostfildern",
+        "__typename": "TblPerson"
+      },
+      "__typename": "MeineDaten"
+    }
+  }
+}
