@@ -19,6 +19,8 @@ DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
 SOURCES += src/harbour-mensamax.cpp
 
 DISTFILES += qml/harbour-mensamax.qml \
+    qml/components/AboutDescription.qml \
+    qml/components/AboutIconLabel.qml \
     qml/components/AccountListItem.qml \
     qml/components/DateSelectionRow.qml \
     qml/components/FoodMenuItem.qml \
@@ -26,10 +28,13 @@ DISTFILES += qml/harbour-mensamax.qml \
     qml/components/thirdparty/AppNotificationItem.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/AboutPage.qml \
     qml/pages/AccountCreationDialog.qml \
     qml/pages/AccountsOverviewPage.qml \
     qml/pages/MenuOrderingPage.qml \
     qml/pages/SecondPage.qml \
+    qml/pages/icons/github.svg \
+    qml/pages/icons/paypal.svg \
     qml/js/constants.js \
     qml/js/functions.js \
     rpm/harbour-mensamax.changes.in \

@@ -25,6 +25,11 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                //: AccountsOverviewPage about menu item
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+            MenuItem {
                 text: qsTr("Create account")
                 onClicked: pageStack.animatorPush(
                                Qt.resolvedUrl("AccountCreationDialog.qml"))

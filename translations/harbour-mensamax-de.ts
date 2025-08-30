@@ -2,6 +2,48 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>AboutPage</name>
+    <message>
+        <source>About</source>
+        <extracomment>AboutPage - Header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MensaMax</source>
+        <extracomment>AboutPage - Name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This is app client for the MensaMax application for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
+        <extracomment>AboutPage text - about text</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <extracomment>AboutPage - Translations</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sources</source>
+        <extracomment>AboutPage - sources</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donations</source>
+        <extracomment>AboutPage - Donations</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you like my work why not buy me a beer?</source>
+        <extracomment>AboutPage - donations info</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate with PayPal</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AccountCreationDialog</name>
     <message>
         <source>Create Account</source>
@@ -63,6 +105,11 @@
         <source>Pull down to add accounts</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>About</source>
+        <extracomment>AccountsOverviewPage about menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -102,6 +149,11 @@
     </message>
     <message>
         <source>Logout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <extracomment>MenuOrderingPage about menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
