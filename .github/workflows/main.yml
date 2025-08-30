@@ -43,8 +43,8 @@ jobs:
           # ./fixJunit.sh
 
       - name: Test Report
-        uses: dorny/test-reporter@v1.9.1
-        if: success() || failure()                                # run this step even if previous step failed
+        uses: dorny/test-reporter@v2
+        if: ${{ !cancelled() }}                                   # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
           path: test/qml/*.xml                                    # Path to test results
