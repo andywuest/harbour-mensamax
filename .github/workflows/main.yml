@@ -28,12 +28,8 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          # qtchooser -install qt6 $(which qmake6)
-          # type -p qtdiag
-          # qtdiag | head -n 1
           sudo timedatectl set-timezone Europe/Berlin
           cd test/qml 
-          # env TZ=Europe/Berlin LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 QML_XHR_ALLOW_FILE_READ=1 qmltestrunner -platform offscreen
           ./runTests.sh
           ./fixJunit.sh
           # cd ..                                                   
