@@ -13,64 +13,10 @@ Page {
     property int weekOffset: 0
     property string token
     property var menues
+    property var balanceData
+    property var userData
     property string dateLabel
     property bool showLoadingIndicator: false
-
-//    function connectSlots() {
-//        console.log("connect - slots")
-//        mensaMax.loginAvailable.connect(loginResultHandler)
-//        mensaMax.getBalanceAvailable.connect(getBalanceResultHandler)
-//        mensaMax.getUserDataAvailable.connect(getUserDataResultHandler)
-//        mensaMax.getMenusAvailable.connect(getMenusResultHandler)
-//        mensaMax.requestError.connect(errorResultHandler)
-//        dateSelectionRow.nextWeekClicked.connect(getMenuWithOffset)
-//        dateSelectionRow.previousWeekClicked.connect(getMenuWithOffset)
-//    }
-
-//    function disconnectSlots() {
-//        console.log("disconnect - slots")
-//        mensaMax.loginAvailable.disconnect(loginResultHandler)
-//        mensaMax.getBalanceAvailable.disconnect(getBalanceResultHandler)
-//        mensaMax.getUserDataAvailable.disconnect(getUserDataResultHandler)
-//        mensaMax.getMenusAvailable.disconnect(getMenusResultHandler)
-//        mensaMax.requestError.disconnect(errorResultHandler)
-//        dateSelectionRow.nextWeekClicked.disconnect(getMenuWithOffset)
-//        dateSelectionRow.previousWeekClicked.disconnect(getMenuWithOffset)
-//    }
-
-//    function loginResultHandler(result) {
-//        console.log("login result handler : " + result)
-//        var parsedResult = JSON.parse(result)
-//        token = parsedResult.text
-//    }
-
-    function getBalanceResultHandler(result) {
-        console.log("get balance result handler : " + result)
-    }
-
-    function getUserDataResultHandler(result) {
-        console.log("get user data result handler : " + result)
-    }
-
-//    function getDaysWithMenu(menues) {
-//        //var menues = JSON.parse(menuResponse)
-//        var result = []
-//        const weekday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
-//        var days = menues.data.meinSpeiseplan.length
-//        for (var i = 0; i < days; i++) {
-//            var menuDayItem = menues.data.meinSpeiseplan[i]
-//            if (menuDayItem.menues && menuDayItem.menues.length > 0) {
-//                var dayWithMenu = {}
-//                dayWithMenu.selected = false
-//                dayWithMenu.listIndex = i
-//                dayWithMenu.weekdayIndex = new Date(menuDayItem.datum).getDay()
-//                dayWithMenu.weekdayName = weekday[dayWithMenu.weekdayIndex]
-//                result.push(dayWithMenu)
-//                console.log("===> menuDayItem.datum " + menuDayItem.datum)
-//            }
-//        }
-//        return result
-//    }
 
     function populateDaysModel(daysWithMenu) {
         daysModel.clear()
@@ -122,6 +68,19 @@ Page {
         for (var n = 0; n < menus.length; n++) {
             menuModel.append(menus[n])
         }
+    }
+
+    function populateUserName(userData) {
+        var registeredPerson = userData.data.meineDaten.angemeldetePerson
+        menuOrderingPageHeader.title = registeredPerson.vorname + " " + registeredPerson.nachname;
+    }
+
+    function populateBalanceData(balanceData) {
+        var kontostand = balanceData.data.meinKontostand;
+        var balanceText = kontostand.gesamtKontostandAktuell + " € / " + kontostand.gesamtKontostandZukunft + " €";
+        menuOrderingPageHeader.description = qsTr("Balance %1 € / %2 €")
+            .arg(Functions.formatPrice(kontostand.gesamtKontostandAktuell, Qt.locale()))
+            .arg(Functions.formatPrice(kontostand.gesamtKontostandZukunft, Qt.locale()));
     }
 
     function populateWithMenus(menues, dateLabel) {
@@ -222,10 +181,7 @@ Page {
             y: Theme.paddingLarge
 
             PageHeader {
-                id: incidentsHeader
-                //: OverviewPage page header
-                title: qsTr("Adrian")
-                description: "Balance: 233.00 €"
+                id: menuOrderingPageHeader
             }
 
             DateSelectionRow {
@@ -283,7 +239,7 @@ Page {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: menuSelectionPage.height - incidentsHeader.height
+                height: menuSelectionPage.height - menuOrderingPageHeader.height
                 //                        - incidentsHeader.height
                 //                        - Theme.paddingMedium
                 //                                width: parent.width
@@ -370,6 +326,8 @@ Page {
     Component.onCompleted: {
         console.log("[MenuOrderingPage] init");
         populateWithMenus(menues, dateLabel);
+        populateUserName(userData);
+        populateBalanceData(balanceData);
     }
 
 }

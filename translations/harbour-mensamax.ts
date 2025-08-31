@@ -19,11 +19,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Translations</source>
-        <extracomment>AboutPage - Translations</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sources</source>
         <extracomment>AboutPage - sources</extracomment>
         <translation type="unfinished"></translation>
@@ -143,17 +138,16 @@
 <context>
     <name>MenuOrderingPage</name>
     <message>
-        <source>Adrian</source>
-        <extracomment>OverviewPage page header</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>About</source>
         <extracomment>MenuOrderingPage about menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Balance %1 € / %2 €</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

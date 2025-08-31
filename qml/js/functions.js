@@ -20,3 +20,8 @@ function getDaysWithMenu(menues) {
     }
     return result
 }
+
+function formatPrice(price, locale) {
+    console.log("price : " + price)
+    return Number(price).toLocaleString(locale, 'f', 2);
+}

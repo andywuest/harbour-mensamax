@@ -131,7 +131,9 @@ Page {
             pageStack.animatorPush(Qt.resolvedUrl("MenuOrderingPage.qml"), {
                                        "token": token,
                                        "menues": currentWeekMenu,
-                                       "dateLabel": currentDateLabel
+                                       "dateLabel": currentDateLabel,
+                                       "balanceData": balanceData,
+                                       "userData": userData
                                    })
         }
 
