@@ -1,13 +1,16 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../js/functions.js" as Functions
+
 Item {
     id: foodMenuItem
 
     property bool isUnread: true
     property string starter: ""
     property string mainCourse: ""
-    property string dessert: ""
+    property string desert: ""
+    property string selectedIcon: "image://theme/icon-m-accept"
 
     width: precalculatedValues.textItemWidth
     height: messageBackground.height
@@ -43,48 +46,93 @@ Item {
         width: parent.width
         anchors.centerIn: messageBackground
 
-        Label {
-            topPadding: Theme.paddingSmall
-            leftPadding: Theme.paddingSmall
-            rightPadding: Theme.paddingSmall
+        Row {
             width: parent.width
-            text: qsTr("Vorspeise: ") + starter
-            textFormat: Text.StyledText
-            wrapMode: Text.Wrap
-            horizontalAlignment: Text.AlignLeft
-            color: Theme.primaryColor
-            font.pixelSize: Theme.fontSizeExtraSmall
-            font.bold: false
+            Column {
+                width: ordered ? (parent.width - Theme.iconSizeMedium) : parent.width
+
+                Label {
+                    id: menuGroupLabel
+                    topPadding: Theme.paddingSmall
+                    leftPadding: Theme.paddingSmall
+                    rightPadding: Theme.paddingSmall
+                    width: parent.width
+                    text: menuGroup
+                    textFormat: Text.StyledText
+                    wrapMode: Text.Wrap
+                    horizontalAlignment: Text.AlignLeft
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.bold: true
+                }
+
+                Label {
+                    // topPadding: Theme.paddingSmall
+                    leftPadding: Theme.paddingSmall
+                    rightPadding: Theme.paddingSmall
+                    width: parent.width
+                    text: mainCourse
+                    textFormat: Text.StyledText
+                    wrapMode: Text.Wrap
+                    horizontalAlignment: Text.AlignLeft
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.bold: true
+                }
+
+                Label {
+                    // topPadding: Theme.paddingSmall
+                    leftPadding: Theme.paddingSmall
+                    rightPadding: Theme.paddingSmall
+                    bottomPadding: Theme.paddingSmall
+                    width: parent.width
+                    text: starter
+                    textFormat: Text.StyledText
+                    wrapMode: Text.Wrap
+                    horizontalAlignment: Text.AlignLeft
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.bold: false
+                }
+
+                Label {
+                    // topPadding: Theme.paddingSmall
+                    leftPadding: Theme.paddingSmall
+                    rightPadding: Theme.paddingSmall
+                    bottomPadding: Theme.paddingSmall
+                    width: parent.width
+                    text: desert
+                    textFormat: Text.StyledText
+                    wrapMode: Text.Wrap
+                    horizontalAlignment: Text.AlignLeft
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.bold: false
+                }
+
+                Label {
+                    // topPadding: Theme.paddingSmall
+                    leftPadding: Theme.paddingSmall
+                    rightPadding: Theme.paddingSmall
+                    bottomPadding: Theme.paddingSmall
+                    width: parent.width
+                    text: qsTr("%1 €").arg(Functions.formatPrice(price, Qt.locale()))
+                    textFormat: Text.StyledText
+                    wrapMode: Text.Wrap
+                    horizontalAlignment: Text.AlignLeft
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.bold: false
+                }
+            }
+
+            IconButton {
+                visible: ordered
+                width: ordered ? Theme.iconSizeMedium : 0
+                icon.source: ordered ? selectedIcon + "?" + Theme.highlightColor : selectedIcon + "?" + Theme.primaryColor
+            }
         }
 
-        Label {
-            // topPadding: Theme.paddingSmall
-            leftPadding: Theme.paddingSmall
-            rightPadding: Theme.paddingSmall
-            width: parent.width
-            text: qsTr("Hauptspeise: ") + mainCourse
-            textFormat: Text.StyledText
-            wrapMode: Text.Wrap
-            horizontalAlignment: Text.AlignLeft
-            color: Theme.primaryColor
-            font.pixelSize: Theme.fontSizeExtraSmall
-            font.bold: true
-        }
-
-        Label {
-            // topPadding: Theme.paddingSmall
-            leftPadding: Theme.paddingSmall
-            rightPadding: Theme.paddingSmall
-            bottomPadding: Theme.paddingSmall
-            width: parent.width
-            text: qsTr("Nachtisch: ") + dessert
-            textFormat: Text.StyledText
-            wrapMode: Text.Wrap
-            horizontalAlignment: Text.AlignLeft
-            color: Theme.primaryColor
-            font.pixelSize: Theme.fontSizeExtraSmall
-            font.bold: false
-        }
     }
 
     //                            Label {

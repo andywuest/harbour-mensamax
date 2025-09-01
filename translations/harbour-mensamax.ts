@@ -116,15 +116,7 @@
 <context>
     <name>FoodMenuItem</name>
     <message>
-        <source>Vorspeise: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hauptspeise: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nachtisch: </source>
+        <source>%1 €</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
