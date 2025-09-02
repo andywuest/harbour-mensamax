@@ -17,5 +17,14 @@ for your institution (especially schools in Germany).
 - Select / deselect lunch
 - Edit account / delete account
 - Show personal data
-- Show balance
 
+## Author
+Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelancer@gmail.com)
+
+## Screenshots
+
+![Accounts Overview](/screenshots/accounts_page_small.png?raw=true "Accounts")
+![Menu Selection](/screenshots/menuselection_page_small.png?raw=true "Menu Selection")
+
+## Build
+Simply clone this repository.
