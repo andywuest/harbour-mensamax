@@ -55,6 +55,7 @@ Page {
                     menuItem.starterNames = menuOfDay.vorspeisen[0].bezeichnung
                 }
 
+                menuItem.mainCourseNames = "-";
                 if (menuOfDay.hauptspeisen.length > 0) {
                     menuItem.mainCourseNames = menuOfDay.hauptspeisen[0].bezeichnung
                 }
@@ -85,11 +86,15 @@ Page {
     }
 
     function populateBalanceData(balanceData) {
-        var kontostand = balanceData.data.meinKontostand;
-        var balanceText = kontostand.gesamtKontostandAktuell + " € / " + kontostand.gesamtKontostandZukunft + " €";
-        menuOrderingPageHeader.description = qsTr("Balance %1 € / %2 €")
-            .arg(Functions.formatPrice(kontostand.gesamtKontostandAktuell, Qt.locale()))
-            .arg(Functions.formatPrice(kontostand.gesamtKontostandZukunft, Qt.locale()));
+        if (balanceData && balanceData.data) {
+            var kontostand = balanceData.data.meinKontostand;
+            var balanceText = kontostand.gesamtKontostandAktuell + " € / " + kontostand.gesamtKontostandZukunft + " €";
+            menuOrderingPageHeader.description = qsTr("Balance %1 € / %2 €")
+                .arg(Functions.formatPrice(kontostand.gesamtKontostandAktuell, Qt.locale()))
+                .arg(Functions.formatPrice(kontostand.gesamtKontostandZukunft, Qt.locale()));
+        } else {
+            menuOrderingPageHeader.description = "-";
+        }
     }
 
     function populateWithMenus(menues, dateLabel) {
@@ -276,10 +281,10 @@ Page {
 
                     Item {
                         id: menuItem
-                        //                        width: parent.width
                         height: foodMenuItem.height
                         width: parent.width - (2 * Theme.paddingMedium)
                         x: Theme.paddingMedium
+                        y: Theme.paddingSmall
 
                         FoodMenuItem {
                             id: foodMenuItem
@@ -287,7 +292,12 @@ Page {
                             starter: starterNames
                             mainCourse: mainCourseNames
                             desert: desertNames
+
                         }
+                    }
+
+                    onClicked: {
+                        console.log("[MenuOrderingPage] " + index + ", " + model)
                     }
                 }
             }

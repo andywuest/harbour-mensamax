@@ -68,6 +68,22 @@ Page {
                 }
 
                 delegate: AccountListItem {
+                    id: accountListItem
+
+                    menu: Component {
+                        ContextMenu {
+                            MenuItem {
+                                text: qsTr("Edit Account")
+                            }
+
+                            MenuItem {
+                                text: qsTr("Delete Account")
+                                // TODO implement actual removal from configuration
+                                onClicked: accountListItem.remorseDelete(function() { model.remove(index) })
+                            }
+                        }
+                    }
+
                     onClicked: {
                         console.log("[AccountsOverview] " + index + ", " + model.userName)
                         showLoadingIndicator = true

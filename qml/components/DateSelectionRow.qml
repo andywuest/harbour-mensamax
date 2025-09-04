@@ -28,6 +28,7 @@ Row {
 
         Label {
             text: dateLabel
+            width: parent.width
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             height: dateSelectionRow.height
@@ -43,6 +44,11 @@ Row {
             preferredWidth: Theme.buttonWidthTiny
 
             onClicked: nextWeekClicked(+1)
+
+            anchors {
+                right: parent.right
+                rightMargin: Theme.horizontalPageMargin
+            }
         }
     }
 }

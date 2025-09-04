@@ -16,6 +16,7 @@ public:
     int statusCode() const;
 
     bool hasNetworkError() const;
+    bool hasGraphQLError();
     QString errorString() const { return m_inner->errorString(); }
 
     QString header(const QByteArray& name) const;

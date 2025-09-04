@@ -62,8 +62,8 @@ Item {
                     wrapMode: Text.Wrap
                     horizontalAlignment: Text.AlignLeft
                     color: Theme.primaryColor
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    font.bold: true
+                    font.pixelSize: Theme.fontSizeSmall
+                    font.bold: false
                 }
 
                 Label {
@@ -76,7 +76,7 @@ Item {
                     wrapMode: Text.Wrap
                     horizontalAlignment: Text.AlignLeft
                     color: Theme.primaryColor
-                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.pixelSize: Theme.fontSizeSmall
                     font.bold: true
                 }
 

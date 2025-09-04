@@ -109,10 +109,22 @@ void MensaMax::executeGetBalance(const QString &token) {
             SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, &QNetworkReply::finished, this, [this, reply]() {
         reply->deleteLater();
-        QString response = QString(reply->readAll());
+
+        auto response = HttpResponse(reply);
+
+        if (response.hasNetworkError()) {
+            return emit requestError("Return code: " + response.errorString());
+        }
+
+        if (response.hasGraphQLError()) {
+            emit getBalanceAvailable("{}");
+            return emit requestError("Return code: graphQL Error ");
+        }
+
+        QString responseData = QString(response.content());
         qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-        qDebug() << "response : " << response;
-        emit getBalanceAvailable(response);
+        qDebug() << "response : " << responseData;
+        emit getBalanceAvailable(responseData);
     });
 
 }
