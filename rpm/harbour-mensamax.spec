@@ -1,7 +1,7 @@
 Name:       harbour-mensamax
 
 Summary:    My Sailfish OS Application
-Version:    0.1.1
+Version:    0.1.2
 Release:    1
 License:    LICENSE
 URL:        http://example.org/

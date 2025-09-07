@@ -9,16 +9,13 @@ Row {
     signal previousWeekClicked(int offsetChange)
     signal nextWeekClicked(int offsetChange)
 
-    width: parent.width - (2 * Theme.paddingMedium)
-    x: Theme.paddingMedium
-
     Column {
         width: parent.width / 3
 
         Button {
             id: leftButton
             text: "<<"
-            preferredWidth: Theme.buttonWidthTiny
+            preferredWidth: Theme.buttonWidthExtraSmall
             onClicked: previousWeekClicked(-1)
         }
     }
@@ -41,13 +38,13 @@ Row {
         Button {
             id: rightButton
             text: ">>"
-            preferredWidth: Theme.buttonWidthTiny
+            preferredWidth: Theme.buttonWidthExtraSmall
 
             onClicked: nextWeekClicked(+1)
 
             anchors {
                 right: parent.right
-                rightMargin: Theme.horizontalPageMargin
+                //rightMargin: Theme.horizontalPageMargin
             }
         }
     }

@@ -9,5 +9,10 @@
 # the git-change-log command provided with Sailfish OS SDK), create a
 # harbour-mensamax.changes.run script to let mb2 run the required commands for you.
 
+* xx.09.2025 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.1.2-1
+- German translation
+- Icon added
+- some polishing
+
 * 02.09.2025 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.1.1-1
 - Initial release

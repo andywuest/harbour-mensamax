@@ -6,104 +6,112 @@
     <message>
         <source>About</source>
         <extracomment>AboutPage - Header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <source>MensaMax</source>
         <extracomment>AboutPage - Name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>MensaMax</translation>
     </message>
     <message>
         <source>This is app client for the MensaMax application for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Diese Anwendung ist eine MensaMax Client-Anwendung für Sailfish OS. Watchlist ist Open Source und unter der GPL v3 lizensiert.</translation>
     </message>
     <message>
         <source>Sources</source>
         <extracomment>AboutPage - sources</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Quellen</translation>
     </message>
     <message>
         <source>Donations</source>
         <extracomment>AboutPage - Donations</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Spenden</translation>
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
         <extracomment>AboutPage - donations info</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Wenn Du meine Arbeit magst, warum gibst du mir nicht einfach ein Bier aus?</translation>
     </message>
     <message>
         <source>Donate with PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>Spenden via PayPal</translation>
     </message>
 </context>
 <context>
     <name>AccountCreationDialog</name>
     <message>
         <source>Create Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Konto erstellen</translation>
     </message>
     <message>
         <source>Your Credentials</source>
-        <translation type="unfinished"></translation>
+        <translation>Deine Zugangsdaten</translation>
     </message>
     <message>
         <source>Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt</translation>
     </message>
     <message>
         <source>Installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Einrichtung</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Client Secret</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Server</translation>
     </message>
     <message>
         <source>e.g. mensahaus.de</source>
-        <translation type="unfinished"></translation>
+        <translation>z.B. mensahaus.de</translation>
     </message>
     <message>
         <source>Test Login</source>
         <extracomment>AccountCreationDialog test login button</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Login testen</translation>
     </message>
     <message>
         <source>Name (of your child, free text)</source>
-        <translation type="unfinished"></translation>
+        <translation>Name (deines Kindes, Freitext)</translation>
     </message>
 </context>
 <context>
     <name>AccountsOverviewPage</name>
     <message>
         <source>Create account</source>
-        <translation type="unfinished"></translation>
+        <translation>Konto erstellen</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Konten</translation>
     </message>
     <message>
         <source>No accounts yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Noch keine Konten vorhanden</translation>
     </message>
     <message>
         <source>Pull down to add accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pully Menü verwenden um Konto anzulegen</translation>
     </message>
     <message>
         <source>About</source>
         <extracomment>AccountsOverviewPage about menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
+    </message>
+    <message>
+        <source>Edit Account</source>
+        <translation>Konto bearbeiten</translation>
+    </message>
+    <message>
+        <source>Delete Account</source>
+        <translation>Konto löschen</translation>
     </message>
 </context>
 <context>
@@ -117,30 +125,30 @@
     <name>FoodMenuItem</name>
     <message>
         <source>%1 €</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 €</translation>
     </message>
 </context>
 <context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lade...</translation>
     </message>
 </context>
 <context>
     <name>MenuOrderingPage</name>
     <message>
         <source>Logout</source>
-        <translation type="unfinished"></translation>
+        <translation>Abmelden</translation>
     </message>
     <message>
         <source>About</source>
         <extracomment>MenuOrderingPage about menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <source>Balance %1 € / %2 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontostand %1 € / %2 €</translation>
     </message>
 </context>
 </TS>

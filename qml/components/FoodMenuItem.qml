@@ -116,7 +116,7 @@ Item {
                     rightPadding: Theme.paddingSmall
                     bottomPadding: Theme.paddingSmall
                     width: parent.width
-                    text: qsTr("%1 €").arg(Functions.formatPrice(price, Qt.locale()))
+                    text: qsTr("%1 €").arg(Functions.formatPrice(price))
                     textFormat: Text.StyledText
                     wrapMode: Text.Wrap
                     horizontalAlignment: Text.AlignLeft

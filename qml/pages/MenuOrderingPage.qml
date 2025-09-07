@@ -28,50 +28,50 @@ Page {
         }
     }
 
-    function getMenusForDay(dayIndex, menues) {
-        var result = []
-        if (dayIndex >= menues.data.meinSpeiseplan.length) {
-            console.log("[MenuOrderingPage] - menu not available for index " + dayIndex)
-            return result
-        }
-        var menuDayItem = menues.data.meinSpeiseplan[dayIndex]
-        if (menuDayItem.menues) {
-            var numberOfMenus = (menuDayItem.menues.length)
+//    function getMenusForDay(dayIndex, menues) {
+//        var result = []
+//        if (dayIndex >= menues.data.meinSpeiseplan.length) {
+//            console.log("[MenuOrderingPage] - menu not available for index " + dayIndex)
+//            return result
+//        }
+//        var menuDayItem = menues.data.meinSpeiseplan[dayIndex]
+//        if (menuDayItem.menues) {
+//            var numberOfMenus = (menuDayItem.menues.length)
 
-            for (var j = 0; j < numberOfMenus; j++) {
-                var menuOfDay = menuDayItem.menues[j]
-                var menuItem = {}
-                menuItem.id = menuOfDay.id
-                menuItem.price = menuOfDay.meinPreis
-                menuItem.ordered = (menuOfDay.meineBestellung !== null)
-                menuItem.menuGroup = "-";
+//            for (var j = 0; j < numberOfMenus; j++) {
+//                var menuOfDay = menuDayItem.menues[j]
+//                var menuItem = {}
+//                menuItem.id = menuOfDay.id
+//                menuItem.price = menuOfDay.meinPreis
+//                menuItem.ordered = (menuOfDay.meineBestellung !== null)
+//                menuItem.menuGroup = "-";
 
-                if (menuOfDay.menuegruppe) {
-                    menuItem.menuGroup = menuOfDay.menuegruppe.bezeichnung;
-                }
+//                if (menuOfDay.menuegruppe) {
+//                    menuItem.menuGroup = menuOfDay.menuegruppe.bezeichnung;
+//                }
 
-                menuItem.starterNames = "-";
-                if (menuOfDay.vorspeisen.length > 0) {
-                    menuItem.starterNames = menuOfDay.vorspeisen[0].bezeichnung
-                }
+//                menuItem.starterNames = "-";
+//                if (menuOfDay.vorspeisen.length > 0) {
+//                    menuItem.starterNames = menuOfDay.vorspeisen[0].bezeichnung
+//                }
 
-                menuItem.mainCourseNames = "-";
-                if (menuOfDay.hauptspeisen.length > 0) {
-                    menuItem.mainCourseNames = menuOfDay.hauptspeisen[0].bezeichnung
-                }
+//                menuItem.mainCourseNames = "-";
+//                if (menuOfDay.hauptspeisen.length > 0) {
+//                    menuItem.mainCourseNames = menuOfDay.hauptspeisen[0].bezeichnung
+//                }
 
-                menuItem.desertNames = "-";
-                if (menuOfDay.nachspeisen.length > 0) {
-                    menuItem.desertNames = menuOfDay.nachspeisen[0].bezeichnung
-                }
+//                menuItem.desertNames = "-";
+//                if (menuOfDay.nachspeisen.length > 0) {
+//                    menuItem.desertNames = menuOfDay.nachspeisen[0].bezeichnung
+//                }
 
-                console.log("[MenuOrderingPage] - menu " + JSON.stringify(
-                                menuItem))
-                result.push(menuItem)
-            }
-        }
-        return result
-    }
+//                console.log("[MenuOrderingPage] - menu " + JSON.stringify(
+//                                menuItem))
+//                result.push(menuItem)
+//            }
+//        }
+//        return result
+//    }
 
     function populateDayMenuModel(menus) {
         menuModel.clear()
@@ -90,8 +90,8 @@ Page {
             var kontostand = balanceData.data.meinKontostand;
             var balanceText = kontostand.gesamtKontostandAktuell + " € / " + kontostand.gesamtKontostandZukunft + " €";
             menuOrderingPageHeader.description = qsTr("Balance %1 € / %2 €")
-                .arg(Functions.formatPrice(kontostand.gesamtKontostandAktuell, Qt.locale()))
-                .arg(Functions.formatPrice(kontostand.gesamtKontostandZukunft, Qt.locale()));
+                .arg(Functions.formatPrice(kontostand.gesamtKontostandAktuell))
+                .arg(Functions.formatPrice(kontostand.gesamtKontostandZukunft));
         } else {
             menuOrderingPageHeader.description = "-";
         }
@@ -153,7 +153,7 @@ Page {
 //            }
 //        }
 
-        var menus = getMenusForDay(0, menues)
+        var menus = Functions.getMenusForDay(daysWithMenu[0].listIndex, menues)
         populateDayMenuModel(menus)
 
         // console.log("Menus : " + JSON.stringify(menus))
@@ -208,9 +208,10 @@ Page {
 
             DateSelectionRow {
                 id: dateSelectionRow
-                width: parent.width
+                width: parent.width - (2 * Theme.paddingMedium)
+                x: Theme.paddingMedium
                 dateLabel: ""
-            }
+            }            
 
             Row {
                 id: daySelectionRow
@@ -241,7 +242,7 @@ Page {
 
                             daysModel.get(index).selected = true
 
-                            var menus = getMenusForDay(index, menues)
+                            var menus = Functions.getMenusForDay(model.listIndex, menues)
                             console.log("Menus : " + JSON.stringify(menus))
                             populateDayMenuModel(menus)
                         }

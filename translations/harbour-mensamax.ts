@@ -105,6 +105,14 @@
         <extracomment>AccountsOverviewPage about menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Edit Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Account</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

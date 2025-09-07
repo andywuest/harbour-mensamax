@@ -1,0 +1,690 @@
+{
+  "data": {
+    "meinSpeiseplan": [
+      {
+        "datum": "2025-09-22T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-09-23T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 4691,
+            "meinPreis": 4.7000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-09-23T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "bestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Vegetarisch",
+              "id": 9,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 2,
+            "vorspeisen": [
+              {
+                "id": 2292,
+                "bezeichnung": "Salat",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "hauptspeisen": [
+              {
+                "id": 2313,
+                "bezeichnung": "veg. Gyros + Reis + Tsatsiki",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 4129,
+                    "zusatzstoffAllergen": {
+                      "id": 51,
+                      "bezeichnung": "Laktose- Milch",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4130,
+                    "zusatzstoffAllergen": {
+                      "id": 54,
+                      "bezeichnung": "Soja",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4131,
+                    "zusatzstoffAllergen": {
+                      "id": 39,
+                      "bezeichnung": "Sellerie",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4132,
+                    "zusatzstoffAllergen": {
+                      "id": 41,
+                      "bezeichnung": "Sesam",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 2296,
+                "bezeichnung": "Nuss-Schnecke",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 4074,
+                    "zusatzstoffAllergen": {
+                      "id": 36,
+                      "bezeichnung": "Ei-Allergie",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4075,
+                    "zusatzstoffAllergen": {
+                      "id": 51,
+                      "bezeichnung": "Laktose- Milch",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4076,
+                    "zusatzstoffAllergen": {
+                      "id": 40,
+                      "bezeichnung": "Gluten-Unvertr\u00E4glichkeit",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4077,
+                    "zusatzstoffAllergen": {
+                      "id": 45,
+                      "bezeichnung": "Nuss/ Schalenfr\u00FCchte",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 4690,
+            "meinPreis": 4.7000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-09-23T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "bestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Vollwert",
+              "id": 6,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": {
+              "anzahlAusgegeben": 0,
+              "anzahl": 1,
+              "ausgabeort": null,
+              "__typename": "Bestellung"
+            },
+            "meineMaxBestellbareMenge": 2,
+            "vorspeisen": [
+              {
+                "id": 2292,
+                "bezeichnung": "Salat",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "hauptspeisen": [
+              {
+                "id": 921,
+                "bezeichnung": "Gyros + Reis + Tsatziki",
+                "beschreibung": "Kochteam 3",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 1089,
+                    "zusatzstoffAllergen": {
+                      "id": 48,
+                      "bezeichnung": "Senf",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1090,
+                    "zusatzstoffAllergen": {
+                      "id": 38,
+                      "bezeichnung": "mit Antioxidationsmittel",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1091,
+                    "zusatzstoffAllergen": {
+                      "id": 35,
+                      "bezeichnung": "mit Geschmacksverst\u00E4rker",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1092,
+                    "zusatzstoffAllergen": {
+                      "id": 54,
+                      "bezeichnung": "Soja",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 2296,
+                "bezeichnung": "Nuss-Schnecke",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 4074,
+                    "zusatzstoffAllergen": {
+                      "id": 36,
+                      "bezeichnung": "Ei-Allergie",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4075,
+                    "zusatzstoffAllergen": {
+                      "id": 51,
+                      "bezeichnung": "Laktose- Milch",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4076,
+                    "zusatzstoffAllergen": {
+                      "id": 40,
+                      "bezeichnung": "Gluten-Unvertr\u00E4glichkeit",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 4077,
+                    "zusatzstoffAllergen": {
+                      "id": 45,
+                      "bezeichnung": "Nuss/ Schalenfr\u00FCchte",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-09-24T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 4693,
+            "meinPreis": 4.7000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-09-24T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "bestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Vegetarisch",
+              "id": 9,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": {
+              "anzahlAusgegeben": 0,
+              "anzahl": 1,
+              "ausgabeort": null,
+              "__typename": "Bestellung"
+            },
+            "meineMaxBestellbareMenge": 2,
+            "vorspeisen": [
+              {
+                "id": 2292,
+                "bezeichnung": "Salat",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "hauptspeisen": [
+              {
+                "id": 1005,
+                "bezeichnung": "Veg. Tortellini (Gem\u00FCse) \u002B fruchtiger Tomatensauce",
+                "beschreibung": "Team 8",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 1581,
+                    "zusatzstoffAllergen": {
+                      "id": 38,
+                      "bezeichnung": "mit Antioxidationsmittel",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1582,
+                    "zusatzstoffAllergen": {
+                      "id": 35,
+                      "bezeichnung": "mit Geschmacksverst\u00E4rker",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1583,
+                    "zusatzstoffAllergen": {
+                      "id": 39,
+                      "bezeichnung": "Sellerie",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1584,
+                    "zusatzstoffAllergen": {
+                      "id": 40,
+                      "bezeichnung": "Gluten-Unvertr\u00E4glichkeit",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1585,
+                    "zusatzstoffAllergen": {
+                      "id": 51,
+                      "bezeichnung": "Laktose- Milch",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 1586,
+                    "zusatzstoffAllergen": {
+                      "id": 48,
+                      "bezeichnung": "Senf",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 2286,
+                "bezeichnung": "Apfeltasche",
+                "beschreibung": "Team 16",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 4692,
+            "meinPreis": 4.7000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-09-24T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "bestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Vollwert",
+              "id": 6,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 2,
+            "vorspeisen": [
+              {
+                "id": 2292,
+                "bezeichnung": "Salat",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "hauptspeisen": [
+              {
+                "id": 2095,
+                "bezeichnung": "Tortellini (Fleisch) \u002B fruchtiger Tomatensauce",
+                "beschreibung": "Team 16",
+                "zusatzstoffeAllergene": [
+                  {
+                    "id": 3091,
+                    "zusatzstoffAllergen": {
+                      "id": 40,
+                      "bezeichnung": "Gluten-Unvertr\u00E4glichkeit",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3092,
+                    "zusatzstoffAllergen": {
+                      "id": 51,
+                      "bezeichnung": "Laktose- Milch",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3093,
+                    "zusatzstoffAllergen": {
+                      "id": 48,
+                      "bezeichnung": "Senf",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3094,
+                    "zusatzstoffAllergen": {
+                      "id": 39,
+                      "bezeichnung": "Sellerie",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3095,
+                    "zusatzstoffAllergen": {
+                      "id": 38,
+                      "bezeichnung": "mit Antioxidationsmittel",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  },
+                  {
+                    "id": 3096,
+                    "zusatzstoffAllergen": {
+                      "id": 35,
+                      "bezeichnung": "mit Geschmacksverst\u00E4rker",
+                      "__typename": "TblxxZusatzstoffeAllergene"
+                    },
+                    "__typename": "TblkettSpeiseZusatzstoffeAllergene"
+                  }
+                ],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 2286,
+                "bezeichnung": "Apfeltasche",
+                "beschreibung": "Team 16",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-09-25T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [
+          {
+            "id": 4695,
+            "meinPreis": 4.7000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-09-25T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "bestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Vegetarisch",
+              "id": 9,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": null,
+            "meineMaxBestellbareMenge": 2,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 2371,
+                "bezeichnung": "Gem\u00FCsetaler \u002B Kartoffelsalat",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 942,
+                "bezeichnung": "Schokoblechkuchen",
+                "beschreibung": "Team 13",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          },
+          {
+            "id": 4694,
+            "meinPreis": 4.7000,
+            "bewertungDurchschnitt": null,
+            "datum": "2025-09-25T00:00:00.000\u002B02:00",
+            "meinSpeiseplanShow": true,
+            "reihenfolge": 1,
+            "fristen": {
+              "abbestellungBeiKrankmeldungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "abbestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "bestellungBis": "2025-09-18T23:00:00.000\u002B02:00",
+              "__typename": "Fristen"
+            },
+            "menuegruppe": {
+              "bezeichnung": "Vollwert",
+              "id": 6,
+              "anzeigbar": true,
+              "vorbestellbar": true,
+              "meineEinstellungen": {
+                "anzeigbar": true,
+                "vorbestellbar": true,
+                "__typename": "TblkettPersonMenuegruppe"
+              },
+              "__typename": "TblxxMenuegruppe"
+            },
+            "meineBestellung": {
+              "anzahlAusgegeben": 0,
+              "anzahl": 1,
+              "ausgabeort": null,
+              "__typename": "Bestellung"
+            },
+            "meineMaxBestellbareMenge": 2,
+            "vorspeisen": [],
+            "hauptspeisen": [
+              {
+                "id": 2370,
+                "bezeichnung": "Fisch (paniert) \u002B Kartoffelsalat",
+                "beschreibung": null,
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "nachspeisen": [
+              {
+                "id": 942,
+                "bezeichnung": "Schokoblechkuchen",
+                "beschreibung": "Team 13",
+                "zusatzstoffeAllergene": [],
+                "bewertungAnzahl": null,
+                "bewertungDurchschnitt": null,
+                "__typename": "TblxxSpeise"
+              }
+            ],
+            "__typename": "TblMenue"
+          }
+        ],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-09-26T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-09-27T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [],
+        "__typename": "SpeiseplanTag"
+      },
+      {
+        "datum": "2025-09-28T00:00:00.000\u002B02:00",
+        "ausgabeort": null,
+        "essensschicht": null,
+        "message": null,
+        "menues": [],
+        "__typename": "SpeiseplanTag"
+      }
+    ]
+  }
+}

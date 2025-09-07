@@ -18,6 +18,12 @@ for your institution (especially schools in Germany).
 - Edit account / delete account
 - Show personal data
 
+## Domains
+
+The app has been tested with the following domains
+- mensahaus.de (seems to work without problems)
+- mensaonline.de (fetching the balance does not work (internal server error))
+
 ## Author
 Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelancer@gmail.com)
 

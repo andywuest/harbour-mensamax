@@ -7,6 +7,37 @@ import "../../qml/js/constants.js" as Constants
 TestCase {
     name: "Function Tests"
 
+    function test_getMenusForDay() {
+        runWithTestData("menu1.json", function(testData) {
+            // given
+            var jsonTestData = JSON.parse(testData);
+
+            console.log("data : " + jsonTestData);
+
+            // when
+            var result = Functions.getMenusForDay(1, jsonTestData); // index 0 has no menu
+
+            // then
+            compare(result.length, 2)
+
+            compare(result[0].id, 4691)
+            compare(result[0].desertNames, "Nuss-Schnecke")
+            compare(result[0].mainCourseNames, "veg. Gyros + Reis + Tsatsiki")
+            compare(result[0].menuGroup, "Vegetarisch")
+            compare(result[0].ordered, false)
+            compare(result[0].price, 4.7)
+            compare(result[0].starterNames, "Salat")
+
+            compare(result[1].id, 4690)
+            compare(result[1].desertNames, "Nuss-Schnecke")
+            compare(result[1].mainCourseNames, "Gyros + Reis + Tsatziki")
+            compare(result[1].menuGroup, "Vollwert")
+            compare(result[1].ordered, true)
+            compare(result[1].price, 4.7)
+            compare(result[1].starterNames, "Salat")
+        })
+    }
+
     function test_getDaysWithMenu() {
         runWithTestData("week1.json", function(testData) {
             // given
