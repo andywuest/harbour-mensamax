@@ -16,6 +16,31 @@ Page {
 
     allowedOrientations: Orientation.All
 
+    function removeAccountAtIndex(index) {
+        console.log("[AccountsOverview] - remove account requested at index " + index)
+        var accounts = JSON.parse(mensamaxSettings.accountsString)
+        if (index <= accounts.length) {
+            accounts.splice(index, 1)
+            mensamaxSettings.accountsString = JSON.stringify(accounts)
+            mensamaxSettings.sync()
+            repopulateModel()
+            console.log("[AccountsOverview] - removed account at index " + index)
+        } else {
+            console.log("[AccountsOverview] - cannot remove index " + index
+                        + " because we only have " + accounts.length + " accounts.")
+        }
+    }
+
+    function repopulateModel() {
+        accountModel.clear()
+        console.log("[AccountsOverview] - repopulateModel - loading accounts")
+        console.log("[AccountsOverview] - " + mensamaxSettings.accountsString)
+        var accounts = JSON.parse(mensamaxSettings.accountsString)
+        for (var i = 0; i < accounts.length; i++) {
+            accountModel.append(accounts[i])
+        }
+    }
+
     AppNotification {
         id: accountProblemNotification
     }
@@ -78,8 +103,15 @@ Page {
 
                             MenuItem {
                                 text: qsTr("Delete Account")
-                                // TODO implement actual removal from configuration
-                                onClicked: accountListItem.remorseDelete(function() { model.remove(index) })
+                                onClicked: {
+                                    var selectedIndex = index
+                                    var removeAccountFunction = accountsPage.removeAccountAtIndex
+                                    Remorse.itemAction(accountListItem, qsTr(
+                                                           "Deleting account"),
+                                                       function () {
+                                                           removeAccountFunction(selectedIndex)
+                                                       })
+                                }
                             }
                         }
                     }
@@ -162,14 +194,7 @@ Page {
 
     onStatusChanged: {
         if (status === PageStatus.Active) {
-            accountModel.clear();
-            console.log("[AccountsOverview] - loading accounts");
-            console.log("[AccountsOverview] - " + mensamaxSettings.accountsString);
-            var accounts = JSON.parse(mensamaxSettings.accountsString);
-            for (var i = 0; i < accounts.length; i++) {
-                accountModel.append(accounts[i]);
-            }
+            repopulateModel()
         }
     }
-
 }
