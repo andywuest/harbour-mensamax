@@ -9,6 +9,7 @@ Dialog {
 
     property bool showLoadingIndicator: false
     property bool loginVerified: false
+    property int selectedIndex
 
     canAccept: loginVerified
 
@@ -19,7 +20,7 @@ Dialog {
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
-        contentHeight: credentialsColumn.height
+        contentHeight: credentialsColumn.height + Theme.paddingLarge
 
         Column {
             id: credentialsColumn
@@ -156,11 +157,29 @@ Dialog {
         data.name = nameTextField.text
         // store in configuration
         var accounts = JSON.parse(mensamaxSettings.accountsString)
-        accounts.push(data)
+        if (selectedIndex >= 0) {
+            accounts[selectedIndex] = data;
+        } else {
+            accounts.push(data)
+        }
         console.log("[AccountCreationDialog] number accounts : " + accounts.length)
         mensamaxSettings.accountsString = JSON.stringify(accounts);
         mensamaxSettings.sync()
         console.log("[AccountCreationDialog] account data : " + mensamaxSettings.accountsString)
+    }
+
+    Component.onCompleted: {
+        console.log("[AccountCreationDialog] init - selectedIndex : " + selectedIndex);
+        var accounts = JSON.parse(mensamaxSettings.accountsString);
+        if (selectedIndex >= 0 && selectedIndex < accounts.length) {
+            var account = accounts[selectedIndex];
+            projectTextField.text = account.project;
+            installationTextField.text = account.installation;
+            userNameTextField.text = account.userName;
+            passwordTextField.text = account.password;
+            hostnameTextField.text = account.hostname;
+            nameTextField.text = account.name;
+        }
     }
 
 }

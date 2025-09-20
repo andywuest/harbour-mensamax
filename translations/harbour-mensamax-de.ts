@@ -113,12 +113,16 @@
         <source>Delete Account</source>
         <translation>Konto löschen</translation>
     </message>
+    <message>
+        <source>Deleting account</source>
+        <translation>Lösche Konto</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
-        <translation>Mein Cover</translation>
+        <source>MensaMax</source>
+        <translation>MensaMax</translation>
     </message>
 </context>
 <context>
