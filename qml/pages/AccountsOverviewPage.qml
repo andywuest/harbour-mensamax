@@ -57,9 +57,9 @@ Page {
             MenuItem {
                 text: qsTr("Create account")
                 onClicked: pageStack.animatorPush(
-                               Qt.resolvedUrl("AccountCreationDialog.qml", {
-                                                  "selectedIndex": -1
-                                              }))
+                               Qt.resolvedUrl("AccountCreationDialog.qml"), {
+                                                  selectedIndex: -1
+                                              })
             }
         }
 

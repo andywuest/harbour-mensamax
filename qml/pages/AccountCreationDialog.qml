@@ -179,6 +179,13 @@ Dialog {
             passwordTextField.text = account.password;
             hostnameTextField.text = account.hostname;
             nameTextField.text = account.name;
+        } else {
+            projectTextField.text = "";
+            installationTextField.text = "";
+            userNameTextField.text = "";
+            passwordTextField.text = "";
+            hostnameTextField.text = "";
+            nameTextField.text = "";
         }
     }
 
