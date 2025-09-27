@@ -131,6 +131,10 @@
         <source>%1 €</source>
         <translation>%1 €</translation>
     </message>
+    <message>
+        <source>Ordered</source>
+        <translation>Bestellt</translation>
+    </message>
 </context>
 <context>
     <name>LoadingIndicator</name>

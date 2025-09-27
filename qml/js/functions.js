@@ -2,6 +2,21 @@
 
 Qt.include('constants.js')
 
+function concatStrings(s1, s2, separator) {
+    var result = "";
+    if (s1 !== "-") {
+        result += s1;
+        if (s2 === "-") {
+            return result;
+        }
+    }
+    if (s2 === "-") {
+        return "";
+    }
+    result = result + (s1 !== "-" ? separator : "") + s2;
+    return result;
+}
+
 function getDaysWithMenu(menues) {
     var result = []
     var weekday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
