@@ -153,8 +153,14 @@ Page {
 //            }
 //        }
 
-        var menus = Functions.getMenusForDay(daysWithMenu[0].listIndex, menues)
-        populateDayMenuModel(menus)
+        if (daysWithMenu.length > 0) {
+            var menus = Functions.getMenusForDay(daysWithMenu[0].listIndex, menues)
+            populateDayMenuModel(menus)
+        } else {
+            var emptyMenus = [];
+            populateDayMenuModel(emptyMenus)
+        }
+
 
         // console.log("Menus : " + JSON.stringify(menus))
         //        menuModel.clear();
@@ -212,6 +218,11 @@ Page {
                 x: Theme.paddingMedium
                 dateLabel: ""
             }            
+
+//            ViewPlaceholder {
+//                enabled: menuModel.count === 0;
+//                text: qsTr("No lunch available for selection.")
+//            }
 
             Row {
                 id: daySelectionRow
@@ -293,7 +304,6 @@ Page {
                             starter: starterNames
                             mainCourse: mainCourseNames
                             desert: desertNames
-
                         }
                     }
 
