@@ -36,13 +36,14 @@ function getDaysWithMenu(menues) {
     return result
 }
 
-function getMenusForDay(dayIndex, menues) {
+function getMenusForDay(dayIndex, weekMenu, groupingLabel) {
     var result = []
-    if (dayIndex >= menues.data.meinSpeiseplan.length) {
+    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    if (dayIndex >= weekMenu.data.meinSpeiseplan.length) {
         console.log("[.getMenusForDay] - menu not available for index " + dayIndex)
         return result
     }
-    var menuDayItem = menues.data.meinSpeiseplan[dayIndex]
+    var menuDayItem = weekMenu.data.meinSpeiseplan[dayIndex]
     if (menuDayItem.menues) {
         var numberOfMenus = (menuDayItem.menues.length)
 
@@ -56,8 +57,13 @@ function getMenusForDay(dayIndex, menues) {
             var menuItem = {}
             menuItem.id = menuOfDay.id
             menuItem.price = menuOfDay.meinPreis
+            menuItem.weekdayIndex = new Date(menuDayItem.datum).getDay()
+            menuItem.date = new Date(menuDayItem.datum).toLocaleDateString(Qt.locale("de_DE"), "dd.MM")
+            menuItem.weekdayName = weekday[menuItem.weekdayIndex]
+            menuItem.dateString = menuItem.weekdayName + " " + menuItem.date;
             menuItem.ordered = (menuOfDay.meineBestellung !== null)
             menuItem.menuGroup = "-";
+            menuItem.week = groupingLabel;
 
             if (menuOfDay.menuegruppe) {
                 menuItem.menuGroup = menuOfDay.menuegruppe.bezeichnung;
@@ -83,6 +89,7 @@ function getMenusForDay(dayIndex, menues) {
             result.push(menuItem)
         }
     }
+    console.log("[.getMenusForDay] - menu count : " + result.length);
     return result
 }
 

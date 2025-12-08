@@ -19,6 +19,7 @@ bool HttpResponse::hasGraphQLError() {
         QJsonObject rootObject = jsonDocument.object();
         QJsonArray errors = rootObject.value("errors").toArray();
         if (errors.size() > 0) {
+            qDebug() << "error response: " << content();
             qDebug() << "graphQL error : " << errors.at(0).toObject().value("message");
             return true;
         }

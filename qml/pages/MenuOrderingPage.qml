@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
 
 import "../components"
@@ -12,7 +12,7 @@ Page {
 
     property int weekOffset: 0
     property string token
-    property var menues
+    property var menues // array[weekOffset] -> data
     property var balanceData
     property var userData
     property string dateLabel
@@ -28,55 +28,32 @@ Page {
         }
     }
 
-//    function getMenusForDay(dayIndex, menues) {
-//        var result = []
-//        if (dayIndex >= menues.data.meinSpeiseplan.length) {
-//            console.log("[MenuOrderingPage] - menu not available for index " + dayIndex)
-//            return result
-//        }
-//        var menuDayItem = menues.data.meinSpeiseplan[dayIndex]
-//        if (menuDayItem.menues) {
-//            var numberOfMenus = (menuDayItem.menues.length)
-
-//            for (var j = 0; j < numberOfMenus; j++) {
-//                var menuOfDay = menuDayItem.menues[j]
-//                var menuItem = {}
-//                menuItem.id = menuOfDay.id
-//                menuItem.price = menuOfDay.meinPreis
-//                menuItem.ordered = (menuOfDay.meineBestellung !== null)
-//                menuItem.menuGroup = "-";
-
-//                if (menuOfDay.menuegruppe) {
-//                    menuItem.menuGroup = menuOfDay.menuegruppe.bezeichnung;
-//                }
-
-//                menuItem.starterNames = "-";
-//                if (menuOfDay.vorspeisen.length > 0) {
-//                    menuItem.starterNames = menuOfDay.vorspeisen[0].bezeichnung
-//                }
-
-//                menuItem.mainCourseNames = "-";
-//                if (menuOfDay.hauptspeisen.length > 0) {
-//                    menuItem.mainCourseNames = menuOfDay.hauptspeisen[0].bezeichnung
-//                }
-
-//                menuItem.desertNames = "-";
-//                if (menuOfDay.nachspeisen.length > 0) {
-//                    menuItem.desertNames = menuOfDay.nachspeisen[0].bezeichnung
-//                }
-
-//                console.log("[MenuOrderingPage] - menu " + JSON.stringify(
-//                                menuItem))
-//                result.push(menuItem)
-//            }
-//        }
-//        return result
-//    }
-
     function populateDayMenuModel(menus) {
-        menuModel.clear()
+        var menuSelected = false;
         for (var n = 0; n < menus.length; n++) {
-            menuModel.append(menus[n])
+            if (menus[n].ordered === true) {
+                menuSelected = true;
+                globalMenuModel.append(menus[n])
+            }
+        }
+        if (menuSelected === false) {
+
+            var menuItem = {};
+            menuItem.id = -1
+            menuItem.price =
+            menuItem.ordered = false
+            menuItem.menuGroup = "-";
+            menuItem.week = menus[0].week;
+
+            menuItem.menuGroup = "";
+            menuItem.starterNames = "";
+            menuItem.mainCourseNames = "No food ordered";
+            menuItem.desertNames = "";
+            menuItem.dateString = menus[0].dateString;
+
+            globalMenuModel.append(menuItem)
+
+            console.log(".populateDayMenuModel: no menu selected - adding dummy");
         }
     }
 
@@ -99,74 +76,24 @@ Page {
 
     function populateWithMenus(menues, dateLabel) {
         //console.log("get menus result handler : " + result);
+        menuModel.clear()
+
         dateSelectionRow.dateLabel = "" + dateLabel
 
-        //menues = JSON.parse(result)
+        // daysWithMenu list of day for which a menu can be selected
+        for (var m = -1; m < 2; m++) { // iterate over week
+            var daysWithMenu = Functions.getDaysWithMenu(menues[m])
+            console.log("[MenuOrderingPage] days with menu : " + JSON.stringify(
+                            daysWithMenu))
 
-        var daysWithMenu = Functions.getDaysWithMenu(menues)
-        console.log("[MenuOrderingPage] days with menu : " + JSON.stringify(
-                        daysWithMenu))
-
-        populateDaysModel(daysWithMenu)
-
-//        var days = menues.data.meinSpeiseplan.length
-//        console.log("[MenuOrderingPage] : " + days + " days")
-
- //       const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
-//        for (var i = 0; i < days; i++) {
-//            var menuDayItem = menues.data.meinSpeiseplan[i]
-//            if (menuDayItem.menues) {
-//                var numberOfMenus = (menuDayItem.menues.length)
-//                console.log("[MenuOrderingPage] date : " + menuDayItem.datum
-//                            + ", menus : " + numberOfMenus)
-
-//                console.log(weekday[new Date(menuDayItem.datum).getDay()])
-
-//                for (var j = 0; j < numberOfMenus; j++) {
-//                    var menuOfDay = menuDayItem.menues[j]
-//                    var menuItem = {}
-//                    menuItem.id = menuOfDay.id
-//                    menuItem.price = menuOfDay.meinPreis
-//                    menuItem.menuGroup = "-";
-
-//                    if (menuOfDay.menugruppe) {
-//                        menuItem.menuGroup = menuOfDay.menugruppe.bezeichnung;
-//                    }
-
-//                    menuItem.starter = "-";
-//                    if (menuOfDay.vorspeisen.length > 0) {
-//                        menuItem.starter = menuOfDay.vorspeisen[0].bezeichnung
-//                    }
-
-//                    if (menuOfDay.hauptspeisen.length > 0) {
-//                        menuItem.mainCourse = menuOfDay.hauptspeisen[0].bezeichnung
-//                    }
-//                    menuItem.desert = "-";
-//                    if (menuOfDay.nachspeisen.length > 0) {
-//                        menuItem.desert = menuOfDay.nachspeisen[0].bezeichnung
-//                    }
-
-//                    console.log("[MenuOrderingPage] - menu " + JSON.stringify(
-//                                    menuItem))
-//                }
-//            }
-//        }
-
-        if (daysWithMenu.length > 0) {
-            var menus = Functions.getMenusForDay(daysWithMenu[0].listIndex, menues)
-            populateDayMenuModel(menus)
-        } else {
-            var emptyMenus = [];
-            populateDayMenuModel(emptyMenus)
+            if (daysWithMenu.length > 0) {
+                for (var i = 0; i < daysWithMenu.length; i++) { // iterate over days with menu
+                    var menus = Functions.getMenusForDay(daysWithMenu[i].listIndex, menues[m], "Week " + m)
+                    populateDayMenuModel(menus)
+                }
+            }
         }
 
-
-        // console.log("Menus : " + JSON.stringify(menus))
-        //        menuModel.clear();
-        //        for (var n = 0; n < menus.length; n++) {
-        //            menuModel.append(menus[n]);
-        //        }
     }
 
     function errorResultHandler(result) {
@@ -217,6 +144,7 @@ Page {
                 width: parent.width - (2 * Theme.paddingMedium)
                 x: Theme.paddingMedium
                 dateLabel: ""
+                visible: false
             }            
 
 //            ViewPlaceholder {
@@ -229,6 +157,7 @@ Page {
                 width: parent.width - (2 * Theme.paddingMedium)
                 spacing: Theme.paddingMedium
                 x: Theme.paddingMedium
+                visible: false
 
                 Repeater {
                     id: dayRepeater
@@ -267,8 +196,41 @@ Page {
             }
 
             SilicaListView {
-                id: noIncidentsColumn
+                id: menuListView
                 visible: true
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                height: menuSelectionPage.height - menuOrderingPageHeader.height
+                clip: true
+
+                model: ListModel {
+                    id: globalMenuModel
+                }
+
+                section {
+                    property: "week"
+                    criteria: ViewSection.FullString
+                    delegate: SectionHeader {
+                        text: section
+                    }
+                }
+
+                delegate: MenuListItem {
+                    id: menuListItemDelegate
+
+                }
+
+                VerticalScrollDecorator {}
+
+            }
+
+
+
+            SilicaListView {
+                id: noIncidentsColumn
+                visible: false
 
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -333,8 +295,8 @@ Page {
                 return;
             }
             console.log("[MenuOrderingPage] - getMenusAvailable " + reply);
-            menues = JSON.parse(reply);
-            populateWithMenus(menues, dateLabel);
+            //menues = JSON.parse(reply);
+            //populateWithMenus(menues, dateLabel);
             showLoadingIndicator = false
         }
 

@@ -12,7 +12,12 @@ Page {
     property var balanceData
     property var userData
     property var currentWeekMenu
+    property var weekMenus
     property string currentDateLabel
+
+    property int weekOffsetFrom: -1
+    property int lastWeekOffset: weekOffsetFrom
+    property int weekOffsetTo: 3
 
     allowedOrientations: Orientation.All
 
@@ -176,24 +181,34 @@ Page {
             console.log("[AccountsOverview] - getUserDataAvailable " + reply)
             userData = JSON.parse(reply)
             // get menu for current week
-            mensaMax.executeGetMenus(token, 0)
+            lastWeekOffset = weekOffsetFrom
+            weekMenus = [];
+            mensaMax.executeGetMenus(token, lastWeekOffset)
         }
 
         onGetMenusAvailable: {
             if (accountsPage.status !== PageStatus.Active) {
                 return
             }
-            console.log("[AccountsOverview] - getMenusAvailable " + reply)
-            currentWeekMenu = JSON.parse(reply)
-            currentDateLabel = dateLabel
-            showLoadingIndicator = false
-            pageStack.animatorPush(Qt.resolvedUrl("MenuOrderingPage.qml"), {
-                                       "token": token,
-                                       "menues": currentWeekMenu,
-                                       "dateLabel": currentDateLabel,
-                                       "balanceData": balanceData,
-                                       "userData": userData
-                                   })
+            console.log("[AccountsOverview] - getMenusAvailable " + reply + ", lastWeekOffset : " + lastWeekOffset)
+
+            if (lastWeekOffset < weekOffsetTo) {
+                currentWeekMenu = JSON.parse(reply)
+                weekMenus[lastWeekOffset] = currentWeekMenu;
+                lastWeekOffset++;
+                mensaMax.executeGetMenus(token, lastWeekOffset)
+            } else {
+                currentDateLabel = ""// dateLabel
+                showLoadingIndicator = false
+                pageStack.animatorPush(Qt.resolvedUrl("MenuOrderingPage.qml"), {
+                                           "token": token,
+                                           "menues": weekMenus/*currentWeekMenu*/,
+                                           "dateLabel": currentDateLabel,
+                                           "balanceData": balanceData,
+                                           "userData": userData
+                                       })
+            }
+
         }
 
         onRequestError: {

@@ -39,6 +39,8 @@ void MensaMax::executeLogin(const QString &project, const QString &location, con
     qDebug() << "MensaMax::executeLogin " << hostname;
 
     this->hostname = hostname;
+            //QString("mensaweb.de");
+            // ;
 
     QNetworkRequest request = prepareRequest(QString(ENDPOINT_LOGIN), QString());
 

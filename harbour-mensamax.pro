@@ -24,6 +24,7 @@ DISTFILES += qml/harbour-mensamax.qml \
     qml/components/AccountListItem.qml \
     qml/components/DateSelectionRow.qml \
     qml/components/FoodMenuItem.qml \
+    qml/components/MenuListItem.qml \
     qml/components/thirdparty/AppNotification.qml \
     qml/components/thirdparty/AppNotificationItem.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
