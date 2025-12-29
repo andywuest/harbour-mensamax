@@ -158,5 +158,20 @@
         <source>Balance %1 € / %2 €</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>CW</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MenuSelectionPage</name>
+    <message>
+        <source>Balance %1 € / %2 €</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Food order</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

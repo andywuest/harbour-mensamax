@@ -17,6 +17,7 @@ Page {
     property var userData
     property string dateLabel
     property bool showLoadingIndicator: false
+    property var selectableMenusPerDay: [] // array with one entry per day - contains list of selectable menus
 
     function populateDaysModel(daysWithMenu) {
         daysModel.clear()
@@ -30,14 +31,16 @@ Page {
 
     function populateDayMenuModel(menus) {
         var menuSelected = false;
+        // add orderd food
         for (var n = 0; n < menus.length; n++) {
             if (menus[n].ordered === true) {
                 menuSelected = true;
                 globalMenuModel.append(menus[n])
             }
         }
-        if (menuSelected === false) {
 
+        // no food ordered, add dummy entry
+        if (menuSelected === false) {
             var menuItem = {};
             menuItem.id = -1
             menuItem.price =
@@ -47,14 +50,23 @@ Page {
 
             menuItem.menuGroup = "";
             menuItem.starterNames = "";
-            menuItem.mainCourseNames = "No food ordered";
             menuItem.desertNames = "";
             menuItem.dateString = menus[0].dateString;
 
+            // holiday and vacations have special markers, we check them here
+            if (menus[0].starterNames === "SCHULFERIEN"
+                    || menus[0].starterNames === "FEIERTAG") {
+                menuItem.mainCourseNames = menus[0].starterNames;
+            } else {
+                menuItem.mainCourseNames = "No food ordered";
+            }
+
             globalMenuModel.append(menuItem)
 
-            console.log(".populateDayMenuModel: no menu selected - adding dummy");
+            console.log("[MenuOrderingPage] .populateDayMenuModel - menuitems: " + selectableMenusPerDay.length)
         }
+
+        selectableMenusPerDay.push(menus);
     }
 
     function populateUserName(userData) {
@@ -88,7 +100,8 @@ Page {
 
             if (daysWithMenu.length > 0) {
                 for (var i = 0; i < daysWithMenu.length; i++) { // iterate over days with menu
-                    var menus = Functions.getMenusForDay(daysWithMenu[i].listIndex, menues[m], "Week " + m)
+                    var calendarWeekPrefix = qsTr("CW") + " ";
+                    var menus = Functions.getMenusForDay(daysWithMenu[i].listIndex, menues[m], calendarWeekPrefix)
                     populateDayMenuModel(menus)
                 }
             }
@@ -133,7 +146,7 @@ Page {
             id: column
             width: parent.width
             spacing: Theme.paddingMedium
-            y: Theme.paddingLarge
+            // y: Theme.paddingLarge
 
             PageHeader {
                 id: menuOrderingPageHeader
@@ -220,13 +233,24 @@ Page {
                 delegate: MenuListItem {
                     id: menuListItemDelegate
 
+                    onClicked: {
+                        console.log("[MenuOrderingPage] index: " + index + ", date: " + model.dateString)
+                        var selectableMenus = selectableMenusPerDay[index];
+                        var dateString = model.dateString;
+
+                        pageStack.push(
+                                    Qt.resolvedUrl(
+                                        "MenuSelectionPage.qml"),
+                                        {
+                                            selectableMenus: selectableMenus,
+                                            dateString: dateString
+                                        })
+                    }
                 }
 
                 VerticalScrollDecorator {}
 
             }
-
-
 
             SilicaListView {
                 id: noIncidentsColumn
@@ -270,7 +294,8 @@ Page {
                     }
 
                     onClicked: {
-                        console.log("[MenuOrderingPage] " + index + ", " + model)
+                        console.log("[MenuOrderingPage] " + index);
+                        selectableMenusPerDay
                     }
                 }
             }

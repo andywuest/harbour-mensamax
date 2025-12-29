@@ -158,5 +158,20 @@
         <source>Balance %1 € / %2 €</source>
         <translation>Kontostand %1 € / %2 €</translation>
     </message>
+    <message>
+        <source>CW</source>
+        <translation>KW</translation>
+    </message>
+</context>
+<context>
+    <name>MenuSelectionPage</name>
+    <message>
+        <source>Balance %1 € / %2 €</source>
+        <translation type="unfinished">Kontostand %1 € / %2 €</translation>
+    </message>
+    <message>
+        <source>Food order</source>
+        <translation>Bestellung</translation>
+    </message>
 </context>
 </TS>
