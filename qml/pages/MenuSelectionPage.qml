@@ -8,25 +8,25 @@ import "../js/functions.js" as Functions
 Page {
     id: menuSelectionPage
 
-    property int weekOffset: 0
+//    property int weekOffset: 0
     property string token
     property var menues
-    property var balanceData
-    property var userData
+//    property var balanceData
+//    property var userData
     property string dateLabel
     property bool showLoadingIndicator: false
     property var selectableMenus;
     property string dateString;
 
-    function populateDaysModel(daysWithMenu) {
-        daysModel.clear()
-        for (var k = 0; k < daysWithMenu.length; k++) {
-            if (k == 0) {
-                daysWithMenu[k].selected = true
-            }
-            daysModel.append(daysWithMenu[k])
-        }
-    }
+//    function populateDaysModel(daysWithMenu) {
+//        daysModel.clear()
+//        for (var k = 0; k < daysWithMenu.length; k++) {
+//            if (k == 0) {
+//                daysWithMenu[k].selected = true
+//            }
+//            daysModel.append(daysWithMenu[k])
+//        }
+//    }
 
 //    function getMenusForDay(dayIndex, menues) {
 //        var result = []
@@ -80,103 +80,103 @@ Page {
         }
     }
 
-    function populateUserName(userData) {
-        var registeredPerson = userData.data.meineDaten.angemeldetePerson
-        menuOrderingPageHeader.title = registeredPerson.vorname + " " + registeredPerson.nachname;
-    }
+//    function populateUserName(userData) {
+//        var registeredPerson = userData.data.meineDaten.angemeldetePerson
+//        menuOrderingPageHeader.title = registeredPerson.vorname + " " + registeredPerson.nachname;
+//    }
 
-    function populateBalanceData(balanceData) {
-        if (balanceData && balanceData.data) {
-            var kontostand = balanceData.data.meinKontostand;
-            var balanceText = kontostand.gesamtKontostandAktuell + " € / " + kontostand.gesamtKontostandZukunft + " €";
-            menuOrderingPageHeader.description = qsTr("Balance %1 € / %2 €")
-                .arg(Functions.formatPrice(kontostand.gesamtKontostandAktuell))
-                .arg(Functions.formatPrice(kontostand.gesamtKontostandZukunft));
-        } else {
-            menuOrderingPageHeader.description = "-";
-        }
-    }
+//    function populateBalanceData(balanceData) {
+//        if (balanceData && balanceData.data) {
+//            var kontostand = balanceData.data.meinKontostand;
+//            var balanceText = kontostand.gesamtKontostandAktuell + " € / " + kontostand.gesamtKontostandZukunft + " €";
+//            menuOrderingPageHeader.description = qsTr("Balance %1 € / %2 €")
+//                .arg(Functions.formatPrice(kontostand.gesamtKontostandAktuell))
+//                .arg(Functions.formatPrice(kontostand.gesamtKontostandZukunft));
+//        } else {
+//            menuOrderingPageHeader.description = "-";
+//        }
+//    }
 
-    function populateWithMenus(menues, dateLabel) {
-        //console.log("get menus result handler : " + result);
-        dateSelectionRow.dateLabel = "" + dateLabel
+//    function populateWithMenus(menues, dateLabel) {
+//        //console.log("get menus result handler : " + result);
+//        dateSelectionRow.dateLabel = "" + dateLabel
 
-        //menues = JSON.parse(result)
+//        //menues = JSON.parse(result)
 
-        var daysWithMenu = Functions.getDaysWithMenu(menues)
-        console.log("[MenuOrderingPage] days with menu : " + JSON.stringify(
-                        daysWithMenu))
+//        var daysWithMenu = Functions.getDaysWithMenu(menues)
+//        console.log("[MenuOrderingPage] days with menu : " + JSON.stringify(
+//                        daysWithMenu))
 
-        populateDaysModel(daysWithMenu)
+//        populateDaysModel(daysWithMenu)
 
-//        var days = menues.data.meinSpeiseplan.length
-//        console.log("[MenuOrderingPage] : " + days + " days")
+////        var days = menues.data.meinSpeiseplan.length
+////        console.log("[MenuOrderingPage] : " + days + " days")
 
- //       const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+// //       const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-//        for (var i = 0; i < days; i++) {
-//            var menuDayItem = menues.data.meinSpeiseplan[i]
-//            if (menuDayItem.menues) {
-//                var numberOfMenus = (menuDayItem.menues.length)
-//                console.log("[MenuOrderingPage] date : " + menuDayItem.datum
-//                            + ", menus : " + numberOfMenus)
+////        for (var i = 0; i < days; i++) {
+////            var menuDayItem = menues.data.meinSpeiseplan[i]
+////            if (menuDayItem.menues) {
+////                var numberOfMenus = (menuDayItem.menues.length)
+////                console.log("[MenuOrderingPage] date : " + menuDayItem.datum
+////                            + ", menus : " + numberOfMenus)
 
-//                console.log(weekday[new Date(menuDayItem.datum).getDay()])
+////                console.log(weekday[new Date(menuDayItem.datum).getDay()])
 
-//                for (var j = 0; j < numberOfMenus; j++) {
-//                    var menuOfDay = menuDayItem.menues[j]
-//                    var menuItem = {}
-//                    menuItem.id = menuOfDay.id
-//                    menuItem.price = menuOfDay.meinPreis
-//                    menuItem.menuGroup = "-";
+////                for (var j = 0; j < numberOfMenus; j++) {
+////                    var menuOfDay = menuDayItem.menues[j]
+////                    var menuItem = {}
+////                    menuItem.id = menuOfDay.id
+////                    menuItem.price = menuOfDay.meinPreis
+////                    menuItem.menuGroup = "-";
 
-//                    if (menuOfDay.menugruppe) {
-//                        menuItem.menuGroup = menuOfDay.menugruppe.bezeichnung;
-//                    }
+////                    if (menuOfDay.menugruppe) {
+////                        menuItem.menuGroup = menuOfDay.menugruppe.bezeichnung;
+////                    }
 
-//                    menuItem.starter = "-";
-//                    if (menuOfDay.vorspeisen.length > 0) {
-//                        menuItem.starter = menuOfDay.vorspeisen[0].bezeichnung
-//                    }
+////                    menuItem.starter = "-";
+////                    if (menuOfDay.vorspeisen.length > 0) {
+////                        menuItem.starter = menuOfDay.vorspeisen[0].bezeichnung
+////                    }
 
-//                    if (menuOfDay.hauptspeisen.length > 0) {
-//                        menuItem.mainCourse = menuOfDay.hauptspeisen[0].bezeichnung
-//                    }
-//                    menuItem.desert = "-";
-//                    if (menuOfDay.nachspeisen.length > 0) {
-//                        menuItem.desert = menuOfDay.nachspeisen[0].bezeichnung
-//                    }
+////                    if (menuOfDay.hauptspeisen.length > 0) {
+////                        menuItem.mainCourse = menuOfDay.hauptspeisen[0].bezeichnung
+////                    }
+////                    menuItem.desert = "-";
+////                    if (menuOfDay.nachspeisen.length > 0) {
+////                        menuItem.desert = menuOfDay.nachspeisen[0].bezeichnung
+////                    }
 
-//                    console.log("[MenuOrderingPage] - menu " + JSON.stringify(
-//                                    menuItem))
-//                }
-//            }
+////                    console.log("[MenuOrderingPage] - menu " + JSON.stringify(
+////                                    menuItem))
+////                }
+////            }
+////        }
+
+//        if (daysWithMenu.length > 0) {
+//            var menus = Functions.getMenusForDay(daysWithMenu[0].listIndex, menues)
+//            populateDayMenuModel(menus)
+//        } else {
+//            var emptyMenus = [];
+//            populateDayMenuModel(emptyMenus)
 //        }
 
-        if (daysWithMenu.length > 0) {
-            var menus = Functions.getMenusForDay(daysWithMenu[0].listIndex, menues)
-            populateDayMenuModel(menus)
-        } else {
-            var emptyMenus = [];
-            populateDayMenuModel(emptyMenus)
-        }
 
-
-        // console.log("Menus : " + JSON.stringify(menus))
-        //        menuModel.clear();
-        //        for (var n = 0; n < menus.length; n++) {
-        //            menuModel.append(menus[n]);
-        //        }
-    }
+//        // console.log("Menus : " + JSON.stringify(menus))
+//        //        menuModel.clear();
+//        //        for (var n = 0; n < menus.length; n++) {
+//        //            menuModel.append(menus[n]);
+//        //        }
+//    }
 
     function errorResultHandler(result) {
         console.log("error result handler")
     }
 
-    function getMenuWithOffset(offsetChange) {
-        weekOffset += offsetChange
-        mensaMax.executeGetMenus(token, weekOffset)
-    }
+//    function getMenuWithOffset(offsetChange) {
+//        weekOffset += offsetChange
+//        mensaMax.executeGetMenus(token, weekOffset)
+//    }
 
     AppNotification {
         id: menuProblemNotification
@@ -205,7 +205,7 @@ Page {
         Column {
             id: column
             width: parent.width
-            spacing: Theme.paddingMedium
+            // spacing: Theme.paddingMedium
             // y: Theme.paddingLarge
 
             PageHeader {
@@ -214,13 +214,13 @@ Page {
                 description: dateString
             }
 
-            DateSelectionRow {
-                id: dateSelectionRow
-                width: parent.width - (2 * Theme.paddingMedium)
-                x: Theme.paddingMedium
-                dateLabel: ""
-                visible: false
-            }
+//            DateSelectionRow {
+//                id: dateSelectionRow
+//                width: parent.width - (2 * Theme.paddingMedium)
+//                x: Theme.paddingMedium
+//                dateLabel: ""
+//                visible: false
+//            }
 
 //            ViewPlaceholder {
 //                enabled: menuModel.count === 0;
@@ -270,8 +270,7 @@ Page {
 //            }
 
             SilicaListView {
-                id: noIncidentsColumn
-                visible: true
+                id: foodListView
 
                 anchors.left: parent.left
                 anchors.right: parent.right
