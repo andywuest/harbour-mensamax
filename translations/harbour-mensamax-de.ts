@@ -144,23 +144,23 @@
     </message>
 </context>
 <context>
-    <name>MenuOrderingPage</name>
-    <message>
-        <source>Logout</source>
-        <translation>Abmelden</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <extracomment>MenuOrderingPage about menu item</extracomment>
-        <translation>Über</translation>
-    </message>
+    <name>MenuListPage</name>
     <message>
         <source>Balance %1 € / %2 €</source>
-        <translation>Kontostand %1 € / %2 €</translation>
+        <translation type="unfinished">Kontostand %1 € / %2 €</translation>
     </message>
     <message>
         <source>CW</source>
-        <translation>KW</translation>
+        <translation type="unfinished">KW</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <extracomment>MenuListPage about menu item</extracomment>
+        <translation type="unfinished">Über</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation type="unfinished">Abmelden</translation>
     </message>
 </context>
 <context>

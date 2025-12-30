@@ -32,7 +32,7 @@ DISTFILES += qml/harbour-mensamax.qml \
     qml/pages/AboutPage.qml \
     qml/pages/AccountCreationDialog.qml \
     qml/pages/AccountsOverviewPage.qml \
-    qml/pages/MenuOrderingPage.qml \
+    qml/pages/MenuListPage.qml \
     qml/pages/MenuSelectionPage.qml \
     qml/pages/SecondPage.qml \
     qml/pages/icons/github.svg \

@@ -10,24 +10,24 @@ Page {
 
     backNavigation: false
 
-    property int weekOffset: 0
+    // property int weekOffset: 0
     property string token
     property var menues // array[weekOffset] -> data
     property var balanceData
     property var userData
-    property string dateLabel
+    // property string dateLabel
     property bool showLoadingIndicator: false
     property var selectableMenusPerDay: [] // array with one entry per day - contains list of selectable menus
 
-    function populateDaysModel(daysWithMenu) {
-        daysModel.clear()
-        for (var k = 0; k < daysWithMenu.length; k++) {
-            if (k == 0) {
-                daysWithMenu[k].selected = true
-            }
-            daysModel.append(daysWithMenu[k])
-        }
-    }
+//    function populateDaysModel(daysWithMenu) {
+//        daysModel.clear()
+//        for (var k = 0; k < daysWithMenu.length; k++) {
+//            if (k == 0) {
+//                daysWithMenu[k].selected = true
+//            }
+//            daysModel.append(daysWithMenu[k])
+//        }
+//    }
 
     function populateDayMenuModel(menus) {
         var menuSelected = false;
@@ -63,7 +63,7 @@ Page {
 
             globalMenuModel.append(menuItem)
 
-            console.log("[MenuOrderingPage] .populateDayMenuModel - menuitems: " + selectableMenusPerDay.length)
+            console.log("[MenuListPage] .populateDayMenuModel - menuitems: " + selectableMenusPerDay.length)
         }
 
         selectableMenusPerDay.push(menus);
@@ -71,31 +71,31 @@ Page {
 
     function populateUserName(userData) {
         var registeredPerson = userData.data.meineDaten.angemeldetePerson
-        menuOrderingPageHeader.title = registeredPerson.vorname + " " + registeredPerson.nachname;
+        menuListPageHeader.title = registeredPerson.vorname + " " + registeredPerson.nachname;
     }
 
     function populateBalanceData(balanceData) {
         if (balanceData && balanceData.data) {
             var kontostand = balanceData.data.meinKontostand;
             var balanceText = kontostand.gesamtKontostandAktuell + " € / " + kontostand.gesamtKontostandZukunft + " €";
-            menuOrderingPageHeader.description = qsTr("Balance %1 € / %2 €")
+            menuListPageHeader.description = qsTr("Balance %1 € / %2 €")
                 .arg(Functions.formatPrice(kontostand.gesamtKontostandAktuell))
                 .arg(Functions.formatPrice(kontostand.gesamtKontostandZukunft));
         } else {
-            menuOrderingPageHeader.description = "-";
+            menuListPageHeader.description = "-";
         }
     }
 
-    function populateWithMenus(menues, dateLabel) {
+    function populateWithMenus(menues/*, dateLabel*/) {
         //console.log("get menus result handler : " + result);
-        menuModel.clear()
+        // menuModel.clear()
 
-        dateSelectionRow.dateLabel = "" + dateLabel
+        // dateSelectionRow.dateLabel = "" + dateLabel
 
         // daysWithMenu list of day for which a menu can be selected
         for (var m = -1; m < 2; m++) { // iterate over week
             var daysWithMenu = Functions.getDaysWithMenu(menues[m])
-            console.log("[MenuOrderingPage] days with menu : " + JSON.stringify(
+            console.log("[MenuListPage] days with menu : " + JSON.stringify(
                             daysWithMenu))
 
             if (daysWithMenu.length > 0) {
@@ -113,10 +113,10 @@ Page {
         console.log("error result handler")
     }
 
-    function getMenuWithOffset(offsetChange) {
-        weekOffset += offsetChange
-        mensaMax.executeGetMenus(token, weekOffset)
-    }
+//    function getMenuWithOffset(offsetChange) {
+//        weekOffset += offsetChange
+//        mensaMax.executeGetMenus(token, weekOffset)
+//    }
 
     AppNotification {
         id: menuProblemNotification
@@ -132,7 +132,7 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
-                //: MenuOrderingPage about menu item
+                //: MenuListPage about menu item
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
@@ -146,67 +146,66 @@ Page {
             id: column
             width: parent.width
             spacing: Theme.paddingMedium
-            // y: Theme.paddingLarge
 
             PageHeader {
-                id: menuOrderingPageHeader
+                id: menuListPageHeader
             }
 
-            DateSelectionRow {
-                id: dateSelectionRow
-                width: parent.width - (2 * Theme.paddingMedium)
-                x: Theme.paddingMedium
-                dateLabel: ""
-                visible: false
-            }            
+//            DateSelectionRow {
+//                id: dateSelectionRow
+//                width: parent.width - (2 * Theme.paddingMedium)
+//                x: Theme.paddingMedium
+//                dateLabel: ""
+//                visible: false
+//            }
 
 //            ViewPlaceholder {
 //                enabled: menuModel.count === 0;
 //                text: qsTr("No lunch available for selection.")
 //            }
 
-            Row {
-                id: daySelectionRow
-                width: parent.width - (2 * Theme.paddingMedium)
-                spacing: Theme.paddingMedium
-                x: Theme.paddingMedium
-                visible: false
+//            Row {
+//                id: daySelectionRow
+//                width: parent.width - (2 * Theme.paddingMedium)
+//                spacing: Theme.paddingMedium
+//                x: Theme.paddingMedium
+//                visible: false
 
-                Repeater {
-                    id: dayRepeater
+//                Repeater {
+//                    id: dayRepeater
 
-                    model: ListModel {
-                        id: daysModel
-                    }
+//                    model: ListModel {
+//                        id: daysModel
+//                    }
 
-                    delegate: Button {
-                        id: buttonDelegate
-                        text: weekdayName
-                        width: (parent.width + 2 * Theme.paddingSmall
-                                - (2 * Theme.paddingSmall) * daysModel.count) / daysModel.count
-                        //height: 40
-                        backgroundColor: selected ? Theme.highlightBackgroundColor : Theme.backgroundGlowColor
-                        onClicked: {
-                            console.log(weekdayName + " clicked " + index + " - ")
+//                    delegate: Button {
+//                        id: buttonDelegate
+//                        text: weekdayName
+//                        width: (parent.width + 2 * Theme.paddingSmall
+//                                - (2 * Theme.paddingSmall) * daysModel.count) / daysModel.count
+//                        //height: 40
+//                        backgroundColor: selected ? Theme.highlightBackgroundColor : Theme.backgroundGlowColor
+//                        onClicked: {
+//                            console.log(weekdayName + " clicked " + index + " - ")
 
-                            for (var i = 0; i < daysModel.count; i++) {
-                                daysModel.get(i).selected = false
-                            }
+//                            for (var i = 0; i < daysModel.count; i++) {
+//                                daysModel.get(i).selected = false
+//                            }
 
-                            daysModel.get(index).selected = true
+//                            daysModel.get(index).selected = true
 
-                            var menus = Functions.getMenusForDay(model.listIndex, menues)
-                            console.log("Menus : " + JSON.stringify(menus))
-                            populateDayMenuModel(menus)
-                        }
-                    }
-                }
+//                            var menus = Functions.getMenusForDay(model.listIndex, menues)
+//                            console.log("Menus : " + JSON.stringify(menus))
+//                            populateDayMenuModel(menus)
+//                        }
+//                    }
+//                }
 
-                Component.onCompleted: {
-                    console.log("selecting first element")
-                    // daysModel.get(0).selected = true
-                }
-            }
+//                Component.onCompleted: {
+//                    console.log("selecting first element")
+//                    // daysModel.get(0).selected = true
+//                }
+//            }
 
             SilicaListView {
                 id: menuListView
@@ -215,7 +214,7 @@ Page {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: menuSelectionPage.height - menuOrderingPageHeader.height
+                height: menuSelectionPage.height - menuListPageHeader.height
                 clip: true
 
                 model: ListModel {
@@ -234,7 +233,7 @@ Page {
                     id: menuListItemDelegate
 
                     onClicked: {
-                        console.log("[MenuOrderingPage] index: " + index + ", date: " + model.dateString)
+                        console.log("[MenuListPage] index: " + index + ", date: " + model.dateString)
                         var selectableMenus = selectableMenusPerDay[index];
                         var dateString = model.dateString;
 
@@ -252,53 +251,53 @@ Page {
 
             }
 
-            SilicaListView {
-                id: noIncidentsColumn
-                visible: false
+//            SilicaListView {
+//                id: noIncidentsColumn
+//                visible: false
 
-                anchors.left: parent.left
-                anchors.right: parent.right
+//                anchors.left: parent.left
+//                anchors.right: parent.right
 
-                height: menuSelectionPage.height - menuOrderingPageHeader.height
-                //                        - incidentsHeader.height
-                //                        - Theme.paddingMedium
-                //                                width: parent.width
-                //                                anchors.left: parent.left
-                //                                anchors.right: parent.right
-                clip: true
+//                height: menuSelectionPage.height - menuListPageHeader.height
+//                //                        - incidentsHeader.height
+//                //                        - Theme.paddingMedium
+//                //                                width: parent.width
+//                //                                anchors.left: parent.left
+//                //                                anchors.right: parent.right
+//                clip: true
 
-                model: ListModel {
-                    id: menuModel
-                }
+//                model: ListModel {
+//                    id: menuModel
+//                }
 
-                delegate: ListItem {
-                    id: menuDelegate
+//                delegate: ListItem {
+//                    id: menuDelegate
 
-                    contentHeight: menuItem.height + (2 * Theme.paddingSmall)
-                    contentWidth: parent.width
+//                    contentHeight: menuItem.height + (2 * Theme.paddingSmall)
+//                    contentWidth: parent.width
 
-                    Item {
-                        id: menuItem
-                        height: foodMenuItem.height
-                        width: parent.width - (2 * Theme.paddingMedium)
-                        x: Theme.paddingMedium
-                        y: Theme.paddingSmall
+//                    Item {
+//                        id: menuItem
+//                        height: foodMenuItem.height
+//                        width: parent.width - (2 * Theme.paddingMedium)
+//                        x: Theme.paddingMedium
+//                        y: Theme.paddingSmall
 
-                        FoodMenuItem {
-                            id: foodMenuItem
-                            width: parent.width
-                            starter: starterNames
-                            mainCourse: mainCourseNames
-                            desert: desertNames
-                        }
-                    }
+//                        FoodMenuItem {
+//                            id: foodMenuItem
+//                            width: parent.width
+//                            starter: starterNames
+//                            mainCourse: mainCourseNames
+//                            desert: desertNames
+//                        }
+//                    }
 
-                    onClicked: {
-                        console.log("[MenuOrderingPage] " + index);
-                        selectableMenusPerDay
-                    }
-                }
-            }
+//                    onClicked: {
+//                        console.log("[MenuListPage] " + index);
+//                        selectableMenusPerDay
+//                    }
+//                }
+//            }
         }
     }
 
@@ -319,38 +318,38 @@ Page {
             if (menuSelectionPage.status !== PageStatus.Active) {
                 return;
             }
-            console.log("[MenuOrderingPage] - getMenusAvailable " + reply);
+            console.log("[MenuListPage] - getMenusAvailable " + reply);
             //menues = JSON.parse(reply);
             //populateWithMenus(menues, dateLabel);
             showLoadingIndicator = false
         }
 
         onRequestError: {
-            console.log("[MenuOrderingPage] - requestError " + errorMessage)
+            console.log("[MenuListPage] - requestError " + errorMessage)
             showLoadingIndicator = false
             menuProblemNotification.show(errorMessage)
         }
     }
 
-    Connections {
-        target: dateSelectionRow
+//    Connections {
+//        target: dateSelectionRow
 
-        onNextWeekClicked: {
-            console.log("[MenuOrderingPage] - next week");
-            showLoadingIndicator = true
-            getMenuWithOffset(offsetChange);
-        }
+//        onNextWeekClicked: {
+//            console.log("[MenuListPage] - next week");
+//            showLoadingIndicator = true
+//            getMenuWithOffset(offsetChange);
+//        }
 
-        onPreviousWeekClicked: {
-            console.log("[MenuOrderingPage] - previous week");
-            showLoadingIndicator = true
-            getMenuWithOffset(offsetChange);
-        }
-    }
+//        onPreviousWeekClicked: {
+//            console.log("[MenuListPage] - previous week");
+//            showLoadingIndicator = true
+//            getMenuWithOffset(offsetChange);
+//        }
+//    }
 
     Component.onCompleted: {
-        console.log("[MenuOrderingPage] init");
-        populateWithMenus(menues, dateLabel);
+        console.log("[MenuListPage] init");
+        populateWithMenus(menues/*, dateLabel*/);
         populateUserName(userData);
         populateBalanceData(balanceData);
     }

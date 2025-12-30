@@ -200,10 +200,10 @@ Page {
             } else {
                 currentDateLabel = ""// dateLabel
                 showLoadingIndicator = false
-                pageStack.animatorPush(Qt.resolvedUrl("MenuOrderingPage.qml"), {
+                pageStack.animatorPush(Qt.resolvedUrl("MenuListPage.qml"), {
                                            "token": token,
                                            "menues": weekMenus/*currentWeekMenu*/,
-                                           "dateLabel": currentDateLabel,
+                                           // "dateLabel": currentDateLabel,
                                            "balanceData": balanceData,
                                            "userData": userData
                                        })
