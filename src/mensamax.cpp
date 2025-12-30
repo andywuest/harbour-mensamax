@@ -166,6 +166,54 @@ void MensaMax::executeGetUserData(const QString &token) {
 
 }
 
+void MensaMax::executeUnsubscribeMeal(const QString &token, const long lunchId) {
+   qDebug() << "MensaMax::executeUnsubscribeMeal " << token;
+
+   QNetworkRequest request = prepareRequest(QString(), token);
+
+   const QString postData = QString(POST_UNSUBSCRIBE_MEAL).arg(lunchId);
+
+   qDebug() << "postData: " << postData;
+
+   QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
+   connect(reply,
+           SIGNAL(error(QNetworkReply::NetworkError)),
+           this,
+           SLOT(handleRequestError(QNetworkReply::NetworkError)));
+   connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+       reply->deleteLater();
+       QString response = QString(reply->readAll());
+       qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+       qDebug() << "response : " << response;
+       emit unsubscribeMealAvailable(QString("{done}")); // TODO result, lunchId
+   });
+}
+
+void MensaMax::executeSubscribeMeal(const QString &token, const long lunchId) {
+   qDebug() << "MensaMax::executesubscribeMeal " << token;
+
+   QNetworkRequest request = prepareRequest(QString(), token);
+
+   //  Date.now().toString() + Math.random().toString()
+   // "17671316573670.06000614433053819"
+   const QString idempotencyToken = QString("1231231"); // TODO dynamic
+   const QString postData = QString(POST_SUBSCRIBE_MEAL).arg(lunchId).arg(idempotencyToken);
+
+   qDebug() << "postData: " << postData;
+
+   QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
+   connect(reply,
+           SIGNAL(error(QNetworkReply::NetworkError)),
+           this,
+           SLOT(handleRequestError(QNetworkReply::NetworkError)));
+   connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+       reply->deleteLater();
+       QString response = QString(reply->readAll());
+       qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+       qDebug() << "response : " << response;
+       emit subscribeMealAvailable(QString("{done}"));  // TODO result, lunchId
+   });
+}
 
 void MensaMax::executeGetMenus(const QString &token, const int weekOffset) {
     qDebug() << "MensaMax::executeGetMenus token: " << token << ", weekOffset : " << weekOffset;

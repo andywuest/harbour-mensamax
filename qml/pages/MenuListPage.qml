@@ -241,8 +241,10 @@ Page {
                                     Qt.resolvedUrl(
                                         "MenuSelectionPage.qml"),
                                         {
-                                            selectableMenus: selectableMenus,
-                                            dateString: dateString
+                                            "selectableMenus": selectableMenus,
+                                            "dateString": dateString,
+                                            "token": token
+
                                         })
                     }
                 }

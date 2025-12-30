@@ -54,5 +54,33 @@ const char POST_GET_MENUS_DATA[] = R"(
 }
 )";
 
+// %1: lunchId
+// %2: Date.now().toString() + Math.random().toString()
+const char POST_SUBSCRIBE_MEAL[] = R"(
+{
+  "operationName": "essenBestellen",
+  "variables": {
+    "menueId": %1,
+    "ausgabeortId": null,
+    "anzahl": 1,
+    "idempotencyToken": %2
+  },
+  "query": "mutation essenBestellen($menueId: ID!, $anzahl: Int, $ausgabeortId: Int, $idempotencyToken: String!) { meinEssenBestellen(   menueId: $menueId   anzahl: $anzahl   ausgabeortId: $ausgabeortId   idempotencyToken: $idempotencyToken) {   menue { id meineBestellung { anzahl ausgabeort {   id   bezeichnung   __typename } anzahlAusgegeben __typename } __typename   }   error   message   trace   __typename }}"
+}
+
+)";
+
+// %1: lunchId
+const char POST_UNSUBSCRIBE_MEAL[] = R"(
+{
+  "operationName":"essenAbbestellen",
+  "variables": {
+    "menueId": %1
+  },
+  "query": "mutation essenAbbestellen($menueId: ID!) { meinEssenAbbestellen(menueId: $menueId) { menue { id meineBestellung { anzahl ausgabeort {   id   bezeichnung   __typename } anzahlAusgegeben __typename } __typename   }  error   message   trace   __typename }}"
+}
+
+)";
+
 
 #endif // CONSTANTS_H

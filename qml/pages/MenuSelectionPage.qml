@@ -293,6 +293,23 @@ Page {
                     contentHeight: menuItem.height + (2 * Theme.paddingSmall)
                     contentWidth: parent.width
 
+                    menu: ContextMenu {
+                        MenuItem {
+                            //: MenuSelectionpage remove lunch subscription item
+                            text: menuModel.get(index).ordered ? qsTr("Unsubscribe Meal") : qsTr("Subscribe Meal")
+                            onClicked: {
+                                var tmpModel = menuModel.get(index);
+                                if (tmpModel.ordered) {
+                                    console.log("[MenuOrderingPage] removing subscription for meal with id : " + tmpModel.id);
+                                    // mensaMax.executeUnsubscribeMeal(token, model.id);
+                                } else {
+                                    console.log("[MenuOrderingPage] subscribe to meal with id : " + tmpModel.id);
+                                    // mensaMax.executeSubscribeMeal(token, model.id);
+                                }
+                            }
+                        }
+                    }
+
                     Item {
                         id: menuItem
                         height: foodMenuItem.height
@@ -309,9 +326,11 @@ Page {
                         }
                     }
 
-                    onClicked: {
-                        console.log("[MenuOrderingPage] index: " + index + ", menu id : " + model.id)
-                    }
+//                    onClicked: {
+//                        console.log("[MenuOrderingPage] index: " + index + ", menu id : " + model.id)
+//                        showLoadingIndicator = true
+//                        // mensaMax.executeUnsubscribeMeal(token, model.id);
+//                    }
                 }
             }
         }
@@ -327,25 +346,31 @@ Page {
         width: parent.width
     }
 
-//    Connections {
-//        target: mensaMax
+    Connections {
+        target: mensaMax
 
-//        onGetMenusAvailable: {
-//            if (menuSelectionPage.status !== PageStatus.Active) {
-//                return;
-//            }
-//            console.log("[MenuOrderingPage] - getMenusAvailable " + reply);
+        onUnsubscribeMealAvailable: {
+            console.log("[MenuOrderingPage] - unsubscribeMealAvailable " + reply);
+            // TODO properly handle result
 //            menues = JSON.parse(reply);
 //            populateWithMenus(menues, dateLabel);
-//            showLoadingIndicator = false
-//        }
+            showLoadingIndicator = false
+        }
 
-//        onRequestError: {
-//            console.log("[MenuOrderingPage] - requestError " + errorMessage)
-//            showLoadingIndicator = false
-//            menuProblemNotification.show(errorMessage)
-//        }
-//    }
+        onSubscribeMealAvailable: {
+            console.log("[MenuOrderingPage] - subscribeMealAvailable " + reply);
+            // TODO properly handle result
+//            menues = JSON.parse(reply);
+//            populateWithMenus(menues, dateLabel);
+            showLoadingIndicator = false
+        }
+
+        onRequestError: {
+            console.log("[MenuOrderingPage] - requestError " + errorMessage)
+            showLoadingIndicator = false
+            menuProblemNotification.show(errorMessage)
+        }
+    }
 
 //    Connections {
 //        target: dateSelectionRow

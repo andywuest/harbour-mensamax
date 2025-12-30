@@ -18,6 +18,8 @@ public:
     Q_INVOKABLE void executeGetBalance(const QString &token);
     Q_INVOKABLE void executeGetUserData(const QString &token);
     Q_INVOKABLE void executeGetMenus(const QString &token, const int weekOffset); // TODO dates
+    Q_INVOKABLE void executeSubscribeMeal(const QString &token, const long lunchId);
+    Q_INVOKABLE void executeUnsubscribeMeal(const QString &token, const long lunchId);
 
 signals:
     // signals for the qml part
@@ -25,6 +27,8 @@ signals:
     Q_SIGNAL void getBalanceAvailable(const QString &reply);
     Q_SIGNAL void getUserDataAvailable(const QString &reply);
     Q_SIGNAL void getMenusAvailable(const QString &reply, const QString dateLabel);
+    Q_SIGNAL void subscribeMealAvailable(const QString &reply);
+    Q_SIGNAL void unsubscribeMealAvailable(const QString &reply);
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 private:

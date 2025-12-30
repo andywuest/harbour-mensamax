@@ -169,5 +169,14 @@
         <source>Food order</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Unsubscribe Meal</source>
+        <extracomment>MenuSelectionpage remove lunch subscription item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subscribe Meal</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
