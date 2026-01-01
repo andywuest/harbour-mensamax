@@ -4,6 +4,8 @@
 
 #include <QThread>
 #include <QUrl>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 MensaMax::MensaMax(QObject *parent) : QObject(parent), networkAccessManager(new QNetworkAccessManager(this))
   , networkConfigurationManager(new QNetworkConfigurationManager(this))
@@ -180,12 +182,16 @@ void MensaMax::executeUnsubscribeMeal(const QString &token, const long lunchId) 
            SIGNAL(error(QNetworkReply::NetworkError)),
            this,
            SLOT(handleRequestError(QNetworkReply::NetworkError)));
-   connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+   connect(reply, &QNetworkReply::finished, this, [this, reply, lunchId]() {
        reply->deleteLater();
        QString response = QString(reply->readAll());
        qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
        qDebug() << "response : " << response;
-       emit unsubscribeMealAvailable(QString("{done}")); // TODO result, lunchId
+       QJsonObject root;
+       root["success"] = true;
+       root["lunchId"] = QJsonValue((qint64) lunchId);
+       QJsonDocument doc(root);
+       emit unsubscribeMealAvailable(QString::fromUtf8(doc.toJson()));
    });
 }
 

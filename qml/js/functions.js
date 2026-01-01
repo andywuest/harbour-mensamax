@@ -95,7 +95,7 @@ function getMenusForDay(dayIndex, weekMenu, groupingLabel) {
 }
 
 function formatPrice(price) {
-    console.log("[.formatPrice] price to render : " + price)
+    // console.log("[.formatPrice] price to render : " + price)
     return Number(price).toLocaleString(Qt.locale(), 'f', 2);
 }
 

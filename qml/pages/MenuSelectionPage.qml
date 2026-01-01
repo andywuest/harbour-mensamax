@@ -17,6 +17,7 @@ Page {
     property bool showLoadingIndicator: false
     property var selectableMenus;
     property string dateString;
+    signal menuUnsubscribed(int lunchId);
 
 //    function populateDaysModel(daysWithMenu) {
 //        daysModel.clear()
@@ -31,7 +32,7 @@ Page {
 //    function getMenusForDay(dayIndex, menues) {
 //        var result = []
 //        if (dayIndex >= menues.data.meinSpeiseplan.length) {
-//            console.log("[MenuOrderingPage] - menu not available for index " + dayIndex)
+//            console.log("[MenuSelectionPage] - menu not available for index " + dayIndex)
 //            return result
 //        }
 //        var menuDayItem = menues.data.meinSpeiseplan[dayIndex]
@@ -77,6 +78,17 @@ Page {
         menuModel.clear()
         for (var n = 0; n < menus.length; n++) {
             menuModel.append(menus[n])
+        }
+    }
+
+    function updateMenuSubscriptionState(menus, lunchId, ordered) {
+        for (var n = 0; n < menus.length; n++) {
+            if (menus[n].id === lunchId) {
+                console.log("[MenuSelectionPage] .updateMenuSubscriptionState : updating ordered state for lunchId " + lunchId +
+                            " to ordered = " + ordered);
+                menus[n].ordered = ordered;
+                menuModel.append(menus[n])
+            }
         }
     }
 
@@ -209,7 +221,7 @@ Page {
             // y: Theme.paddingLarge
 
             PageHeader {
-                id: menuOrderingPageHeader
+                id: menuSelectionPageHeader
                 title: qsTr("Food order");
                 description: dateString
             }
@@ -275,7 +287,7 @@ Page {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: menuSelectionPage.height - menuOrderingPageHeader.height
+                height: menuSelectionPage.height - menuSelectionPageHeader.height
                 //                        - incidentsHeader.height
                 //                        - Theme.paddingMedium
                 //                                width: parent.width
@@ -296,14 +308,14 @@ Page {
                     menu: ContextMenu {
                         MenuItem {
                             //: MenuSelectionpage remove lunch subscription item
-                            text: menuModel.get(index).ordered ? qsTr("Unsubscribe Meal") : qsTr("Subscribe Meal")
+                            text: (menuModel.get(index) && menuModel.get(index).ordered) ? qsTr("Unsubscribe Meal") : qsTr("Subscribe Meal")
                             onClicked: {
                                 var tmpModel = menuModel.get(index);
                                 if (tmpModel.ordered) {
-                                    console.log("[MenuOrderingPage] removing subscription for meal with id : " + tmpModel.id);
-                                    // mensaMax.executeUnsubscribeMeal(token, model.id);
+                                    console.log("[MenuSelectionPage] removing subscription for meal with id : " + tmpModel.id);
+                                    mensaMax.executeUnsubscribeMeal(token, model.id);
                                 } else {
-                                    console.log("[MenuOrderingPage] subscribe to meal with id : " + tmpModel.id);
+                                    console.log("[MenuSelectionPage] subscribe to meal with id : " + tmpModel.id);
                                     // mensaMax.executeSubscribeMeal(token, model.id);
                                 }
                             }
@@ -327,7 +339,7 @@ Page {
                     }
 
 //                    onClicked: {
-//                        console.log("[MenuOrderingPage] index: " + index + ", menu id : " + model.id)
+//                        console.log("[MenuSelectionPage] index: " + index + ", menu id : " + model.id)
 //                        showLoadingIndicator = true
 //                        // mensaMax.executeUnsubscribeMeal(token, model.id);
 //                    }
@@ -350,15 +362,18 @@ Page {
         target: mensaMax
 
         onUnsubscribeMealAvailable: {
-            console.log("[MenuOrderingPage] - unsubscribeMealAvailable " + reply);
-            // TODO properly handle result
-//            menues = JSON.parse(reply);
-//            populateWithMenus(menues, dateLabel);
+            console.log("[MenuSelectionPage] - unsubscribeMealAvailable " + reply);
+            var result = JSON.parse(reply);
+            if (result.success) {
+                updateMenuSubscriptionState(selectableMenus, result.lunchId, false)
+                menuUnsubscribed(result.lunchId);
+                populateDayMenuModel(selectableMenus)
+            }
             showLoadingIndicator = false
         }
 
         onSubscribeMealAvailable: {
-            console.log("[MenuOrderingPage] - subscribeMealAvailable " + reply);
+            console.log("[MenuSelectionPage] - subscribeMealAvailable " + reply);
             // TODO properly handle result
 //            menues = JSON.parse(reply);
 //            populateWithMenus(menues, dateLabel);
@@ -366,7 +381,7 @@ Page {
         }
 
         onRequestError: {
-            console.log("[MenuOrderingPage] - requestError " + errorMessage)
+            console.log("[MenuSelectionPage] - requestError " + errorMessage)
             showLoadingIndicator = false
             menuProblemNotification.show(errorMessage)
         }
@@ -376,13 +391,13 @@ Page {
 //        target: dateSelectionRow
 
 //        onNextWeekClicked: {
-//            console.log("[MenuOrderingPage] - next week");
+//            console.log("[MenuSelectionPage] - next week");
 //            showLoadingIndicator = true
 //            getMenuWithOffset(offsetChange);
 //        }
 
 //        onPreviousWeekClicked: {
-//            console.log("[MenuOrderingPage] - previous week");
+//            console.log("[MenuSelectionPage] - previous week");
 //            showLoadingIndicator = true
 //            getMenuWithOffset(offsetChange);
 //        }

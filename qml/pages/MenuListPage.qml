@@ -35,6 +35,7 @@ Page {
         for (var n = 0; n < menus.length; n++) {
             if (menus[n].ordered === true) {
                 menuSelected = true;
+                menus[n].hasSelectableMenu = true;
                 globalMenuModel.append(menus[n])
             }
         }
@@ -43,7 +44,7 @@ Page {
         if (menuSelected === false) {
             var menuItem = {};
             menuItem.id = -1
-            menuItem.price =
+            // menuItem.price =
             menuItem.ordered = false
             menuItem.menuGroup = "-";
             menuItem.week = menus[0].week;
@@ -57,8 +58,10 @@ Page {
             if (menus[0].starterNames === "SCHULFERIEN"
                     || menus[0].starterNames === "FEIERTAG") {
                 menuItem.mainCourseNames = menus[0].starterNames;
+                menuItem.hasSelectableMenu = false;
             } else {
                 menuItem.mainCourseNames = "No food ordered";
+                menuItem.hasSelectableMenu = true;
             }
 
             globalMenuModel.append(menuItem)
@@ -86,7 +89,10 @@ Page {
         }
     }
 
-    function populateWithMenus(menues/*, dateLabel*/) {
+    function populateWithMenus(menues, lunchId, ordered) {
+        globalMenuModel.clear();
+        selectableMenusPerDay = [];
+
         //console.log("get menus result handler : " + result);
         // menuModel.clear()
 
@@ -102,11 +108,33 @@ Page {
                 for (var i = 0; i < daysWithMenu.length; i++) { // iterate over days with menu
                     var calendarWeekPrefix = qsTr("CW") + " ";
                     var menus = Functions.getMenusForDay(daysWithMenu[i].listIndex, menues[m], calendarWeekPrefix)
+                    if (lunchId) {
+                        for (var n = 0; n < menus.length; n++) {
+                            if (menus[n].id === lunchId) {
+                                console.log("[MenuListPage] .populateWithMenus: lunchId ordered state modification for " + lunchId);
+                                menus[n].ordered = ordered;
+                            }
+                        }
+                    }
                     populateDayMenuModel(menus)
                 }
             }
         }
+    }
 
+    function updateMenuUnsubscribed(lunchId) {
+        console.log("[MenuListPage] .updateMenuUnsubscribed: lunch with id " + lunchId + " unsubscribed");
+        populateWithMenus(menues, lunchId, false)
+//        globalMenuModel.clear();
+//        for (var i = 0; i < selectableMenusPerDay.length; i++) {
+//            for (var j = 0; j < selectableMenusPerDay[i].length; j++) {
+//                if (selectableMenusPerDay[i][j].id === lunchId) {
+//                    selectableMenusPerDay[i][j].ordered = false;
+//                    console.log("[MenuListPage] .updateMenuUnsubscribed: updating ordered for lunch with id " + lunchId + " to false");
+//                    populateDayMenuModel(selectableMenusPerDay[i][j]);
+//                }
+//            }
+//        }
     }
 
     function errorResultHandler(result) {
@@ -237,15 +265,18 @@ Page {
                         var selectableMenus = selectableMenusPerDay[index];
                         var dateString = model.dateString;
 
-                        pageStack.push(
-                                    Qt.resolvedUrl(
-                                        "MenuSelectionPage.qml"),
-                                        {
-                                            "selectableMenus": selectableMenus,
-                                            "dateString": dateString,
-                                            "token": token
+                        if (model.hasSelectableMenu) {
+                            var menuSelectionPage = pageStack.push(
+                                        Qt.resolvedUrl(
+                                            "MenuSelectionPage.qml"),
+                                            {
+                                                "selectableMenus": selectableMenus,
+                                                "dateString": dateString,
+                                                "token": token
 
-                                        })
+                                            });
+                            menuSelectionPage.menuUnsubscribed.connect(updateMenuUnsubscribed);
+                        }
                     }
                 }
 
