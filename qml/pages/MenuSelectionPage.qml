@@ -368,6 +368,8 @@ Page {
                 updateMenuSubscriptionState(selectableMenus, result.lunchId, false)
                 menuUnsubscribed(result.lunchId);
                 populateDayMenuModel(selectableMenus)
+            } else {
+                menuProblemNotification.show(result.message);
             }
             showLoadingIndicator = false
         }

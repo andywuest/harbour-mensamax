@@ -2,299 +2,332 @@
 #include "constants.h"
 #include "httpresponse.h"
 
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QThread>
 #include <QUrl>
-#include <QJsonObject>
-#include <QJsonDocument>
 
-MensaMax::MensaMax(QObject *parent) : QObject(parent), networkAccessManager(new QNetworkAccessManager(this))
-  , networkConfigurationManager(new QNetworkConfigurationManager(this))
-  , settings("harbour-mensamax", "settings") {
+MensaMax::MensaMax(QObject *parent)
+    : QObject(parent), networkAccessManager(new QNetworkAccessManager(this)),
+      networkConfigurationManager(new QNetworkConfigurationManager(this)),
+      settings("harbour-mensamax", "settings") {}
+
+QNetworkRequest MensaMax::prepareRequest(const QString &endpoint,
+                                         const QString &token) {
+  qDebug() << "MensaMax::prepareRequest " << endpoint;
+
+  QString requestUrl = QString(BASE_URL).arg(this->hostname) + endpoint;
+  QString cookieValue = QString(COOKIE_VALUE).arg(this->hostname);
+  QUrl url = QUrl(requestUrl);
+  QNetworkRequest request(url);
+
+  qDebug() << "token: " << token;
+  qDebug() << "url: " << requestUrl;
+  qDebug() << "cookie value: " << cookieValue;
+
+  request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+  request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+  request.setRawHeader("Accept", MIME_TYPE_JSON);
+  request.setRawHeader("Cookie", cookieValue.toUtf8());
+
+  if (!token.isEmpty()) {
+    request.setRawHeader("Authorization",
+                         QString("Bearer ").append(token).toUtf8());
+  }
+
+  return request;
 }
 
-QNetworkRequest  MensaMax::prepareRequest(const QString &endpoint, const QString &token) {
-    qDebug() << "MensaMax::prepareRequest " << endpoint;
+void MensaMax::executeLogin(const QString &project, const QString &location,
+                            const QString &userName, const QString &password,
+                            const QString &hostname) {
+  qDebug() << "MensaMax::executeLogin " << userName;
+  qDebug() << "MensaMax::executeLogin " << hostname;
 
-    QString requestUrl = QString(BASE_URL).arg(this->hostname) + endpoint;
-    QString cookieValue = QString(COOKIE_VALUE).arg(this->hostname);
-    QUrl url = QUrl(requestUrl);
-    QNetworkRequest request(url);
+  this->hostname = hostname;
+  // QString("mensaweb.de");
+  //  ;
 
-    qDebug() << "token: " << token;
-    qDebug() << "url: " << requestUrl;
-    qDebug() << "cookie value: " << cookieValue;
+  QNetworkRequest request = prepareRequest(QString(ENDPOINT_LOGIN), QString());
 
-    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
-    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
-    request.setRawHeader("Accept", MIME_TYPE_JSON);
-    request.setRawHeader("Cookie", cookieValue.toUtf8());
+  const QString postData =
+      QString(POST_BODY_LOGIN).arg(project, userName, password, location);
 
-    if (!token.isEmpty()) {
-        request.setRawHeader("Authorization", QString("Bearer ").append(token).toUtf8());
-    }
+  qDebug() << "postData: " << postData;
 
-    return request;
-}
+  QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
 
-void MensaMax::executeLogin(const QString &project, const QString &location, const QString &userName, const QString &password, const QString &hostname) {
-    qDebug() << "MensaMax::executeLogin " << userName;
-    qDebug() << "MensaMax::executeLogin " << hostname;
-
-    this->hostname = hostname;
-            //QString("mensaweb.de");
-            // ;
-
-    QNetworkRequest request = prepareRequest(QString(ENDPOINT_LOGIN), QString());
-
-    const QString postData = QString(POST_BODY_LOGIN).arg(project, userName, password, location);
-
-    qDebug() << "postData: " << postData;
-
-    QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
-
-//    connect(reply,
-//            SIGNAL(error(QNetworkReply::NetworkError)),
-//            this,
-//            SLOT(handleRequestError(QNetworkReply::NetworkError)));
-    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
-        onExecuteLogin(reply);
-//        reply->deleteLater();
-//        QString response = QString(reply->readAll());
-//        qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-//        qDebug() << "response : " << response;
-//        emit loginAvailable(response);
-    });
+  //    connect(reply,
+  //            SIGNAL(error(QNetworkReply::NetworkError)),
+  //            this,
+  //            SLOT(handleRequestError(QNetworkReply::NetworkError)));
+  connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+    onExecuteLogin(reply);
+    //        reply->deleteLater();
+    //        QString response = QString(reply->readAll());
+    //        qDebug() << "return code : " <<
+    //        reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+    //        qDebug() << "response : " << response;
+    //        emit loginAvailable(response);
+  });
 }
 
 void MensaMax::onExecuteLogin(QNetworkReply *reply) {
-    qDebug() << "MensaMax::onExecuteLogin ";
+  qDebug() << "MensaMax::onExecuteLogin ";
+  reply->deleteLater();
+
+  auto response = HttpResponse(reply);
+
+  if (response.hasNetworkError()) {
+    return emit requestError("Return code: " + response.errorString());
+  }
+
+  int code = response.statusCode();
+  if (code != 200) { // TODO constant
+    return emit requestError("Return code: " + response.errorString());
+  }
+
+  qDebug() << "login result : " << QString(response.content());
+
+  emit loginAvailable(QString(response.content()));
+}
+
+void MensaMax::executeGetBalance(const QString &token) {
+  qDebug() << "MensaMax::executeGetBalance " << token;
+
+  //    QString requestUrl = QString(BASE_URL);
+  //    QUrl url = QUrl(requestUrl);
+  //    QNetworkRequest request(url);
+
+  //    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+  //    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+  //    request.setRawHeader("Accept", MIME_TYPE_JSON);
+  //    request.setRawHeader("Authorization", QString("Bearer
+  //    ").append(token).toUtf8()); request.setRawHeader("Cookie",
+  //    "mensamax_superglue=https://mensahaus.de;");
+
+  QNetworkRequest request = prepareRequest(QString(), token);
+
+  const QString postData = QString(POST_GET_BALANCE);
+
+  qDebug() << "postData: " << postData;
+
+  QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
+
+  connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this,
+          SLOT(handleRequestError(QNetworkReply::NetworkError)));
+  connect(reply, &QNetworkReply::finished, this, [this, reply]() {
     reply->deleteLater();
 
     auto response = HttpResponse(reply);
 
     if (response.hasNetworkError()) {
-        return emit requestError("Return code: " + response.errorString());
+      return emit requestError("Return code: " + response.errorString());
     }
 
-    int code = response.statusCode();
-    if (code != 200) { // TODO constant
-        return emit requestError("Return code: " + response.errorString());
+    if (response.hasGraphQLError()) {
+      emit getBalanceAvailable("{}");
+      return emit requestError("Return code: graphQL Error ");
     }
 
-    qDebug() << "login result : " << QString(response.content());
-
-    emit loginAvailable(QString(response.content()));
-}
-
-void MensaMax::executeGetBalance(const QString &token) {
-    qDebug() << "MensaMax::executeGetBalance " << token;
-
-//    QString requestUrl = QString(BASE_URL);
-//    QUrl url = QUrl(requestUrl);
-//    QNetworkRequest request(url);
-
-//    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
-//    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
-//    request.setRawHeader("Accept", MIME_TYPE_JSON);
-//    request.setRawHeader("Authorization", QString("Bearer ").append(token).toUtf8());
-//    request.setRawHeader("Cookie", "mensamax_superglue=https://mensahaus.de;");
-
-    QNetworkRequest request = prepareRequest(QString(), token);
-
-    const QString postData = QString(POST_GET_BALANCE);
-
-    qDebug() << "postData: " << postData;
-
-    QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
-
-    connect(reply,
-            SIGNAL(error(QNetworkReply::NetworkError)),
-            this,
-            SLOT(handleRequestError(QNetworkReply::NetworkError)));
-    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
-        reply->deleteLater();
-
-        auto response = HttpResponse(reply);
-
-        if (response.hasNetworkError()) {
-            return emit requestError("Return code: " + response.errorString());
-        }
-
-        if (response.hasGraphQLError()) {
-            emit getBalanceAvailable("{}");
-            return emit requestError("Return code: graphQL Error ");
-        }
-
-        QString responseData = QString(response.content());
-        qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-        qDebug() << "response : " << responseData;
-        emit getBalanceAvailable(responseData);
-    });
-
+    QString responseData = QString(response.content());
+    qDebug() << "return code : "
+             << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
+                    .toString();
+    qDebug() << "response : " << responseData;
+    emit getBalanceAvailable(responseData);
+  });
 }
 
 void MensaMax::executeGetUserData(const QString &token) {
-    qDebug() << "MensaMax::executeGetUserData " << token;
+  qDebug() << "MensaMax::executeGetUserData " << token;
 
-//    QString requestUrl = QString(BASE_URL);
-//    QUrl url = QUrl(requestUrl);
-//    QNetworkRequest request(url);
+  //    QString requestUrl = QString(BASE_URL);
+  //    QUrl url = QUrl(requestUrl);
+  //    QNetworkRequest request(url);
 
-//    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
-//    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
-//    request.setRawHeader("Accept", MIME_TYPE_JSON);
-//    request.setRawHeader("Authorization", QString("Bearer ").append(token).toUtf8());
-//    request.setRawHeader("Cookie", "mensamax_superglue=https://mensahaus.de;");
+  //    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+  //    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+  //    request.setRawHeader("Accept", MIME_TYPE_JSON);
+  //    request.setRawHeader("Authorization", QString("Bearer
+  //    ").append(token).toUtf8()); request.setRawHeader("Cookie",
+  //    "mensamax_superglue=https://mensahaus.de;");
 
-    QNetworkRequest request = prepareRequest(QString(), token);
+  QNetworkRequest request = prepareRequest(QString(), token);
 
-    const QString postData = QString(POST_GET_USER_DATA);
+  const QString postData = QString(POST_GET_USER_DATA);
 
-    qDebug() << "postData: " << postData;
+  qDebug() << "postData: " << postData;
 
-    QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
+  QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
 
-    connect(reply,
-            SIGNAL(error(QNetworkReply::NetworkError)),
-            this,
-            SLOT(handleRequestError(QNetworkReply::NetworkError)));
-    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
-        reply->deleteLater();
-        QString response = QString(reply->readAll());
-        qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-        qDebug() << "response : " << response;
-        emit getUserDataAvailable(response);
-    });
-
+  connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this,
+          SLOT(handleRequestError(QNetworkReply::NetworkError)));
+  connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+    reply->deleteLater();
+    QString response = QString(reply->readAll());
+    qDebug() << "return code : "
+             << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
+                    .toString();
+    qDebug() << "response : " << response;
+    emit getUserDataAvailable(response);
+  });
 }
 
-void MensaMax::executeUnsubscribeMeal(const QString &token, const long lunchId) {
-   qDebug() << "MensaMax::executeUnsubscribeMeal " << token;
+void MensaMax::executeUnsubscribeMeal(const QString &token,
+                                      const long lunchId) {
+  qDebug() << "MensaMax::executeUnsubscribeMeal " << token;
 
-   QNetworkRequest request = prepareRequest(QString(), token);
+  QNetworkRequest request = prepareRequest(QString(), token);
 
-   const QString postData = QString(POST_UNSUBSCRIBE_MEAL).arg(lunchId);
+  const QString postData = QString(POST_UNSUBSCRIBE_MEAL).arg(lunchId);
 
-   qDebug() << "postData: " << postData;
+  qDebug() << "postData: " << postData;
 
-   QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
-   connect(reply,
-           SIGNAL(error(QNetworkReply::NetworkError)),
-           this,
-           SLOT(handleRequestError(QNetworkReply::NetworkError)));
-   connect(reply, &QNetworkReply::finished, this, [this, reply, lunchId]() {
-       reply->deleteLater();
-       QString response = QString(reply->readAll());
-       qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-       qDebug() << "response : " << response;
-       QJsonObject root;
-       root["success"] = true;
-       root["lunchId"] = QJsonValue((qint64) lunchId);
-       QJsonDocument doc(root);
-       emit unsubscribeMealAvailable(QString::fromUtf8(doc.toJson()));
-   });
+  QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
+  connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this,
+          SLOT(handleRequestError(QNetworkReply::NetworkError)));
+  connect(reply, &QNetworkReply::finished, this, [this, reply, lunchId]() {
+    reply->deleteLater();
+    QString response = QString(reply->readAll());
+    qDebug() << "return code : "
+             << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
+                    .toString();
+    qDebug() << "response : " << response;
+
+    bool success = true;
+    QString message = QString("");
+    const QJsonDocument responseDoc =
+        QJsonDocument::fromJson(response.toUtf8());
+    if (responseDoc.isObject()) {
+      QJsonObject root = responseDoc.object();
+      QJsonObject dataNode = root.value("data").toObject();
+      if (!dataNode.isEmpty()) {
+        QJsonObject orderNode =
+            dataNode.value("meinEssenAbbestellen").toObject();
+        if (!orderNode.isEmpty()) {
+          success = !orderNode.value("error").toBool(false);
+          message = orderNode.value("message").toString();
+        }
+      }
+    }
+
+    QJsonObject root;
+    root["success"] = success;
+    root["lunchId"] = QJsonValue((qint64)lunchId);
+    root["message"] = message;
+    QJsonDocument doc(root);
+    emit unsubscribeMealAvailable(QString::fromUtf8(doc.toJson()));
+  });
+}
+
+QString MensaMax::createIdempotencyToken() {
+  // UT version in JS: Date.now().toString() + Math.random().toString()
+  qint64 nowMs = QDateTime::currentMSecsSinceEpoch();
+  return QString::number(nowMs) + "." + QString::number(qrand());
 }
 
 void MensaMax::executeSubscribeMeal(const QString &token, const long lunchId) {
-   qDebug() << "MensaMax::executesubscribeMeal " << token;
+  qDebug() << "MensaMax::executesubscribeMeal " << token;
 
-   QNetworkRequest request = prepareRequest(QString(), token);
+  QNetworkRequest request = prepareRequest(QString(), token);
 
-   //  Date.now().toString() + Math.random().toString()
-   // "17671316573670.06000614433053819"
-   const QString idempotencyToken = QString("1231231"); // TODO dynamic
-   const QString postData = QString(POST_SUBSCRIBE_MEAL).arg(lunchId).arg(idempotencyToken);
+  const QString idempotencyToken = createIdempotencyToken();
+  const QString postData =
+      QString(POST_SUBSCRIBE_MEAL).arg(lunchId).arg(idempotencyToken);
 
-   qDebug() << "postData: " << postData;
+  qDebug() << "postData: " << postData;
 
-   QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
-   connect(reply,
-           SIGNAL(error(QNetworkReply::NetworkError)),
-           this,
-           SLOT(handleRequestError(QNetworkReply::NetworkError)));
-   connect(reply, &QNetworkReply::finished, this, [this, reply]() {
-       reply->deleteLater();
-       QString response = QString(reply->readAll());
-       qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-       qDebug() << "response : " << response;
-       emit subscribeMealAvailable(QString("{done}"));  // TODO result, lunchId
-   });
+  QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
+  connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this,
+          SLOT(handleRequestError(QNetworkReply::NetworkError)));
+  connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+    reply->deleteLater();
+    QString response = QString(reply->readAll());
+    qDebug() << "return code : "
+             << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
+                    .toString();
+    qDebug() << "response : " << response;
+    emit subscribeMealAvailable(QString("{done}")); // TODO result, lunchId
+  });
 }
 
 void MensaMax::executeGetMenus(const QString &token, const int weekOffset) {
-    qDebug() << "MensaMax::executeGetMenus token: " << token << ", weekOffset : " << weekOffset;
+  qDebug() << "MensaMax::executeGetMenus token: " << token
+           << ", weekOffset : " << weekOffset;
 
-    int dayOfWeek = QDate::currentDate().dayOfWeek();
-    qDebug() << "dayOfWeek :" << dayOfWeek;
+  int dayOfWeek = QDate::currentDate().dayOfWeek();
+  qDebug() << "dayOfWeek :" << dayOfWeek;
 
-    int dayOffset = 7;
-    if (dayOfWeek >= 1) {
-        dayOffset = -dayOfWeek + 1;
-    }
+  int dayOffset = 7;
+  if (dayOfWeek >= 1) {
+    dayOffset = -dayOfWeek + 1;
+  }
 
-    //int dayOffset = (((6 + dayOfWeek) % 7) || 7);
+  // int dayOffset = (((6 + dayOfWeek) % 7) || 7);
 
+  qDebug() << "dayOffset :" << dayOffset;
 
+  startDate = QDate::currentDate().addDays(weekOffset * 7).addDays(dayOffset);
+  endDate = startDate.addDays(6);
 
-    qDebug() << "dayOffset :" << dayOffset;
+  //    qDebug() << " offset weeks : " << weekOffset;
+  //    qDebug() << " start day Mo : " << startDate.toString("dd.MM.yyyy");
 
-    startDate = QDate::currentDate().addDays(weekOffset * 7).addDays(dayOffset);
-    endDate = startDate.addDays(6);
+  //    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+  //    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+  //    request.setRawHeader("Accept", MIME_TYPE_JSON);
+  //    request.setRawHeader("Authorization", QString("Bearer
+  //    ").append(token).toUtf8()); request.setRawHeader("Cookie",
+  //    "mensamax_superglue=https://mensahaus.de;");
 
-//    qDebug() << " offset weeks : " << weekOffset;
-//    qDebug() << " start day Mo : " << startDate.toString("dd.MM.yyyy");
+  //    "variables":{
+  //       "startTime":"14/07/2025",
+  //       "endTime":"20/07/2025"
+  //    },
 
-//    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
-//    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
-//    request.setRawHeader("Accept", MIME_TYPE_JSON);
-//    request.setRawHeader("Authorization", QString("Bearer ").append(token).toUtf8());
-//    request.setRawHeader("Cookie", "mensamax_superglue=https://mensahaus.de;");
+  QNetworkRequest request = prepareRequest(QString(), token);
 
-//    "variables":{
-//       "startTime":"14/07/2025",
-//       "endTime":"20/07/2025"
-//    },
+  const QString postData = QString(POST_GET_MENUS_DATA)
+                               .arg(startDate.toString(GRAPHQL_DATE_FORMAT),
+                                    endDate.toString(GRAPHQL_DATE_FORMAT));
 
+  qDebug() << "postData: " << postData;
 
-    QNetworkRequest request = prepareRequest(QString(), token);
+  QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
 
-    const QString postData = QString(POST_GET_MENUS_DATA).arg(startDate.toString(GRAPHQL_DATE_FORMAT), endDate.toString(GRAPHQL_DATE_FORMAT));
-
-    qDebug() << "postData: " << postData;
-
-    QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
-
-    connect(reply,
-            SIGNAL(error(QNetworkReply::NetworkError)),
-            this,
-            SLOT(handleRequestError(QNetworkReply::NetworkError)));
-    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
-        reply->deleteLater();
-        QString response = QString(reply->readAll());
-        qDebug() << "return code : " << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-        qDebug() << "response : " << response;
-        emit getMenusAvailable(response, startDate.toString("dd.MM") + " - " + endDate.toString("dd.MM"));
-    });
-
+  connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this,
+          SLOT(handleRequestError(QNetworkReply::NetworkError)));
+  connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+    reply->deleteLater();
+    QString response = QString(reply->readAll());
+    qDebug() << "return code : "
+             << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
+                    .toString();
+    qDebug() << "response : " << response;
+    emit getMenusAvailable(response, startDate.toString("dd.MM") + " - " +
+                                         endDate.toString("dd.MM"));
+  });
 }
 
 void MensaMax::handleRequestError(QNetworkReply::NetworkError error) {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "MensaMax::handleRequestError:" << static_cast<int>(error)
-               << reply->errorString() << reply->readAll();
+  QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+  qWarning() << "MensaMax::handleRequestError:" << static_cast<int>(error)
+             << reply->errorString() << reply->readAll();
 
-    qDebug() << "failed";
+  qDebug() << "failed";
 
-    emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
+  emit requestError("Return code: " + QString::number(static_cast<int>(error)) +
+                    " - " + reply->errorString());
 }
 
 void MensaMax::handleExecuteLoginFinished() {
-    qDebug() << "MensaMax::handleLookupMarketDataFinished";
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    reply->deleteLater();
-    if (reply->error() != QNetworkReply::NoError) {
-        return;
-    }
+  qDebug() << "MensaMax::handleLookupMarketDataFinished";
+  QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+  reply->deleteLater();
+  if (reply->error() != QNetworkReply::NoError) {
+    return;
+  }
 
-    qDebug() << "finsihed";
+  qDebug() << "finsihed";
 }
