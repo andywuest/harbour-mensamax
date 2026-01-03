@@ -171,7 +171,7 @@
     </message>
     <message>
         <source>Unsubscribe Meal</source>
-        <extracomment>MenuSelectionpage remove lunch subscription item</extracomment>
+        <extracomment>MenuSelectionPage remove lunch subscription item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

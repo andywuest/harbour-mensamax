@@ -51,6 +51,9 @@ private:
 protected:
   QNetworkRequest prepareRequest(const QString &endpoint, const QString &token);
   QString createIdempotencyToken();
+  QString createSubscriptionResponse(QNetworkReply *reply,
+                                     const bool subscription,
+                                     const long lunchId);
 
 protected slots:
 

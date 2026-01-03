@@ -188,36 +188,8 @@ void MensaMax::executeUnsubscribeMeal(const QString &token,
   connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this,
           SLOT(handleRequestError(QNetworkReply::NetworkError)));
   connect(reply, &QNetworkReply::finished, this, [this, reply, lunchId]() {
-    reply->deleteLater();
-    QString response = QString(reply->readAll());
-    qDebug() << "return code : "
-             << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
-                    .toString();
-    qDebug() << "response : " << response;
-
-    bool success = true;
-    QString message = QString("");
-    const QJsonDocument responseDoc =
-        QJsonDocument::fromJson(response.toUtf8());
-    if (responseDoc.isObject()) {
-      QJsonObject root = responseDoc.object();
-      QJsonObject dataNode = root.value("data").toObject();
-      if (!dataNode.isEmpty()) {
-        QJsonObject orderNode =
-            dataNode.value("meinEssenAbbestellen").toObject();
-        if (!orderNode.isEmpty()) {
-          success = !orderNode.value("error").toBool(false);
-          message = orderNode.value("message").toString();
-        }
-      }
-    }
-
-    QJsonObject root;
-    root["success"] = success;
-    root["lunchId"] = QJsonValue((qint64)lunchId);
-    root["message"] = message;
-    QJsonDocument doc(root);
-    emit unsubscribeMealAvailable(QString::fromUtf8(doc.toJson()));
+    emit unsubscribeMealAvailable(
+        createSubscriptionResponse(reply, false, lunchId));
   });
 }
 
@@ -241,15 +213,47 @@ void MensaMax::executeSubscribeMeal(const QString &token, const long lunchId) {
   QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
   connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this,
           SLOT(handleRequestError(QNetworkReply::NetworkError)));
-  connect(reply, &QNetworkReply::finished, this, [this, reply]() {
-    reply->deleteLater();
-    QString response = QString(reply->readAll());
-    qDebug() << "return code : "
-             << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
-                    .toString();
-    qDebug() << "response : " << response;
-    emit subscribeMealAvailable(QString("{done}")); // TODO result, lunchId
+  connect(reply, &QNetworkReply::finished, this, [this, reply, lunchId]() {
+    emit subscribeMealAvailable(
+        createSubscriptionResponse(reply, true, lunchId));
   });
+}
+
+QString MensaMax::createSubscriptionResponse(QNetworkReply *reply,
+                                             const bool subscription,
+                                             const long lunchId) {
+  qDebug() << "MensaMax::createSubscriptionResponse";
+  reply->deleteLater();
+  const QString response = QString(reply->readAll());
+  qDebug() << "return code : "
+           << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
+                  .toString();
+  qDebug() << "response : " << response;
+
+  QString orderNodeName =
+      (subscription ? "meinEssenBestellen" : "meinEssenAbbestellen");
+
+  bool success = true;
+  QString message = QString("");
+  const QJsonDocument responseDoc = QJsonDocument::fromJson(response.toUtf8());
+  if (responseDoc.isObject()) {
+    QJsonObject root = responseDoc.object();
+    QJsonObject dataNode = root.value("data").toObject();
+    if (!dataNode.isEmpty()) {
+      QJsonObject orderNode = dataNode.value(orderNodeName).toObject();
+      if (!orderNode.isEmpty()) {
+        success = !orderNode.value("error").toBool(false);
+        message = orderNode.value("message").toString();
+      }
+    }
+  }
+
+  QJsonObject root;
+  root["success"] = success;
+  root["lunchId"] = QJsonValue((qint64)lunchId);
+  root["message"] = message;
+  QJsonDocument doc(root);
+  return QString::fromUtf8(doc.toJson());
 }
 
 void MensaMax::executeGetMenus(const QString &token, const int weekOffset) {

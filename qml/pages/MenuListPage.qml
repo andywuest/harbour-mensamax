@@ -122,9 +122,9 @@ Page {
         }
     }
 
-    function updateMenuUnsubscribed(lunchId) {
-        console.log("[MenuListPage] .updateMenuUnsubscribed: lunch with id " + lunchId + " unsubscribed");
-        populateWithMenus(menues, lunchId, false)
+    function updateMenuSubscription(lunchId, menuSubscribed) {
+        console.log("[MenuListPage] .updateMenuUnsubscribed: lunch with id " + lunchId + " subscribed: " + menuSubscribed);
+        populateWithMenus(menues, lunchId, menuSubscribed)
 //        globalMenuModel.clear();
 //        for (var i = 0; i < selectableMenusPerDay.length; i++) {
 //            for (var j = 0; j < selectableMenusPerDay[i].length; j++) {
@@ -275,7 +275,7 @@ Page {
                                                 "token": token
 
                                             });
-                            menuSelectionPage.menuUnsubscribed.connect(updateMenuUnsubscribed);
+                            menuSelectionPage.menuSubscriptionChanged.connect(updateMenuSubscription);
                         }
                     }
                 }

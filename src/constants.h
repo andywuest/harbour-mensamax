@@ -64,7 +64,7 @@ const char POST_SUBSCRIBE_MEAL[] = R"(
     "menueId": %1,
     "ausgabeortId": null,
     "anzahl": 1,
-    "idempotencyToken": %2
+    "idempotencyToken": "%2"
   },
   "query": "mutation essenBestellen($menueId: ID!, $anzahl: Int, $ausgabeortId: Int, $idempotencyToken: String!) { meinEssenBestellen(   menueId: $menueId   anzahl: $anzahl   ausgabeortId: $ausgabeortId   idempotencyToken: $idempotencyToken) {   menue { id meineBestellung { anzahl ausgabeort {   id   bezeichnung   __typename } anzahlAusgegeben __typename } __typename   }   error   message   trace   __typename }}"
 }

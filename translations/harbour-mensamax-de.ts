@@ -151,32 +151,32 @@
     </message>
     <message>
         <source>CW</source>
-        <translation type="unfinished">KW</translation>
+        <translation>KW</translation>
     </message>
     <message>
         <source>About</source>
         <extracomment>MenuListPage about menu item</extracomment>
-        <translation type="unfinished">Über</translation>
+        <translation>Über</translation>
     </message>
     <message>
         <source>Logout</source>
-        <translation type="unfinished">Abmelden</translation>
+        <translation>Abmelden</translation>
     </message>
 </context>
 <context>
     <name>MenuSelectionPage</name>
     <message>
         <source>Food order</source>
-        <translation>Bestellung</translation>
+        <translation>Essen bestellen</translation>
     </message>
     <message>
         <source>Unsubscribe Meal</source>
-        <extracomment>MenuSelectionpage remove lunch subscription item</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>MenuSelectionPage remove lunch subscription item</extracomment>
+        <translation>Essen abbestellen</translation>
     </message>
     <message>
         <source>Subscribe Meal</source>
-        <translation type="unfinished"></translation>
+        <translation>Essen bestellen</translation>
     </message>
 </context>
 </TS>
