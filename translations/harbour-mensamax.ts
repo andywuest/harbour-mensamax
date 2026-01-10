@@ -117,6 +117,11 @@
         <source>Deleting account</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <extracomment>AccountsOverviewPage settings menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -176,6 +181,39 @@
     </message>
     <message>
         <source>Subscribe Meal</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <extracomment>SettingsPage settings title</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start load data from</source>
+        <extracomment>SettingsPage period start</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Defines the start of the period for which data is loaded</source>
+        <extracomment>SettingsPage download strategy explanation</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current week</source>
+        <extracomment>SettingsPage current week</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last week</source>
+        <extracomment>SettingsPage last week</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Two weeks ago</source>
+        <extracomment>SettingsPage two weeks ago</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -35,6 +35,7 @@ DISTFILES += qml/harbour-mensamax.qml \
     qml/pages/MenuListPage.qml \
     qml/pages/MenuSelectionPage.qml \
     qml/pages/SecondPage.qml \
+    qml/pages/SettingsPage.qml \
     qml/pages/icons/github.svg \
     qml/pages/icons/paypal.svg \
     qml/js/constants.js \

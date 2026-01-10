@@ -15,9 +15,9 @@ Page {
     property var weekMenus
     property string currentDateLabel
 
-    property int weekOffsetFrom: -1
-    property int lastWeekOffset: weekOffsetFrom
-    property int weekOffsetTo: 3
+    property int weekOffsetFrom
+    property int weekOffsetTo
+    property int lastWeekOffset
 
     allowedOrientations: Orientation.All
 
@@ -58,6 +58,11 @@ Page {
                 //: AccountsOverviewPage about menu item
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+            MenuItem {
+                //: AccountsOverviewPage settings menu item
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
             }
             MenuItem {
                 text: qsTr("Create account")
@@ -180,7 +185,9 @@ Page {
         onGetUserDataAvailable: {
             console.log("[AccountsOverview] - getUserDataAvailable " + reply)
             userData = JSON.parse(reply)
-            // get menu for current week
+            // get menu for specified range
+            weekOffsetFrom = (0 - mensamaxSettings.periodStart)
+            weekOffsetTo = weekOffsetFrom + mensamaxSettings.numberOfWeeksToLoad
             lastWeekOffset = weekOffsetFrom
             weekMenus = [];
             mensaMax.executeGetMenus(token, lastWeekOffset)
@@ -202,13 +209,11 @@ Page {
                 showLoadingIndicator = false
                 pageStack.animatorPush(Qt.resolvedUrl("MenuListPage.qml"), {
                                            "token": token,
-                                           "menues": weekMenus/*currentWeekMenu*/,
-                                           // "dateLabel": currentDateLabel,
+                                           "menues": weekMenus,
                                            "balanceData": balanceData,
                                            "userData": userData
                                        })
             }
-
         }
 
         onRequestError: {

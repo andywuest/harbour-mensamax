@@ -5,6 +5,11 @@ import "../components"
 import "../components/thirdparty"
 import "../js/functions.js" as Functions
 
+// TODO problem: wenn mehrere essen bestellt werden, geht die information einer
+// bestellung hier in der liste verloren - jeweils nur die letzt aktion wird korrekt
+// in der liste angezeigt -> liste der änderungen speichern und immer wieder auf der
+// geladenen liste ausfuehren (replay)
+
 Page {
     id: menuSelectionPage
 
@@ -18,16 +23,6 @@ Page {
     // property string dateLabel
     property bool showLoadingIndicator: false
     property var selectableMenusPerDay: [] // array with one entry per day - contains list of selectable menus
-
-//    function populateDaysModel(daysWithMenu) {
-//        daysModel.clear()
-//        for (var k = 0; k < daysWithMenu.length; k++) {
-//            if (k == 0) {
-//                daysWithMenu[k].selected = true
-//            }
-//            daysModel.append(daysWithMenu[k])
-//        }
-//    }
 
     function populateDayMenuModel(menus) {
         var menuSelected = false;
@@ -93,13 +88,11 @@ Page {
         globalMenuModel.clear();
         selectableMenusPerDay = [];
 
-        //console.log("get menus result handler : " + result);
-        // menuModel.clear()
-
-        // dateSelectionRow.dateLabel = "" + dateLabel
+        var weekStart = (0 - mensamaxSettings.periodStart)
+        var weekEnd = weekStart + mensamaxSettings.numberOfWeeksToLoad
 
         // daysWithMenu list of day for which a menu can be selected
-        for (var m = -1; m < 2; m++) { // iterate over week
+        for (var m = weekStart; m < weekEnd; m++) { // iterate over week
             var daysWithMenu = Functions.getDaysWithMenu(menues[m])
             console.log("[MenuListPage] days with menu : " + JSON.stringify(
                             daysWithMenu))
@@ -125,26 +118,11 @@ Page {
     function updateMenuSubscription(lunchId, menuSubscribed) {
         console.log("[MenuListPage] .updateMenuUnsubscribed: lunch with id " + lunchId + " subscribed: " + menuSubscribed);
         populateWithMenus(menues, lunchId, menuSubscribed)
-//        globalMenuModel.clear();
-//        for (var i = 0; i < selectableMenusPerDay.length; i++) {
-//            for (var j = 0; j < selectableMenusPerDay[i].length; j++) {
-//                if (selectableMenusPerDay[i][j].id === lunchId) {
-//                    selectableMenusPerDay[i][j].ordered = false;
-//                    console.log("[MenuListPage] .updateMenuUnsubscribed: updating ordered for lunch with id " + lunchId + " to false");
-//                    populateDayMenuModel(selectableMenusPerDay[i][j]);
-//                }
-//            }
-//        }
     }
 
     function errorResultHandler(result) {
         console.log("error result handler")
     }
-
-//    function getMenuWithOffset(offsetChange) {
-//        weekOffset += offsetChange
-//        mensaMax.executeGetMenus(token, weekOffset)
-//    }
 
     AppNotification {
         id: menuProblemNotification
@@ -178,62 +156,6 @@ Page {
             PageHeader {
                 id: menuListPageHeader
             }
-
-//            DateSelectionRow {
-//                id: dateSelectionRow
-//                width: parent.width - (2 * Theme.paddingMedium)
-//                x: Theme.paddingMedium
-//                dateLabel: ""
-//                visible: false
-//            }
-
-//            ViewPlaceholder {
-//                enabled: menuModel.count === 0;
-//                text: qsTr("No lunch available for selection.")
-//            }
-
-//            Row {
-//                id: daySelectionRow
-//                width: parent.width - (2 * Theme.paddingMedium)
-//                spacing: Theme.paddingMedium
-//                x: Theme.paddingMedium
-//                visible: false
-
-//                Repeater {
-//                    id: dayRepeater
-
-//                    model: ListModel {
-//                        id: daysModel
-//                    }
-
-//                    delegate: Button {
-//                        id: buttonDelegate
-//                        text: weekdayName
-//                        width: (parent.width + 2 * Theme.paddingSmall
-//                                - (2 * Theme.paddingSmall) * daysModel.count) / daysModel.count
-//                        //height: 40
-//                        backgroundColor: selected ? Theme.highlightBackgroundColor : Theme.backgroundGlowColor
-//                        onClicked: {
-//                            console.log(weekdayName + " clicked " + index + " - ")
-
-//                            for (var i = 0; i < daysModel.count; i++) {
-//                                daysModel.get(i).selected = false
-//                            }
-
-//                            daysModel.get(index).selected = true
-
-//                            var menus = Functions.getMenusForDay(model.listIndex, menues)
-//                            console.log("Menus : " + JSON.stringify(menus))
-//                            populateDayMenuModel(menus)
-//                        }
-//                    }
-//                }
-
-//                Component.onCompleted: {
-//                    console.log("selecting first element")
-//                    // daysModel.get(0).selected = true
-//                }
-//            }
 
             SilicaListView {
                 id: menuListView
@@ -283,54 +205,6 @@ Page {
                 VerticalScrollDecorator {}
 
             }
-
-//            SilicaListView {
-//                id: noIncidentsColumn
-//                visible: false
-
-//                anchors.left: parent.left
-//                anchors.right: parent.right
-
-//                height: menuSelectionPage.height - menuListPageHeader.height
-//                //                        - incidentsHeader.height
-//                //                        - Theme.paddingMedium
-//                //                                width: parent.width
-//                //                                anchors.left: parent.left
-//                //                                anchors.right: parent.right
-//                clip: true
-
-//                model: ListModel {
-//                    id: menuModel
-//                }
-
-//                delegate: ListItem {
-//                    id: menuDelegate
-
-//                    contentHeight: menuItem.height + (2 * Theme.paddingSmall)
-//                    contentWidth: parent.width
-
-//                    Item {
-//                        id: menuItem
-//                        height: foodMenuItem.height
-//                        width: parent.width - (2 * Theme.paddingMedium)
-//                        x: Theme.paddingMedium
-//                        y: Theme.paddingSmall
-
-//                        FoodMenuItem {
-//                            id: foodMenuItem
-//                            width: parent.width
-//                            starter: starterNames
-//                            mainCourse: mainCourseNames
-//                            desert: desertNames
-//                        }
-//                    }
-
-//                    onClicked: {
-//                        console.log("[MenuListPage] " + index);
-//                        selectableMenusPerDay
-//                    }
-//                }
-//            }
         }
     }
 
@@ -347,6 +221,7 @@ Page {
     Connections {
         target: mensaMax
 
+        // TODO brauchen wir das hier ueberhaupt
         onGetMenusAvailable: {
             if (menuSelectionPage.status !== PageStatus.Active) {
                 return;
@@ -363,22 +238,6 @@ Page {
             menuProblemNotification.show(errorMessage)
         }
     }
-
-//    Connections {
-//        target: dateSelectionRow
-
-//        onNextWeekClicked: {
-//            console.log("[MenuListPage] - next week");
-//            showLoadingIndicator = true
-//            getMenuWithOffset(offsetChange);
-//        }
-
-//        onPreviousWeekClicked: {
-//            console.log("[MenuListPage] - previous week");
-//            showLoadingIndicator = true
-//            getMenuWithOffset(offsetChange);
-//        }
-//    }
 
     Component.onCompleted: {
         console.log("[MenuListPage] init");
