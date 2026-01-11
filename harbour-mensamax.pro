@@ -24,6 +24,7 @@ DISTFILES += qml/harbour-mensamax.qml \
     qml/components/AccountListItem.qml \
     qml/components/DateSelectionRow.qml \
     qml/components/FoodMenuItem.qml \
+    qml/components/MenuListItem.qml \
     qml/components/thirdparty/AppNotification.qml \
     qml/components/thirdparty/AppNotificationItem.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
@@ -31,8 +32,10 @@ DISTFILES += qml/harbour-mensamax.qml \
     qml/pages/AboutPage.qml \
     qml/pages/AccountCreationDialog.qml \
     qml/pages/AccountsOverviewPage.qml \
-    qml/pages/MenuOrderingPage.qml \
+    qml/pages/MenuListPage.qml \
+    qml/pages/MenuSelectionPage.qml \
     qml/pages/SecondPage.qml \
+    qml/pages/SettingsPage.qml \
     qml/pages/icons/github.svg \
     qml/pages/icons/paypal.svg \
     qml/js/constants.js \

@@ -7,13 +7,14 @@ const char ORGANISATION[] = "de.andreas-wuest-it-consulting";
 
 // data for rest calls
 const char MIME_TYPE_JSON[] = "application/json";
-const char USER_AGENT[] = "Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0";
+const char USER_AGENT[] =
+    "Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0";
 
 // mensamax
 const char BASE_URL[] = "https://%1/graphql/";
 const char COOKIE_VALUE[] = "mensamax_superglue=https://%1;";
 
-const char ENDPOINT_LOGIN [] = "auth/login/";
+const char ENDPOINT_LOGIN[] = "auth/login/";
 
 const char POST_BODY_LOGIN[] = R"(
 {
@@ -54,5 +55,32 @@ const char POST_GET_MENUS_DATA[] = R"(
 }
 )";
 
+// %1: lunchId
+// %2: Date.now().toString() + Math.random().toString()
+const char POST_SUBSCRIBE_MEAL[] = R"(
+{
+  "operationName": "essenBestellen",
+  "variables": {
+    "menueId": %1,
+    "ausgabeortId": null,
+    "anzahl": 1,
+    "idempotencyToken": "%2"
+  },
+  "query": "mutation essenBestellen($menueId: ID!, $anzahl: Int, $ausgabeortId: Int, $idempotencyToken: String!) { meinEssenBestellen(   menueId: $menueId   anzahl: $anzahl   ausgabeortId: $ausgabeortId   idempotencyToken: $idempotencyToken) {   menue { id meineBestellung { anzahl ausgabeort {   id   bezeichnung   __typename } anzahlAusgegeben __typename } __typename   }   error   message   trace   __typename }}"
+}
+
+)";
+
+// %1: lunchId
+const char POST_UNSUBSCRIBE_MEAL[] = R"(
+{
+  "operationName":"essenAbbestellen",
+  "variables": {
+    "menueId": %1
+  },
+  "query": "mutation essenAbbestellen($menueId: ID!) { meinEssenAbbestellen(menueId: $menueId) { menue { id meineBestellung { anzahl ausgabeort {   id   bezeichnung   __typename } anzahlAusgegeben __typename } __typename   }  error   message   trace   __typename }}"
+}
+
+)";
 
 #endif // CONSTANTS_H

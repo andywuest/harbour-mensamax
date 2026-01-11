@@ -117,6 +117,11 @@
         <source>Deleting account</source>
         <translation>Lösche Konto</translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <extracomment>AccountsOverviewPage settings menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -144,19 +149,72 @@
     </message>
 </context>
 <context>
-    <name>MenuOrderingPage</name>
+    <name>MenuListPage</name>
+    <message>
+        <source>Balance %1 € / %2 €</source>
+        <translation type="unfinished">Kontostand %1 € / %2 €</translation>
+    </message>
+    <message>
+        <source>CW</source>
+        <translation>KW</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <extracomment>MenuListPage about menu item</extracomment>
+        <translation>Über</translation>
+    </message>
     <message>
         <source>Logout</source>
         <translation>Abmelden</translation>
     </message>
+</context>
+<context>
+    <name>MenuSelectionPage</name>
     <message>
-        <source>About</source>
-        <extracomment>MenuOrderingPage about menu item</extracomment>
-        <translation>Über</translation>
+        <source>Food order</source>
+        <translation>Essen bestellen</translation>
     </message>
     <message>
-        <source>Balance %1 € / %2 €</source>
-        <translation>Kontostand %1 € / %2 €</translation>
+        <source>Unsubscribe Meal</source>
+        <extracomment>MenuSelectionPage remove lunch subscription item</extracomment>
+        <translation>Essen abbestellen</translation>
+    </message>
+    <message>
+        <source>Subscribe Meal</source>
+        <translation>Essen bestellen</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <extracomment>SettingsPage settings title</extracomment>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <source>Start load data from</source>
+        <extracomment>SettingsPage period start</extracomment>
+        <translation>Daten laden ab</translation>
+    </message>
+    <message>
+        <source>Defines the start of the period for which data is loaded</source>
+        <extracomment>SettingsPage download strategy explanation</extracomment>
+        <translation>Definiert den Beginn des Zeitraums ab dem Daten geladen werden</translation>
+    </message>
+    <message>
+        <source>Current week</source>
+        <extracomment>SettingsPage current week</extracomment>
+        <translation>Aktuelle Woche</translation>
+    </message>
+    <message>
+        <source>Last week</source>
+        <extracomment>SettingsPage last week</extracomment>
+        <translation>Letzte Woche</translation>
+    </message>
+    <message>
+        <source>Two weeks ago</source>
+        <extracomment>SettingsPage two weeks ago</extracomment>
+        <translation>Vor zwei Wochen</translation>
     </message>
 </context>
 </TS>

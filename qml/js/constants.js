@@ -1,1 +1,5 @@
 .pragma library
+
+var START_PERIOD_CURRENT_WEEK = 0;
+var START_PERIOD_LAST_WEEK = 1;
+var START_PERIOD_TWO_WEEKS_AGO = 2;
