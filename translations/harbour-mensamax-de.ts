@@ -120,7 +120,7 @@
     <message>
         <source>Settings</source>
         <extracomment>AccountsOverviewPage settings menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
 </context>
 <context>
@@ -152,7 +152,7 @@
     <name>MenuListPage</name>
     <message>
         <source>Balance %1 € / %2 €</source>
-        <translation type="unfinished">Kontostand %1 € / %2 €</translation>
+        <translation>Kontostand %1 € / %2 €</translation>
     </message>
     <message>
         <source>CW</source>
@@ -215,6 +215,10 @@
         <source>Two weeks ago</source>
         <extracomment>SettingsPage two weeks ago</extracomment>
         <translation>Vor zwei Wochen</translation>
+    </message>
+    <message>
+        <source>Number of weeks to load</source>
+        <translation>Anzahl der zu ladenden Wochen</translation>
     </message>
 </context>
 </TS>

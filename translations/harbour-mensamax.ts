@@ -216,5 +216,9 @@
         <extracomment>SettingsPage two weeks ago</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Number of weeks to load</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
