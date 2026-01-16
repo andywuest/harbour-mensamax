@@ -38,7 +38,7 @@ function getDaysWithMenu(menues) {
 
 function getMenusForDay(dayIndex, weekMenu, groupingLabel) {
     var result = []
-    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    var weekday = [qsTr("Sunday"), qsTr("Monday"), qsTr("Tuesday"), qsTr("Wednesday"), qsTr("Thursday"), qsTr("Friday"), qsTr("Saturday")]
     if (dayIndex >= weekMenu.data.meinSpeiseplan.length) {
         console.log("[.getMenusForDay] - menu not available for index " + dayIndex)
         return result
