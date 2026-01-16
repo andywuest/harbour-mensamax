@@ -30,6 +30,7 @@ Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelanc
 ## Screenshots
 
 ![Accounts Overview](/screenshots/accounts_page_small.png?raw=true "Accounts")
+![Menus Overview](/screenshots/menusoverview_page_small.png?raw=true "Menus Overview")
 ![Menu Selection](/screenshots/menuselection_page_small.png?raw=true "Menu Selection")
 
 ## Build
