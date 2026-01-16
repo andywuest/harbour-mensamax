@@ -9,13 +9,13 @@ for your institution (especially schools in Germany).
 
 - Create a login account (password are stored in plain text so far!)
 - Perform login
-- Show the available menus for the current week (days individually selectable)
-- Skip to another week
+- Show Balance
+- Show the available menus for a configurable number of weeks
+- Subscribe / unsubscribe lunch
+- Edit account / delete account
 
 ## Not yet implemented (but planned)
 
-- Select / deselect lunch
-- Edit account / delete account
 - Show personal data
 
 ## Domains
