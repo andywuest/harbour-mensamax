@@ -15,12 +15,10 @@ Page {
 
     backNavigation: false
 
-    // property int weekOffset: 0
     property string token
     property var menues // array[weekOffset] -> data
     property var balanceData
     property var userData
-    // property string dateLabel
     property bool showLoadingIndicator: false
     property var selectableMenusPerDay: [] // array with one entry per day - contains list of selectable menus
 
@@ -141,6 +139,11 @@ Page {
                 //: MenuListPage about menu item
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+            MenuItem {
+                //: MenuListPage user data menu item
+                text: qsTr("User Data")
+                onClicked: pageStack.push(Qt.resolvedUrl("UserDataPage.qml"), { "userData" : userData })
             }
             MenuItem {
                 text: qsTr("Logout")

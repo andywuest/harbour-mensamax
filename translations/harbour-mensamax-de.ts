@@ -167,6 +167,11 @@
         <source>Logout</source>
         <translation>Abmelden</translation>
     </message>
+    <message>
+        <source>User Data</source>
+        <extracomment>MenuListPage user data menu item</extracomment>
+        <translation>Benutzerdaten</translation>
+    </message>
 </context>
 <context>
     <name>MenuSelectionPage</name>
@@ -219,6 +224,59 @@
     <message>
         <source>Number of weeks to load</source>
         <translation>Anzahl der zu ladenden Wochen</translation>
+    </message>
+</context>
+<context>
+    <name>UserDataPage</name>
+    <message>
+        <source>User Data</source>
+        <extracomment>UserDataPage title</extracomment>
+        <translation>Benutzerdaten</translation>
+    </message>
+    <message>
+        <source>Personal data</source>
+        <extracomment>UserDataPage page personal data</extracomment>
+        <translation>Persönliche Daten</translation>
+    </message>
+    <message>
+        <source>First name</source>
+        <extracomment>UserDataPage first name</extracomment>
+        <translation>Vorname</translation>
+    </message>
+    <message>
+        <source>Last name</source>
+        <extracomment>UserDataPage last name</extracomment>
+        <translation>Nachname</translation>
+    </message>
+    <message>
+        <source>Login name</source>
+        <extracomment>UserDataPage login name</extracomment>
+        <translation>Login Name</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <extracomment>UserDataPage page address data</extracomment>
+        <translation>Adresse</translation>
+    </message>
+    <message>
+        <source>Street</source>
+        <extracomment>UserDataPage street</extracomment>
+        <translation>Straße</translation>
+    </message>
+    <message>
+        <source>House number</source>
+        <extracomment>UserDataPage house number</extracomment>
+        <translation>Hausnummer</translation>
+    </message>
+    <message>
+        <source>Zip code</source>
+        <extracomment>UserDataPage zip code</extracomment>
+        <translation>PLZ</translation>
+    </message>
+    <message>
+        <source>City</source>
+        <extracomment>UserDataPage city</extracomment>
+        <translation>Ort</translation>
     </message>
 </context>
 <context>

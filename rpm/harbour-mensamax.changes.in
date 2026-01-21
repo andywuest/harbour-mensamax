@@ -9,6 +9,9 @@
 # the git-change-log command provided with Sailfish OS SDK), create a
 # harbour-mensamax.changes.run script to let mb2 run the required commands for you.
 
+* xx.xx.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.1-1
+- Added user data page
+
 * 16.01.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.0-1
 - Big UI cleanup - display ordered meals in list
 - Allow subscription / unsubscription of meals
