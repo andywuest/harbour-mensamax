@@ -9,7 +9,11 @@
 # the git-change-log command provided with Sailfish OS SDK), create a
 # harbour-mensamax.changes.run script to let mb2 run the required commands for you.
 
-* xx.xx.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.1-1
+* xx.xx.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.2-1
+- Back navigation instead of explicit logout from pully (https://github.com/andywuest/harbour-mensamax/issues/4)
+- Better description of server input field (https://github.com/andywuest/harbour-mensamax/issues/3)
+
+* 25.01.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.1-1
 - Added user data page
 
 * 16.01.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.0-1

@@ -13,8 +13,6 @@ import "../js/functions.js" as Functions
 Page {
     id: menuSelectionPage
 
-    backNavigation: false
-
     property string token
     property var menues // array[weekOffset] -> data
     property var balanceData
@@ -145,10 +143,6 @@ Page {
                 text: qsTr("User Data")
                 onClicked: pageStack.push(Qt.resolvedUrl("UserDataPage.qml"), { "userData" : userData })
             }
-            MenuItem {
-                text: qsTr("Logout")
-                onClicked: pageStack.pop();
-            }
         }
 
         Column {
@@ -230,8 +224,6 @@ Page {
                 return;
             }
             console.log("[MenuListPage] - getMenusAvailable " + reply);
-            //menues = JSON.parse(reply);
-            //populateWithMenus(menues, dateLabel);
             showLoadingIndicator = false
         }
 
@@ -247,6 +239,13 @@ Page {
         populateWithMenus(menues/*, dateLabel*/);
         populateUserName(userData);
         populateBalanceData(balanceData);
+    }
+
+    onStatusChanged: {
+        if (status === PageStatus.Deactivating) {
+            console.log("[MenuListPage] leaving - logging out");
+            // TODO perform actual logout of token
+        }
     }
 
 }

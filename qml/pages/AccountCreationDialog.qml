@@ -86,7 +86,8 @@ Dialog {
                 id: hostnameTextField
                 width: parent.width
                 label: qsTr("Server")
-                placeholderText: qsTr("e.g. mensahaus.de")
+                placeholderText: qsTr("www.mensaonline.de")
+                description: qsTr("Hostname of server without 'https://' prefix")
                 labelVisible: true
                 onTextChanged: {
                     loginVerified = false

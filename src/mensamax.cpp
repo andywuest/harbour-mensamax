@@ -45,8 +45,6 @@ void MensaMax::executeLogin(const QString &project, const QString &location,
   qDebug() << "MensaMax::executeLogin " << hostname;
 
   this->hostname = hostname;
-  // QString("mensaweb.de");
-  //  ;
 
   QNetworkRequest request = prepareRequest(QString(ENDPOINT_LOGIN), QString());
 
@@ -57,18 +55,8 @@ void MensaMax::executeLogin(const QString &project, const QString &location,
 
   QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
 
-  //    connect(reply,
-  //            SIGNAL(error(QNetworkReply::NetworkError)),
-  //            this,
-  //            SLOT(handleRequestError(QNetworkReply::NetworkError)));
   connect(reply, &QNetworkReply::finished, this, [this, reply]() {
     onExecuteLogin(reply);
-    //        reply->deleteLater();
-    //        QString response = QString(reply->readAll());
-    //        qDebug() << "return code : " <<
-    //        reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
-    //        qDebug() << "response : " << response;
-    //        emit loginAvailable(response);
   });
 }
 
@@ -94,17 +82,6 @@ void MensaMax::onExecuteLogin(QNetworkReply *reply) {
 
 void MensaMax::executeGetBalance(const QString &token) {
   qDebug() << "MensaMax::executeGetBalance " << token;
-
-  //    QString requestUrl = QString(BASE_URL);
-  //    QUrl url = QUrl(requestUrl);
-  //    QNetworkRequest request(url);
-
-  //    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
-  //    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
-  //    request.setRawHeader("Accept", MIME_TYPE_JSON);
-  //    request.setRawHeader("Authorization", QString("Bearer
-  //    ").append(token).toUtf8()); request.setRawHeader("Cookie",
-  //    "mensamax_superglue=https://mensahaus.de;");
 
   QNetworkRequest request = prepareRequest(QString(), token);
 
@@ -141,17 +118,6 @@ void MensaMax::executeGetBalance(const QString &token) {
 
 void MensaMax::executeGetUserData(const QString &token) {
   qDebug() << "MensaMax::executeGetUserData " << token;
-
-  //    QString requestUrl = QString(BASE_URL);
-  //    QUrl url = QUrl(requestUrl);
-  //    QNetworkRequest request(url);
-
-  //    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
-  //    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
-  //    request.setRawHeader("Accept", MIME_TYPE_JSON);
-  //    request.setRawHeader("Authorization", QString("Bearer
-  //    ").append(token).toUtf8()); request.setRawHeader("Cookie",
-  //    "mensamax_superglue=https://mensahaus.de;");
 
   QNetworkRequest request = prepareRequest(QString(), token);
 
@@ -268,27 +234,10 @@ void MensaMax::executeGetMenus(const QString &token, const int weekOffset) {
     dayOffset = -dayOfWeek + 1;
   }
 
-  // int dayOffset = (((6 + dayOfWeek) % 7) || 7);
-
   qDebug() << "dayOffset :" << dayOffset;
 
   startDate = QDate::currentDate().addDays(weekOffset * 7).addDays(dayOffset);
   endDate = startDate.addDays(6);
-
-  //    qDebug() << " offset weeks : " << weekOffset;
-  //    qDebug() << " start day Mo : " << startDate.toString("dd.MM.yyyy");
-
-  //    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
-  //    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
-  //    request.setRawHeader("Accept", MIME_TYPE_JSON);
-  //    request.setRawHeader("Authorization", QString("Bearer
-  //    ").append(token).toUtf8()); request.setRawHeader("Cookie",
-  //    "mensamax_superglue=https://mensahaus.de;");
-
-  //    "variables":{
-  //       "startTime":"14/07/2025",
-  //       "endTime":"20/07/2025"
-  //    },
 
   QNetworkRequest request = prepareRequest(QString(), token);
 

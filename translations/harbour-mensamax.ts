@@ -69,16 +69,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>e.g. mensahaus.de</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Test Login</source>
         <extracomment>AccountCreationDialog test login button</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Name (of your child, free text)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>www.mensaonline.de</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname of server without &apos;https://&apos; prefix</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -161,10 +165,6 @@
     <message>
         <source>About</source>
         <extracomment>MenuListPage about menu item</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

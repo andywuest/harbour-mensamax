@@ -69,10 +69,6 @@
         <translation>Server</translation>
     </message>
     <message>
-        <source>e.g. mensahaus.de</source>
-        <translation>z.B. mensahaus.de</translation>
-    </message>
-    <message>
         <source>Test Login</source>
         <extracomment>AccountCreationDialog test login button</extracomment>
         <translation>Login testen</translation>
@@ -80,6 +76,14 @@
     <message>
         <source>Name (of your child, free text)</source>
         <translation>Name (deines Kindes, Freitext)</translation>
+    </message>
+    <message>
+        <source>www.mensaonline.de</source>
+        <translation>www.mensaonline.de</translation>
+    </message>
+    <message>
+        <source>Hostname of server without &apos;https://&apos; prefix</source>
+        <translation>Name des Servers ohne &apos;https://&apos;</translation>
     </message>
 </context>
 <context>
@@ -162,10 +166,6 @@
         <source>About</source>
         <extracomment>MenuListPage about menu item</extracomment>
         <translation>Über</translation>
-    </message>
-    <message>
-        <source>Logout</source>
-        <translation>Abmelden</translation>
     </message>
     <message>
         <source>User Data</source>
