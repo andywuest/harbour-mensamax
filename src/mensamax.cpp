@@ -55,8 +55,24 @@ void MensaMax::executeLogin(const QString &project, const QString &location,
 
   QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
 
-  connect(reply, &QNetworkReply::finished, this, [this, reply]() {
-    onExecuteLogin(reply);
+  connect(reply, &QNetworkReply::finished, this,
+          [this, reply]() { onExecuteLogin(reply); });
+}
+
+void MensaMax::executeLogout(const QString &token) {
+  qDebug() << "MensaMax::executeLogout ";
+
+  QNetworkRequest request = prepareRequest(QString(ENDPOINT_LOGOUT), token);
+
+  const QString postData = QString();
+
+  QNetworkReply *reply = networkAccessManager->post(request, postData.toUtf8());
+
+  connect(reply, &QNetworkReply::finished, this, [reply]() {
+    reply->deleteLater();
+    qDebug() << "return code : "
+             << reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute)
+                    .toString();
   });
 }
 
@@ -71,7 +87,7 @@ void MensaMax::onExecuteLogin(QNetworkReply *reply) {
   }
 
   int code = response.statusCode();
-  if (code != 200) { // TODO constant
+  if (code != HTTP_STATUS_CODE_OK) {
     return emit requestError("Return code: " + response.errorString());
   }
 

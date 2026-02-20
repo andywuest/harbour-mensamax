@@ -244,7 +244,7 @@ Page {
     onStatusChanged: {
         if (status === PageStatus.Deactivating) {
             console.log("[MenuListPage] leaving - logging out");
-            // TODO perform actual logout of token
+            mensaMax.executeLogout(token);
         }
     }
 

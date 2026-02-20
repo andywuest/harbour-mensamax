@@ -17,6 +17,7 @@ public:
                                 const QString &userName,
                                 const QString &password,
                                 const QString &hostname);
+  Q_INVOKABLE void executeLogout(const QString &token);
   Q_INVOKABLE void executeGetBalance(const QString &token);
   Q_INVOKABLE void executeGetUserData(const QString &token);
   Q_INVOKABLE void executeGetMenus(const QString &token,

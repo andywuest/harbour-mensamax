@@ -1,6 +1,8 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
+const int HTTP_STATUS_CODE_OK = 200;
+
 // sailjail data
 const char APP_NAME[] = "harbour-mensamax";
 const char ORGANISATION[] = "de.andreas-wuest-it-consulting";
@@ -15,6 +17,8 @@ const char BASE_URL[] = "https://%1/graphql/";
 const char COOKIE_VALUE[] = "mensamax_superglue=https://%1;";
 
 const char ENDPOINT_LOGIN[] = "auth/login/";
+
+const char ENDPOINT_LOGOUT[] = "auth/logout/";
 
 const char POST_BODY_LOGIN[] = R"(
 {
