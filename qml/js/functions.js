@@ -17,6 +17,20 @@ function concatStrings(s1, s2, separator) {
     return result;
 }
 
+function populateMainCourseName(menuItem, loadedMenu) {
+    if (loadedMenu.starterNames.toLowerCase() === "schulferien"
+            || loadedMenu.starterNames.toLowerCase() === "feiertag") {
+        menuItem.mainCourseNames = loadedMenu.starterNames;
+        menuItem.hasSelectableMenu = false;
+    } else if (loadedMenu.mainCourseNames.toLowerCase() === "ferien") {
+        menuItem.mainCourseNames = loadedMenu.mainCourseNames;
+        menuItem.hasSelectableMenu = false;
+    } else {
+        menuItem.mainCourseNames = qsTr("No food ordered");
+        menuItem.hasSelectableMenu = true;
+    }
+}
+
 function getDaysWithMenu(menues) {
     var result = []
     var weekday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]

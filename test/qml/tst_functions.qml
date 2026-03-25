@@ -69,6 +69,51 @@ TestCase {
         })
     }
 
+    function test_populateMainCourseName_starterNames_notSelectable() {
+        // given
+        var menuItem = {};
+        var loadedMenu = {}
+        loadedMenu.starterNames = "SchulFerien";
+        loadedMenu.mainCourseNames = "";
+
+        // when
+        Functions.populateMainCourseName(menuItem, loadedMenu);
+
+        // then
+        compare(menuItem.hasSelectableMenu, false);
+        compare(menuItem.mainCourseNames, "SchulFerien");
+    }
+
+    function test_populateMainCourseName_mainCourseNames_notSelectable() {
+        // given
+        var menuItem = {};
+        var loadedMenu = {}
+        loadedMenu.starterNames = "";
+        loadedMenu.mainCourseNames = "Ferien";
+
+        // when
+        Functions.populateMainCourseName(menuItem, loadedMenu);
+
+        // then
+        compare(menuItem.hasSelectableMenu, false);
+        compare(menuItem.mainCourseNames, "Ferien");
+    }
+
+    function test_populateMainCourseName_selectable() {
+        // given
+        var menuItem = {};
+        var loadedMenu = {}
+        loadedMenu.starterNames = "Pizza";
+        loadedMenu.mainCourseNames = "";
+
+        // when
+        Functions.populateMainCourseName(menuItem, loadedMenu);
+
+        // then
+        compare(menuItem.hasSelectableMenu, true);
+        compare(menuItem.mainCourseNames, "No food ordered");
+    }
+
     function runWithTestData(fileName, testFunction) {
         var xhr = new XMLHttpRequest()
         var fullfileName = "testdata/" + fileName;

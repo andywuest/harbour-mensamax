@@ -46,14 +46,18 @@ Page {
             menuItem.dateString = menus[0].dateString;
 
             // holiday and vacations have special markers, we check them here
-            if (menus[0].starterNames === "SCHULFERIEN"
-                    || menus[0].starterNames === "FEIERTAG") {
-                menuItem.mainCourseNames = menus[0].starterNames;
-                menuItem.hasSelectableMenu = false;
-            } else {
-                menuItem.mainCourseNames = "No food ordered";
-                menuItem.hasSelectableMenu = true;
-            }
+            Functions.populateMainCourseName(menuItem, menus[0]);
+//            if (menus[0].starterNames === "SCHULFERIEN" // TODO case sensitive
+//                    || menus[0].starterNames === "FEIERTAG") { // TODO case sensitive
+//                menuItem.mainCourseNames = menus[0].starterNames;
+//                menuItem.hasSelectableMenu = false;
+//            } else if (menus[0].mainCourseNames === "Ferien") { // TODO case sensitive
+//                menuItem.mainCourseNames = menus[0].mainCourseNames;
+//                menuItem.hasSelectableMenu = false;
+//            } else {
+//                menuItem.mainCourseNames = qsTr("No food ordered");
+//                menuItem.hasSelectableMenu = true;
+//            }
 
             globalMenuModel.append(menuItem)
 

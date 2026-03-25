@@ -309,5 +309,9 @@
         <source>Saturday</source>
         <translation>Samstag</translation>
     </message>
+    <message>
+        <source>No food ordered</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
