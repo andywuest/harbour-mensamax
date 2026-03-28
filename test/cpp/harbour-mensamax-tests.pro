@@ -14,10 +14,7 @@ include(../../harbour-mensamax.pri)
 
 TARGET = MensaMaxTests
 
-DISTFILES += \
-    testdata/ie00b57x3v84.json \
-    testdata/ing_news.json \
-    testdata/divvydiary.json
+# DISTFILES +=
 
 DEFINES += UNIT_TEST
 
