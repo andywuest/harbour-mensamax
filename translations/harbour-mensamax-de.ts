@@ -311,7 +311,7 @@
     </message>
     <message>
         <source>No food ordered</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Essen bestellt</translation>
     </message>
 </context>
 </TS>

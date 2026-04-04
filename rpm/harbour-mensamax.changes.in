@@ -9,8 +9,8 @@
 # the git-change-log command provided with Sailfish OS SDK), create a
 # harbour-mensamax.changes.run script to let mb2 run the required commands for you.
 
-* xx.xx.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.2-1
-- call proper logout endpoint when performing logout
+* 04.04.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.2-1
+- call proper logout endpoint when performing logout (https://github.com/andywuest/harbour-mensamax/issues/5)
 - Back navigation instead of explicit logout from pully (https://github.com/andywuest/harbour-mensamax/issues/4)
 - Better description of server input field (https://github.com/andywuest/harbour-mensamax/issues/3)
 - fixed some more labels
