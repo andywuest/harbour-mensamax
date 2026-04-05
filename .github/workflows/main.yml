@@ -39,7 +39,7 @@ jobs:
           # ./fixJunit.sh
 
       - name: Test Report
-        uses: dorny/test-reporter@v2
+        uses: dorny/test-reporter@v3
         if: ${{ !cancelled() }}                                   # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
